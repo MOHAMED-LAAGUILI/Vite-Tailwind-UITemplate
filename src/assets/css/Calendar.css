@@ -1,0 +1,440 @@
+/* Root Variables */
+:root {
+  --border-color: rgba(255, 255, 255, 0.2);
+  --text-color: #000000;
+  --hover-bg: rgba(255, 255, 255, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Calendar container */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  /* Remove padding */
+  margin: 0 auto;
+  /* Center the container */
+  max-width: 1200px;
+  /* Set a maximum width */
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Controls section */
+.controls {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+
+
+.select-group:hover {
+  background: var(--hover-bg);
+}
+
+
+
+/* Error message */
+.error-message {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4d4d;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-left: 4px solid red;
+}
+
+.error-message button {
+  background: red;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.error-message button:hover {
+  background: darkred;
+}
+
+
+
+
+/* FullCalendar customization */
+.fc {
+  width: 100%;
+  /* Full width of the container */
+  max-width: 100%;
+  /* Ensure it doesn't exceed the container width */
+  background: white;
+  /* Keep the calendar background white */
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0px 6px 15px var(--shadow-color);
+  display: flex;
+  justify-content: center;
+  /* Center the content */
+  border: 1px solid #a19d9d;
+
+}
+
+
+
+
+/* to make this modal bellow the calendar remove this class overlay*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgb(255, 255, 255);
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.modal-content h2 {
+  margin: 0 0 10px;
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  font-size: 15px;
+  padding: 15px 30px;
+  background-color: #465AF7;
+  color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.fc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+.fc-button {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+
+
+
+/* Event Box Styling */
+.event-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.event-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Flag */
+.event-flag {
+  width: 16px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Title */
+.event-title {
+  color: white;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 15px;
+  }
+
+  .event-box {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .event-title {
+    max-width: 80px;
+  }
+}
+
+/* Custom styles for FullCalendar */
+.fc {
+
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.fc-toolbar {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  background-color: #f8f9fa;
+  /* Light background for the toolbar */
+  border-bottom: 1px solid #e0e0e0;
+  /* Subtle border */
+  padding: 10px;
+}
+
+.fc-button {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  background-color: #6200ee;
+  /* Custom button color */
+  color: rgb(0, 0, 0);
+  /* Button text color */
+  border-radius: 5px;
+  /* Rounded buttons */
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+.fc-button:hover {
+  background-color: #3700b3;
+  /* Darker color on hover */
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  /* Change text color as needed */
+  transition: background-color 0.3s ease;
+  /* Remove any default background color */
+}
+
+/* Optional: Add hover effect */
+.event-card:hover {
+  opacity: 0.8;
+  /* Slightly fade on hover */
+}
+
+.event-image {
+  width: 20px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.event-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* Add ellipsis for overflow text */
+}
+
+/* Custom styles for FullCalendar header buttons */
+.fc-toolbar {
+  background-color: #f8f9fa;
+  /* Background for the toolbar */
+  padding: 10px;
+  /* Padding for the toolbar */
+  border-bottom: 1px solid #e0e0e0;
+  /* Subtle border */
+}
+
+.fc-button {
+  background-color: #6200ee;
+  /* Button background color */
+  color: white;
+  /* Button text color */
+  border: none;
+  /* Remove default border */
+  border-radius: 5px;
+  /* Rounded corners */
+  padding: 5px 10px;
+  /* Padding for buttons */
+  margin: 0 5px;
+  /* Margin between buttons */
+  transition: background-color 0.3s, transform 0.3s;
+  /* Smooth transition */
+}
+
+.fc-button:hover {
+  background-color: #3700b3;
+  /* Darker background on hover */
+  transform: scale(1.05);
+  /* Slightly increase button size on hover */
+}
+
+.fc-button:disabled {
+  background-color: #e0e0e0;
+  /* Disabled button color */
+  color: #a0a0a0;
+  /* Disabled text color */
+  cursor: not-allowed;
+  /* Change cursor for disabled buttons */
+}
+
+/* Ensure custom styles are applied to FullCalendar buttons */
+.fc-toolbar .fc-button {
+  background-color: #6200ee !important;
+  /* Custom button background */
+  color: white !important;
+  /* Custom button text color */
+  border: none !important;
+  /* Remove default border */
+  border-radius: 5px !important;
+  /* Rounded corners */
+  padding: 5px 10px !important;
+  /* Button padding */
+  margin: 0 5px !important;
+  /* Space between buttons */
+  transition: background-color 0.3s, transform 0.3s !important;
+  /* Smooth transition */
+}
+
+.fc-toolbar .fc-button:hover {
+  background-color: #3700b3 !important;
+  /* Darker button color on hover */
+  transform: scale(1.05) !important;
+  /* Button scale effect */
+}
+
+.fc-toolbar .fc-button:disabled {
+  background-color: #e0e0e0 !important;
+  /* Disabled button color */
+  color: #a0a0a0 !important;
+  /* Disabled text color */
+  cursor: not-allowed !important;
+  /* Change cursor for disabled buttons */
+}
+
+/* Custom styles for the header toolbar */
+.fc-toolbar {
+  background-color: #f8f9fa !important;
+  /* Light background for the toolbar */
+  padding: 10px !important;
+  /* Padding */
+  border-bottom: 1px solid #e0e0e0 !important;
+  /* Subtle border */
+}
+
+/* Custom styles for FullCalendar cells */
+.fc-day {
+  height: 100px;
+  /* Adjust this value as needed for cell height */
+  min-height: 100px;
+  /* Ensure a minimum height */
+  width: calc(100% / 7);
+  /* Ensure cells fit within the week (7 days) */
+  box-sizing: border-box;
+  /* Include padding and border in element's total width */
+  overflow: hidden;
+  /* Hide overflow content */
+}
+
+/* Custom styles for FullCalendar events */
+.fc-event {
+  padding: 5px;
+  /* Add some padding for events */
+  border-radius: 5px;
+  /* Rounded corners for events */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
+  overflow: hidden;
+  /* Hide overflow */
+  text-overflow: ellipsis;
+  /* Add ellipsis for overflow text */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+  .fc-day {
+    height: 80px;
+    /* Reduce height on smaller screens */
+    min-height: 80px;
+    /* Ensure a minimum height */
+    width: calc(100% / 7);
+    /* Maintain width for responsiveness */
+  }
+}
+
+@media (max-width: 480px) {
+  .fc-day {
+    height: 60px;
+    /* Further reduce height for mobile screens */
+    min-height: 60px;
+    /* Ensure a minimum height */
+    width: calc(100% / 7);
+    /* Maintain width for mobile responsiveness */
+  }
+}
+
+@media (max-width: 768px) {
+  .fc-toolbar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+}

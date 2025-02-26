@@ -8,6 +8,7 @@ import AuthPage from "./Pages/AuthPage";
 import TablesPage from "./Pages/TablesPage";
 import BgPage from "./Pages/BgPage";
 import ButtonsPage from "./Pages/ButtonsPage";
+import CalendarPage from './Pages/CalendarPage';
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
+          <Route path="/calendar-page" element={<CalendarPage />} />
+
 
           <Route path="*" element={<DropDownPage />} />
 

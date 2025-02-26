@@ -4,12 +4,18 @@ import {
   Sun,
   Moon,
   Menu,
-  Home,
   Settings,
-  HelpCircle,
   ChevronDown,
   LogOut,
-  User
+  User,
+  Calendar1,
+  Table,
+  User2,
+  Component,
+  BookDashed,
+  SplineIcon,
+  Text,
+  HomeIcon
 } from "lucide-react";
 
 import { Outlet, Link } from "react-router-dom";
@@ -18,12 +24,12 @@ const menuItems = [
   {
     title: "Components",
     items: [
-      { name: "Backgrounds", path: "/", icon: <Home className="h-4 w-4 mr-3" /> },
-      { name: "Text", path: "/text-page", icon: <Home className="h-4 w-4 mr-3" /> },
-      { name: "Spinners", path: "/spinner-page", icon: <Home className="h-4 w-4 mr-3" /> },
-      { name: "Dashboard items", path: "/dashboard-items", icon: <Home className="h-4 w-4 mr-3" /> },
-      { name: "Accordion items", path: "/accordion-items", icon: <Home className="h-4 w-4 mr-3" /> },
-      { name: "Buttons", path: "/button-page", icon: <Home className="h-4 w-4 mr-3" /> },
+      { name: "Backgrounds", path: "/", icon: <HomeIcon className="h-4 w-4 mr-3" /> },
+      { name: "Text", path: "/text-page", icon: <Text className="h-4 w-4 mr-3" /> },
+      { name: "Spinners", path: "/spinner-page", icon: <SplineIcon className="h-4 w-4 mr-3" /> },
+      { name: "Dashboard items", path: "/dashboard-items", icon: <BookDashed className="h-4 w-4 mr-3" /> },
+      { name: "Accordion items", path: "/accordion-items", icon: <Component className="h-4 w-4 mr-3" /> },
+      { name: "Buttons", path: "/button-page", icon: <Component className="h-4 w-4 mr-3" /> },
 
 
       
@@ -32,21 +38,19 @@ const menuItems = [
   {
     title: "Auth",
     items: [
-      { name: "Auth", path: "/auth", icon: <Settings className="h-4 w-4 mr-3" /> },
+      { name: "Auth", path: "/auth", icon: <User2 className="h-4 w-4 mr-3" /> },
       ],
   },
   {
     title: "Data Tables",
     items: [
-      { name: "Table Filtring", path: "/tables-page", icon: <Settings className="h-4 w-4 mr-3" /> },
-      { name: "Help", path: "/", icon: <HelpCircle className="h-4 w-4 mr-3" /> },
+      { name: "Table Filtring", path: "/tables-page", icon: <Table className="h-4 w-4 mr-3" /> },
     ],
   },
   {
-    title: "Settings",
+    title: "Calendar",
     items: [
-      { name: "Settings", path: "/", icon: <Settings className="h-4 w-4 mr-3" /> },
-      { name: "Help", path: "/", icon: <HelpCircle className="h-4 w-4 mr-3" /> },
+      { name: "Calendar", path: "/calendar-page", icon: <Calendar1 className="h-4 w-4 mr-3" /> },
     ],
   },
   
@@ -96,7 +100,7 @@ export default function Layout() {
         {/* Sidebar */}
         <aside
       id="sidebar"
-      className={`fixed inset-y-0 left-0 z-40 w-64 bg-white dark:bg-[#0F0F12] transform transition-transform duration-200 ease-in-out
+      className={`fixed inset-y-0 left-0 z-30 w-64 bg-white dark:bg-[#0F0F12] transform transition-transform duration-200 ease-in-out
       border-r border-gray-200 dark:border-[#1F1F23] lg:translate-x-0 lg:static overflow-y-auto max-h-screen
       ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
@@ -163,7 +167,7 @@ export default function Layout() {
         </button>
 
         {/* Notifications Dropdown */}
-        <div className="relative">
+        <div className="relative z-40">
           <button
             onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] relative"
@@ -174,18 +178,28 @@ export default function Layout() {
             </span>
           </button>
           {isNotificationsOpen && (
-            <div className="absolute z-[100] border right-0 mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">New comment on your post</div>
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">Server maintenance at 2 AM</div>
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">Your password was changed</div>
-              <button
-                onClick={() => setIsNotificationsOpen(false)}
-                className="w-full text-center py-1 text-sm text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                View all
-              </button>
-            </div>
-          )}
+  <div
+    className={`absolute z-[40] right-0 border mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2 
+     `}
+  >
+    <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
+      New comment on your post
+    </div>
+    <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
+      Server maintenance at 2 AM
+    </div>
+    <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
+      Your password was changed
+    </div>
+    <button
+      onClick={() => setIsNotificationsOpen(false)}
+      className="w-full text-center py-1 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+    >
+      View all
+    </button>
+  </div>
+)}
+
         </div>
 
         {/* Profile Dropdown */}
@@ -197,7 +211,7 @@ export default function Layout() {
             <User className="h-5 w-5 text-gray-600 dark:text-gray-300" />
           </button>
           {isProfileOpen && (
-            <div className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
+            <div className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2 ">
               <button className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left">
                 <User className="h-4 w-4" /> Profile
               </button>

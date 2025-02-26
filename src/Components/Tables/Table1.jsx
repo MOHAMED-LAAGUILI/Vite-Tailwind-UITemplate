@@ -1,158 +1,138 @@
-/* eslint-disable react/prop-types */
-import { useState, useMemo } from "react";
-import {
-  useReactTable,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  getExpandedRowModel,
-} from "@tanstack/react-table";
-import { rankItem } from "@tanstack/match-sorter-utils";
-import {
-  ChevronUp,
-  ChevronDown,
-  ChevronsLeft,
-  ChevronsRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { useState, useEffect } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import { ClientSideRowModelModule } from 'ag-grid-community';
 
-const DataTable = ({ data }) => {
-  const columns = useMemo(
-    () => [
+export default function Table1() {
+  // Set the rowData and columnDefs from the given static data
+  const [rowData, setRowData] = useState([]);
+
+  // Simulate fetching data or setting default values
+  useEffect(() => {
+    const rawData = [
       {
-        accessorKey: "Name",
-        header: "Name",
-        cell: (info) => <strong>{info.getValue()}</strong>,
+        id: 1,
+        employee: 'John Doe',
+        position: 'COO',
+        employees: [
+          { id: 2, name: 'Jane Smith', position: 'CTO' },
+          { id: 3, name: 'Michael Johnson', position: 'Engineer' },
+        ],
+        Department: 'Operations',
+        Employment_type: 'Full-time',
+        Location: 'New York',
+        joinDate: '2020-01-15',
+        Salary: '$150,000',
+        paymentMethod: 'Bank Transfer',
+        Status: 'Active',
+        contact: '123-456-7890',
+        marriedChildren: 'Yes', // Married children
       },
-      { accessorKey: "Position", header: "Position" },
-      { accessorKey: "Office", header: "Office" },
-      { accessorKey: "Age", header: "Age" },
-      { accessorKey: "Startdate", header: "Start Date" },
-      { accessorKey: "Salary", header: "Salary" },
-    ],
-    []
-  );
+      {
+        id: 4,
+        employee: 'Emily Davis',
+        position: 'CEO',
+        employees: [
+          { id: 5, name: 'Sarah Brown', position: 'Marketing Director' },
+          { id: 6, name: 'David Wilson', position: 'HR Manager' },
+        ],
+        Department: 'Executive',
+        Employment_type: 'Full-time',
+        Location: 'San Francisco',
+        joinDate: '2019-08-22',
+        Salary: '$200,000',
+        paymentMethod: 'Bank Transfer',
+        Status: 'Active',
+        contact: '987-654-3210',
+        marriedChildren: 'No', // Married children
+      },
+    ];
 
-  const [globalFilter, setGlobalFilter] = useState("");
-  const [sorting, setSorting] = useState([]);
-  const [expanded] = useState([]);
-  
-  const table = useReactTable({
-    data,
-    columns,
-    state: { globalFilter, sorting, expanded },
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getExpandedRowModel: getExpandedRowModel(),
-    filterFns: {
-      fuzzy: (row, columnId, value) => rankItem(row.getValue(columnId), value).passed,
+    const flattenData = rawData.flatMap((manager) => [
+      {
+        ...manager,
+        employee: manager.employee,
+        position: manager.position,
+        group: true, // Flag to indicate this is a group row
+      },
+      ...manager.employees.map((emp) => ({
+        ...emp,
+        employee: emp.name, // Display employee name
+        position: emp.position,
+        managerId: manager.id, // Link back to the manager
+        Department: manager.Department || 'N/A',
+        Employment_type: manager.Employment_type || 'N/A',
+        Location: manager.Location || 'N/A',
+        joinDate: manager.joinDate || 'N/A',
+        Salary: manager.Salary || 'N/A',
+        paymentMethod: manager.paymentMethod || 'N/A',
+        Status: manager.Status || 'N/A',
+        contact: manager.contact || 'N/A',
+        marriedChildren: manager.marriedChildren || 'N/A', // Include "Married Children" status
+      })),
+    ]);
+
+    setRowData(flattenData);
+  }, []);
+
+  // Date Formatter for Join Date column
+  const dateFormatter = (params) => {
+    const date = new Date(params.value);
+    return date.toLocaleDateString();
+  };
+
+  const [colDefs, setColDefs] = useState([
+    { headerName: "Employee Name", field: "employee", sortable: true, filter: true },
+    { headerName: "Position", field: "position", sortable: true, filter: true },
+    { headerName: "Department", field: "Department", sortable: true, filter: true },
+    { headerName: "Employment Type", field: "Employment_type", sortable: true, filter: true },
+    { headerName: "Location", field: "Location", sortable: true, filter: true },
+    { headerName: "Join Date", field: "joinDate", sortable: true, filter: true, valueFormatter: dateFormatter },
+    { headerName: "Salary", field: "Salary", sortable: true, filter: true },
+    { headerName: "Payment Method", field: "paymentMethod", sortable: true, filter: true },
+    { headerName: "Status", field: "Status", sortable: true, filter: true },
+    { headerName: "Contact", field: "contact", sortable: true, filter: true },
+    { headerName: "Married Children", field: "marriedChildren", sortable: true, filter: true }, // New column
+  ]);
+
+  const autoGroupColumnDef = {
+    headerName: "Manager",
+    field: "employee",
+    cellRenderer: 'agGroupCellRenderer',
+    cellRendererParams: {
+      suppressCount: true,
     },
-  });
+    sortable: true,
+    filter: true,
+  };
+
+  const gridOptions = {
+    groupUseEntireRow: true, // Groups will span the whole row
+    groupDefaultExpanded: 1, // Expand groups by default
+    suppressRowClickSelection: true, // Prevent selection on group rows
+    domLayout: 'autoHeight', // Adjust grid's height dynamically based on content
+    paginationPageSize: 10, // Pagination controls
+    pagination: true, // Enable pagination
+    suppressAggFuncInHeader: true, // Hide aggregation functions in the header
+    suppressDragLeaveHidesColumns: true, // Allow column drag leaving without hiding columns
+    suppressRowHoverHighlight: true, // Disable hover highlight effect
+  };
 
   return (
-    <div className="p-6 backdrop-blur-lg bg-white/5 border border-gray-300/30 rounded-xl shadow-md">
-      {/* Search Input */}
-      <div className="mb-4 flex justify-between items-center">
-        <input
-          type="text"
-          value={globalFilter ?? ""}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          placeholder="Search..."
-          className="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 bg-white/10 backdrop-blur-md"
-        />
-      </div>
-
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white/10 shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-gray-800 text-white">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                    className="px-6 py-3 text-left text-xs font-semibold tracking-wider uppercase cursor-pointer hover:bg-gray-700 transition"
-                  >
-                    {header.column.columnDef.header}
-                    {header.column.getIsSorted() === "asc" ? (
-                      <ChevronUp className="inline ml-1" />
-                    ) : header.column.getIsSorted() === "desc" ? (
-                      <ChevronDown className="inline ml-1" />
-                    ) : null}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="divide-y divide-gray-300">
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-gray-100/50 transition">
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-6 py-4 text-sm text-gray-700">
-                    {cell.getValue()}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Pagination */}
-      <div className="mt-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <button
-            className="px-3 py-1 bg-gray-800 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <ChevronsLeft />
-          </button>
-          <button
-            className="px-3 py-1 bg-gray-800 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <ChevronLeft />
-          </button>
-          <button
-            className="px-3 py-1 bg-gray-800 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <ChevronRight />
-          </button>
-          <button
-            className="px-3 py-1 bg-gray-800 text-white rounded-md hover:bg-gray-700 disabled:opacity-50"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            <ChevronsRight />
-          </button>
-        </div>
-        <span className="text-sm text-gray-700">
-          Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-        </span>
-        <select
-          className="px-2 py-1 border rounded-md bg-white shadow-sm"
-          value={table.getState().pagination.pageSize}
-          onChange={(e) => table.setPageSize(Number(e.target.value))}
-        >
-          {[10, 25, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div style={{ height: '50vh', width: '100%' }}>
+      <AgGridReact
+        defaultColDef={{ sortable: true, filter: true }}
+        rowData={rowData}
+        columnDefs={colDefs}
+        autoGroupColumnDef={autoGroupColumnDef}
+        modules={[ClientSideRowModelModule]}
+        gridOptions={gridOptions}
+        paginationPageSize={10}
+        domLayout="autoHeight"
+        groupUseEntireRow={true}
+        groupDefaultExpanded={1}
+        suppressRowClickSelection={true}
+        pagination={true}
+      />
     </div>
   );
-};
-
-export default DataTable;
+}
