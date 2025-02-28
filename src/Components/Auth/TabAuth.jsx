@@ -63,7 +63,7 @@ export default function LoginPage() {
           transition={{ duration: 2 }}
           className="max-w-md mx-auto"
         >
-          <h1 className="text-5xl sm:text-7xl font-bold mb-8 tracking-tighter">
+          <h1 className="text-5xl sm:text-7xl font-bold mb-8 tracking-tighter dark:text-white">
             Login
           </h1>
 

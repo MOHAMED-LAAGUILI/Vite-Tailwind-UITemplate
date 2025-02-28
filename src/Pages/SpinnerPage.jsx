@@ -1,30 +1,16 @@
-import {
-  ring,
-  ring2,
-  tailspin,
-  lineSpinner,
-  squircle,
-  tailChase,
-  bouncy,
-  zoomies,
-  grid,
-  quantum,
-  pulsar,
-  pinwheel
-} from "ldrs";
+import 'ldrs/ring';
+import 'ldrs/ring2';
+import 'ldrs/tailspin';
+import 'ldrs/linespinner';
+import 'ldrs/squircle';
+import 'ldrs/tailchase';
+import 'ldrs/bouncy';
+import 'ldrs/zoomies';
+import 'ldrs/grid';
+import 'ldrs/quantum';
+import 'ldrs/pulsar';
+import 'ldrs/pinwheel';
 
-ring.register();
-ring2.register();
-tailspin.register();
-lineSpinner.register();
-squircle.register();
-tailChase.register();
-bouncy.register();
-zoomies.register();
-grid.register();
-quantum.register();
-pulsar.register();
-pinwheel.register()
 
 function SpinnerPage() {
   return (
@@ -33,10 +19,10 @@ function SpinnerPage() {
         Loading Spinners UI Kit
       </h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 dark:bg-white p-5">
         <div className="flex flex-col items-center">
           <l-ring size="40" stroke="5" speed="2" color="black"></l-ring>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Ring</p>
+          <p className="mt-2 text-sm text-gray-700">Ring</p>
         </div>
 
         <div className="flex flex-col items-center">
@@ -47,7 +33,7 @@ function SpinnerPage() {
             speed="0.8"
             color="black"
           ></l-ring-2>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Ring 2
           </p>
         </div>
@@ -59,7 +45,7 @@ function SpinnerPage() {
             speed="0.9"
             color="black"
           ></l-tailspin>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Tailspin
           </p>
         </div>
@@ -71,7 +57,7 @@ function SpinnerPage() {
             speed="1"
             color="black"
           ></l-line-spinner>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Line Spinner
           </p>
         </div>
@@ -84,47 +70,47 @@ function SpinnerPage() {
             speed="0.9"
             color="black"
           ></l-squircle>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Squircle
           </p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-tail-chase size="40" speed="1.75" color="black"></l-tail-chase>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Tail Chase
           </p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-bouncy size="45" speed="1.75" color="black"></l-bouncy>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Bouncy
           </p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-zoomies size="80" stroke="5" speed="1.4" color="black"></l-zoomies>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Zoomies
           </p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-grid size="60" speed="1.5" color="black"></l-grid>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Grid</p>
+          <p className="mt-2 text-sm text-gray-700 ">Grid</p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-quantum size="45" speed="1.75" color="black"></l-quantum>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Quantum
           </p>
         </div>
 
         <div className="flex flex-col items-center">
           <l-pulsar size="40" speed="1.75" color="black"></l-pulsar>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             Pulsar
           </p>
         </div>
@@ -136,7 +122,7 @@ function SpinnerPage() {
             speed="0.9"
             color="black"
           ></l-pinwheel>
-          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+          <p className="mt-2 text-sm text-gray-700 ">
             pinwheel
           </p>
         </div>
