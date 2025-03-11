@@ -5,7 +5,16 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
+
+  build: {
+    rollupOptions: {
+      external: ['ldrs/linespinner']
+    }
+  },
+
+  plugins: [
+    
+    react(),
 
     compression({
       algorithm: "brotliCompress", // Use Brotli (better than gzip)
