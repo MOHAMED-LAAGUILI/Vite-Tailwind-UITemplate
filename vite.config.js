@@ -5,6 +5,12 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      external: ['ldrs/linespinner']
+    }
+  },
+
   plugins: [react(),
 
     compression({
