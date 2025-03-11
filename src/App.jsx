@@ -9,6 +9,8 @@ import TablesPage from "./Pages/TablesPage";
 import BgPage from "./Pages/BgPage";
 import ButtonsPage from "./Pages/ButtonsPage";
 import CalendarPage from './Pages/CalendarPage';
+import ToolBarPage from "./Pages/ToolBarPage";
+import AlertPage from "./Pages/AlertPage";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
           <Route path="/calendar-page" element={<CalendarPage />} />
+          <Route path="/toolbar-page" element={<ToolBarPage />} />
+          <Route path="/alert-page" element={<AlertPage />} />
 
 
           <Route path="*" element={<DropDownPage />} />

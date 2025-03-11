@@ -3,10 +3,9 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 
-
 const MatrixText = ({
-    text = "HelloWorld!",
-    className,
+    text = "Hello World!",
+    className = "",
     initialDelay = 200,
     letterAnimationDuration = 500,
     letterInterval = 100,
@@ -20,52 +19,49 @@ const MatrixText = ({
     );
     const [isAnimating, setIsAnimating] = useState(false);
 
-    const getRandomChar = useCallback(
-        () => (Math.random() > 0.5 ? "1" : "0"),
-        []
-    );
+    const getRandomChar = useCallback(() => (Math.random() > 0.5 ? "1" : "0"), []);
 
     const animateLetter = useCallback(
         (index) => {
-            if (index >= text.length) return;
+            setLetters((prev) => {
+                if (!prev[index]) return prev; // Prevent accessing undefined values
 
-            requestAnimationFrame(() => {
+                const newLetters = [...prev];
+                if (!newLetters[index].isSpace) {
+                    newLetters[index] = {
+                        ...newLetters[index],
+                        char: getRandomChar(),
+                        isMatrix: true,
+                    };
+                }
+                return newLetters;
+            });
+
+            setTimeout(() => {
                 setLetters((prev) => {
+                    if (!prev[index]) return prev; // Prevent accessing undefined values
+
                     const newLetters = [...prev];
-                    if (!newLetters[index].isSpace) {
-                        newLetters[index] = {
-                            ...newLetters[index],
-                            char: getRandomChar(),
-                            isMatrix: true,
-                        };
-                    }
+                    newLetters[index] = {
+                        ...newLetters[index],
+                        char: text[index],
+                        isMatrix: false,
+                    };
                     return newLetters;
                 });
-
-                setTimeout(() => {
-                    setLetters((prev) => {
-                        const newLetters = [...prev];
-                        newLetters[index] = {
-                            ...newLetters[index],
-                            char: text[index],
-                            isMatrix: false,
-                        };
-                        return newLetters;
-                    });
-                }, letterAnimationDuration);
-            });
+            }, letterAnimationDuration);
         },
         [getRandomChar, text, letterAnimationDuration]
     );
 
     const startAnimation = useCallback(() => {
         if (isAnimating) return;
-
         setIsAnimating(true);
+
         let currentIndex = 0;
 
         const animate = () => {
-            if (currentIndex >= text.length) {
+            if (currentIndex >= letters.length) {
                 setIsAnimating(false);
                 return;
             }
@@ -76,45 +72,34 @@ const MatrixText = ({
         };
 
         animate();
-    }, [animateLetter, text, isAnimating, letterInterval]);
+    }, [animateLetter, letters.length, isAnimating, letterInterval]);
 
     useEffect(() => {
         const timer = setTimeout(startAnimation, initialDelay);
         return () => clearTimeout(timer);
-    }, []);
+    }, [startAnimation, initialDelay]);
 
     const motionVariants = useMemo(
         () => ({
-            // initial: {
-            //     color: "rgb(var(--foreground-rgb))",
-            // },
             matrix: {
                 color: "#00ff00",
                 textShadow: "0 2px 4px rgba(0, 255, 0, 0.5)",
             },
-            // normal: {
-            //     color: "rgb(var(--foreground-rgb))",
-            //     textShadow: "none",
-            // },
         }),
         []
     );
 
     return (
         <div
-            className={
-                `flex items-center justify-center text-black dark:text-white
-                ${className}
-            `}
+            className={`flex items-center justify-center text-black dark:text-white ${className}`}
             aria-label="Matrix text animation"
         >
             <div className="h-24 flex items-center justify-center">
                 <div className="flex flex-wrap items-center justify-center">
                     {letters.map((letter, index) => (
                         <motion.div
-                            key={`${index}-${letter.char}`}
+                            key={index}
                             className="font-mono text-4xl md:text-6xl w-[1ch] text-center overflow-hidden"
-                            initial="initial"
                             animate={letter.isMatrix ? "matrix" : "normal"}
                             variants={motionVariants}
                             transition={{
