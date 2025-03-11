@@ -3,7 +3,6 @@ import 'ldrs/ring2';
 import 'ldrs/tailspin';
 import 'ldrs/linespinner';
 import 'ldrs/squircle';
-import 'ldrs/tailchase';
 import 'ldrs/bouncy';
 import 'ldrs/zoomies';
 import 'ldrs/grid';
@@ -72,13 +71,6 @@ function SpinnerPage() {
           ></l-squircle>
           <p className="mt-2 text-sm text-gray-700 ">
             Squircle
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <l-tail-chase size="40" speed="1.75" color="black"></l-tail-chase>
-          <p className="mt-2 text-sm text-gray-700 ">
-            Tail Chase
           </p>
         </div>
 
