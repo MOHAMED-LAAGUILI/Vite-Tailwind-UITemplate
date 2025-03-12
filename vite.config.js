@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import compression from "vite-plugin-compression";
 import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
@@ -15,11 +14,6 @@ export default defineConfig({
   plugins: [
     
     react(),
-
-    compression({
-      algorithm: "brotliCompress", // Use Brotli (better than gzip)
-      threshold: 1024, // Compress files over 1KB
-    }),
 
     VitePWA({
       registerType: "autoUpdate",
