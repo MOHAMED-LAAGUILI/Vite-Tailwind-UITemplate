@@ -4,17 +4,8 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
-
-  build: {
-    rollupOptions: {
-      external: ['ldrs/linespinner']
-    }
-  },
-
-  plugins: [
-    
+plugins: [
     react(),
-
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "robots.txt"],
@@ -34,6 +25,6 @@ export default defineConfig({
   ],
 
   optimizeDeps: {
-    include: ['@ag-grid-community/core']
-  }
+    include: ['@ag-grid-community/core'] 
+ }
 })

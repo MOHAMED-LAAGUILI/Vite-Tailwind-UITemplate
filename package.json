@@ -24,7 +24,7 @@
     "ag-grid-react": "^33.1.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.7",
-    "ldrs": "^1.0.2",
+    "ldrs": "^1.1.2",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-data-table-component": "^7.7.0",

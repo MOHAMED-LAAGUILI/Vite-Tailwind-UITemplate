@@ -1,7 +1,6 @@
 import 'ldrs/ring';
 import 'ldrs/ring2';
 import 'ldrs/tailspin';
-import 'ldrs/linespinner';
 import 'ldrs/squircle';
 import 'ldrs/bouncy';
 import 'ldrs/zoomies';
@@ -49,17 +48,6 @@ function SpinnerPage() {
           </p>
         </div>
 
-        <div className="flex flex-col items-center">
-          <l-line-spinner
-            size="40"
-            stroke="3"
-            speed="1"
-            color="black"
-          ></l-line-spinner>
-          <p className="mt-2 text-sm text-gray-700 ">
-            Line Spinner
-          </p>
-        </div>
 
         <div className="flex flex-col items-center">
           <l-squircle
