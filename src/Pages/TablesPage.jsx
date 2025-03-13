@@ -2,6 +2,7 @@ import Table0 from "../Components/Tables/Table0";
 import Table1 from "../Components/Tables/Table1";
 import DataTable2 from "../Components/Tables/Table2";
 import DataTable3 from "../Components/Tables/Table3";
+import DataTableComponent from "../Components/Tables/Table4";
 
 function TablesPage() {
   const data = Array(20).fill({
@@ -35,6 +36,11 @@ function TablesPage() {
       <section>
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">DataTable3</h2>
         <DataTable3 data={data} />
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">DataTable3</h2>
+        <DataTableComponent />
       </section>
     </div>
   );

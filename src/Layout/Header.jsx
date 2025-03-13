@@ -13,6 +13,7 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen, isDarkMode, to
         <Menu className="h-5 w-5" />
       </button>
 
+
       {/* Right-side Icons */}
       <div className="flex  gap-4 absolute z-50 right-5">
         {/* Theme Toggle */}
