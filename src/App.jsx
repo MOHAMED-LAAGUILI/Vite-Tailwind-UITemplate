@@ -11,6 +11,7 @@ import ButtonsPage from "./Pages/ButtonsPage";
 import CalendarPage from './Pages/CalendarPage';
 import ToolBarPage from "./Pages/ToolBarPage";
 import AlertPage from "./Pages/AlertPage";
+import TailwindSourcesPage from "./Pages/TailwindSourcesPage";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/calendar-page" element={<CalendarPage />} />
           <Route path="/toolbar-page" element={<ToolBarPage />} />
           <Route path="/alert-page" element={<AlertPage />} />
+          <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />} />
 
 
           <Route path="*" element={<DropDownPage />} />

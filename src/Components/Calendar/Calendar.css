@@ -1,0 +1,428 @@
+/* Root Variables */
+:root {
+  --border-color: rgba(255, 255, 255, 0.2);
+  --text-color: #000000;
+  --hover-bg: rgba(255, 255, 255, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Controls section */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.select-group:hover {
+  background: var(--hover-bg);
+}
+
+/* Error message */
+.error-message {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4d4d;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-left: 4px solid red;
+  text-align: center;
+}
+
+.error-message button {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.error-message button:hover {
+  background: darkred;
+}
+
+/* FullCalendar customization */
+.fc {
+  width: 100%;
+  max-width: 100%;
+  background: white;
+  border-radius:4px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Calendar Header Buttons */
+.fc-toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-wrap: wrap; /* Allow buttons to wrap in smaller screens */
+}
+
+.fc-button {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #6269A6;
+  color: rgb(255, 255, 255);
+  border: none;
+  transition: background-color 0.3s, transform 0.3s;
+  margin: 5px; /* Space between buttons */
+}
+
+
+.fc-button:hover {
+  background-color: #565c91;
+  transform: scale(1.05);
+}
+
+.fc-button:disabled {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+
+
+.fc-button::first-letter {
+  text-transform: uppercase;
+}
+
+/* Adjust the next and previous buttons */
+.fc-button-group .fc-prev-button,
+.fc-button-group .fc-next-button {
+  display: flex;
+  flex-direction: column; /* Align vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+/* Responsive Adjustments for small screens */
+@media (max-width: 768px) {
+  .fc-button {
+      font-size: 12px; /* Smaller font size */
+      padding: 6px 10px; /* Adjust padding */
+      min-width: 70px; /* Allow smaller buttons */
+  }
+
+  .fc-toolbar {
+      padding: 8px; /* Reduced padding for toolbar */
+  }
+}
+
+@media (max-width: 480px) {
+  .fc-button {
+      font-size: 10px; /* Even smaller font size for very small screens */
+      padding: 5px 8px; /* Adjust padding further */
+      min-width: 60px; /* Allow buttons to shrink */
+  }
+
+  .fc-toolbar {
+      padding: 6px; /* Further reduce toolbar padding */
+      gap: 5px; /* Reduce gap between buttons */
+  }
+}
+.event-card{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-image{
+  width: 23px;
+}
+/* Event Box Styling */
+.event-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.event-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-flag {
+  width: 16px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.event-title {
+  color: white;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+
+  .event-box {
+      font-size: 10px;
+      border: 1px solid white;
+      padding: 4px 8px;
+  }
+
+  .event-title {
+      max-width: 80px;
+  }
+}
+
+/* Modal Fade In */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Custom styles for FullCalendar header buttons */
+.fc-toolbar .fc-button {
+  background-color: #C1EFD3;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.fc-toolbar .fc-button:hover {
+  background-color: #b0ddc1;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.fc-toolbar .fc-button:disabled {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+
+.fc-daygrid-event, 
+.fc-timegrid-event {
+border: none !important;
+outline: none !important;
+box-shadow: none !important;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+.modal-info{
+  text-align: left; /* Align text to the left */
+}
+
+.modal-info h3 {
+  color: #181C32;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal-info .modal-date {
+  font-size: .8rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.modal-info .modal-description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+
+
+/* Modal Animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Modal */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 2px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+.modal-info{
+  text-align: left; /* Align text to the left */
+}
+
+.modal-info h3 {
+  color: #181C32;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal-info .modal-date {
+  font-size: .8rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.modal-info .modal-description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Close Button */
+.close-button {
+  padding: 10px 20px;
+  background-color: #C1EFD3;
+  color: #333;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #1B83DA;
+  color: white;
+}
+
+/* Modal Animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Modal */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+
+
+
+.modal-info .modal-description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+  max-height: 200px; /* Set a limit */
+  overflow-y: auto; /* Enable scrolling */
+  padding-right: 5px; /* Adjust spacing */
+}
+.modal-content {
+  max-width: 500px; /* Increase for better spacing */
+  max-height: 85vh; /* Limit height */
+}
+.modal-info .modal-description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

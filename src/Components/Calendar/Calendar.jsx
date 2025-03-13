@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
-import "../../assets/css/Calendar.css";
+import "./Calendar.css";
 
 function Calendar() {
   const currentYear = new Date().getFullYear();
@@ -73,9 +73,15 @@ function Calendar() {
     setModalOpen(true);
   };
 
-  const closeModal = () => {
+
+  const handleModalClose = () => {
     setModalOpen(false);
-    setModalData(null);
+  };
+
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("modal-overlay")) {
+      handleModalClose();
+    }
   };
 
   return (
@@ -125,18 +131,20 @@ function Calendar() {
         )}
       />
       {modalOpen && modalData && (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={handleOverlayClick}>
           <div className="modal-content">
             <img
               src={modalData.countryImage}
               alt={modalData.title}
               className="country-banner"
             />
+                        <div className="modal-info">
+
             <h2>{modalData.title}</h2>
-            <p>
-              <strong>Description:</strong> {modalData.description}
+            <p className="modal-description">
+              {modalData.description}
             </p>
-            <button onClick={closeModal}>Close</button>
+            </div>
           </div>
         </div>
       )}
