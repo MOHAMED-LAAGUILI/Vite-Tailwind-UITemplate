@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import { Seo } from './Seo';
 import Sidebar from "./Aside";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 
@@ -45,6 +46,7 @@ export default function Layout() {
 
   return (
     <div className={isDarkMode ? "dark" : ""}>
+      <Seo/>
       <div className="flex h-screen bg-gray-50 dark:bg-[#26262c]">
         <Sidebar
           isSidebarOpen={isSidebarOpen}

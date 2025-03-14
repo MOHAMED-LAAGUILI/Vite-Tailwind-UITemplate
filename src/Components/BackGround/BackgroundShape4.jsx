@@ -1,7 +1,7 @@
 
 function BackgroundShape4() {
   return (
-    <div>BackgroundShape4</div>
+    <div></div>
   )
 }
 

@@ -1,0 +1,267 @@
+/* Table container styling */
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+}
+
+/* Table styles */
+#myTable {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 10px !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#myTable th,
+#myTable td {
+    padding: 12px 20px !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    color: #333 !important;
+}
+
+#myTable th {
+    background-color: #f4f4f9 !important;
+    color: #4c6ef5 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 2px solid #f1f1f1 !important;
+}
+
+#myTable td {
+    background-color: #fff !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+}
+
+/* Hover effect on rows */
+#myTable tbody tr:hover {
+    background-color: #f9f9f9 !important;
+    transition: background-color 0.3s ease-in-out !important;
+}
+
+/* Stripe effect for rows */
+#myTable tbody tr:nth-child(odd) {
+    background-color: #fafafa !important;
+}
+
+/* Table buttons (copy, excel, pdf, etc.) */
+div.dt-buttons {
+    margin-bottom: 20px !important;
+}
+
+button.dt-button {
+    background-color: #4c6ef5 !important;
+    color: white !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
+    margin-right: 12px !important;
+}
+
+button.dt-button:hover {
+    background-color: #365edc !important;
+    transform: translateY(-2px) !important;
+}
+
+button.dt-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px 2px rgba(76, 110, 245, 0.4) !important;
+}
+
+/* Pagination controls */
+div.dataTables_paginate {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-top: 20px !important;
+}
+
+div.dataTables_paginate a {
+    padding: 8px 15px !important;
+    margin-left: 5px !important;
+    border-radius: 50px !important;
+    background-color: #f4f4f9 !important;
+    color: #4c6ef5 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: background-color 0.3s ease !important;
+}
+
+div.dataTables_paginate a:hover {
+    background-color: #4c6ef5 !important;
+    color: white !important;
+}
+
+div.dataTables_paginate .paginate_button.current {
+    background-color: #4c6ef5 !important;
+    color: white !important;
+}
+
+div.dataTables_paginate .paginate_button.current:hover {
+    background-color: #334aa7 !important;
+    color: white !important;
+}
+
+/* Search and filter styling */
+div.dataTables_filter {
+    margin-top: 20px !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+div.dataTables_filter input {
+    padding: 10px 18px !important;
+    border-radius: 50px !important;
+    border: 1px solid #f1f1f1 !important;
+    font-size: 14px !important;
+    width: 250px !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+div.dataTables_filter input:focus {
+    border-color: #4c6ef5 !important;
+    box-shadow: 0 0 5px 2px rgba(76, 110, 245, 0.3) !important;
+}
+
+/* Custom scroll styling for the table */
+#myTable.dataTable {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* Sticky header */
+#myTable.dataTable thead {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 2 !important;
+    background-color: #f4f4f9 !important;
+}
+
+/* General Button Styling */
+.dt-button {
+    background-color: #4c6ef5 !important;
+    color: white !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
+    margin-right: 12px !important;
+}
+
+.dt-button:hover {
+    background-color: #365edc !important;
+    transform: translateY(-2px) !important;
+}
+
+.dt-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px 2px rgba(76, 110, 245, 0.4) !important;
+}
+
+/* Pagination Buttons */
+.dt-paging-button {
+    padding: 10px 15px !important;
+    margin-left: 8px !important;
+    border-radius: 50px !important;
+    background-color: #e4e4e4 !important;
+    color: #4c6ef5 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+.dt-paging-button:hover {
+    background-color: #365edc !important;
+    color: white !important;
+    transform: scale(1.05) !important;
+}
+
+.dt-paging-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px 2px rgba(76, 110, 245, 0.3) !important;
+}
+
+/* Current Page Button */
+.dt-paging-button.current {
+    background-color: #4c6ef5 !important;
+    color: white !important;
+    font-weight: 700 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Disabled Paging Button */
+.dt-paging-button.disabled {
+    background-color: #f1f1f1 !important;
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+/* First Page Button */
+.dt-paging-button.first {
+    background-color: #e4e4e4 !important;
+}
+
+.dt-paging-button.first:hover {
+    background-color: #365edc !important;
+    color: white !important;
+}
+
+/* Last Page Button */
+.dt-paging-button.last {
+    background-color: #e4e4e4 !important;
+}
+
+.dt-paging-button.last:hover {
+    background-color: #365edc !important;
+    color: white !important;
+}
+
+/* Previous Page Button */
+.dt-paging-button.previous {
+    background-color: #e4e4e4 !important;
+}
+
+.dt-paging-button.previous:hover {
+    background-color: #365edc !important;
+    color: white !important;
+}
+
+/* Next Page Button */
+.dt-paging-button.next {
+    background-color: #e4e4e4 !important;
+}
+
+.dt-paging-button.next:hover {
+    background-color: #365edc !important;
+    color: white !important;
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px !important;
+    }
+    
+    #myTable {
+        font-size: 12px !important;
+    }
+
+    .dt-search-0 input {
+        width: 100% !important;
+        padding: 8px 12px !important;
+    }
+
+    .dt-paging-button {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+    }
+
+    div.dataTables_filter input {
+        width: 100% !important;
+    }
+}

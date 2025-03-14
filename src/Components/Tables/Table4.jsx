@@ -10,7 +10,6 @@ import "datatables.net-buttons/js/buttons.html5.min.js";
 import "datatables.net-buttons/js/buttons.print.min.js";
 import "datatables.net-buttons/js/buttons.colVis.min.js";
 
-
 import "./Table4.css";
 
 const DataTableComponent = () => {
@@ -27,6 +26,9 @@ const DataTableComponent = () => {
     { name: "Rhona Davidson", position: "Integration Specialist", office: "Tokyo", age: "55", startDate: "2010/10/14", salary: "$327,900" },
     { name: "Colleen Hurst", position: "Javascript Developer", office: "San Francisco", age: "39", startDate: "2009/09/15", salary: "$205,500" },
     { name: "Sonya Frost", position: "Software Engineer", office: "Edinburgh", age: "23", startDate: "2008/12/13", salary: "$103,600" },
+    { name: "Rhona Davidson", position: "Integration Specialist", office: "Tokyo", age: "55", startDate: "2010/10/14", salary: "$327,900" },
+    { name: "Rhona Davidson", position: "Integration Specialist", office: "Tokyo", age: "55", startDate: "2010/10/14", salary: "$327,900" },
+
   ];
 
   useEffect(() => {
@@ -37,6 +39,7 @@ const DataTableComponent = () => {
         responsive: true,
         dom: "Bfrtip",
         buttons: ["copy", "csv", "excel", "pdf", "print"],
+        paging: true, // Explicitly enable pagination
         autoFill: true,
         colReorder: true,
         fixedHeader: true,
@@ -49,6 +52,7 @@ const DataTableComponent = () => {
         select: true,
         stateRestore: true,
       });
+      
     }
 
     return () => {
