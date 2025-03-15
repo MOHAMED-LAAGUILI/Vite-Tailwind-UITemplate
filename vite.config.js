@@ -26,16 +26,7 @@ plugins: [
   optimizeDeps: {
     include: [
       '@ag-grid-community/core',
-      "ldrs/ring",
-      "ldrs/ring2",
-      "ldrs/tailspin",
-      "ldrs/squircle",
-      "ldrs/bouncy",
-      "ldrs/zoomies",
-      "ldrs/grid",
-      "ldrs/quantum",
-      "ldrs/pulsar",
-      "ldrs/pinwheel",
+      
     ] 
  }
 })

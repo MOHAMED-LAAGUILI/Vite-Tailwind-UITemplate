@@ -13,10 +13,10 @@ export default function Layout() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  
+  squircle.register();
+ 
   useEffect(() => {
-    squircle.register();
-
     setTimeout(() => {
       setIsLoading(false); // After 2 seconds, stop loading
     }, 3500);
