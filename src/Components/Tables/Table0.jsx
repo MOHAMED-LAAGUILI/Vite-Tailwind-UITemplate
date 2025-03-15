@@ -4,7 +4,6 @@ import DataTable from 'react-data-table-component';
 
 export default function Table0() {
   const [searchText, setSearchText] = useState('');
-  const [selectedRows, setSelectedRows] = useState([]);
 
   // Sample data
   const rowData = [
@@ -126,7 +125,6 @@ export default function Table0() {
       noRowsPerPage: true,
     },
     selectableRows: true, // Enable row selection
-    onSelectedRowsChange: ({ selectedRows }) => setSelectedRows(selectedRows), // Handle row selection
     sortIcon: <ArrowDownSquare />, // Custom sorting icon
 
   };
@@ -144,10 +142,7 @@ export default function Table0() {
       />
       {/* Data Table */}
       <DataTable {...tableProps} />
-      <div className="mt-6">
-        <h5 className="text-lg font-semibold">Selected Rows:</h5>
-        <pre className="bg-gray-100 p-4 rounded-md">{JSON.stringify(selectedRows, null, 2)}</pre>
-      </div>
+     
     </div>
   );
 }

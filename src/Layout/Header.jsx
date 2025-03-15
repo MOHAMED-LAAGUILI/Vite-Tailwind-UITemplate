@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Sun, Moon, Menu, Bell, User, Settings, LogOut } from "lucide-react";
+import { Sun, Moon, Menu, Bell, User, Settings, LogOut, Search } from "lucide-react";
 
 export default function Header({ isSidebarOpen, setIsSidebarOpen, isDarkMode, toggleTheme, isNotificationsOpen, setIsNotificationsOpen, isProfileOpen, setIsProfileOpen }) {
   return (
@@ -8,11 +8,22 @@ export default function Header({ isSidebarOpen, setIsSidebarOpen, isDarkMode, to
       <button
         id="sidebar-toggle"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`lg:hidden ${isSidebarOpen ? "ms-[185px] sticky" : ""} p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] z-50 transition-colors duration-200`}
+        className={`lg:hidden ${isSidebarOpen ? "ms-[185px] sticky" : ""} p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] z-[101] transition-all duration-200`}
       >
-        <Menu className="h-5 w-5" />
+ 
+          <Menu className="h-5 w-5" />
+        
       </button>
-
+  {/* Search Bar */}
+      <div className="flex mx-4 absolute z-10 left-14 justify-start">
+        <input 
+          type="text" 
+          placeholder="Search..."
+          className="py-1 px-4 rounded-full bg-gray-100 dark:bg-[#1F1F23] text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-300"
+          aria-label="Search"
+        />
+        <Search className="relative top-[5px] right-8 h-5 w-5 text-gray-600 dark:text-gray-300" />
+      </div>
 
       {/* Right-side Icons */}
       <div className="flex  gap-4 absolute z-50 right-5">

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 *,
 body {
     box-sizing: border-box;
@@ -11,80 +10,41 @@ body {
     scroll-behavior: smooth;
 }
 
-:root {
-    --primary: #7002ee;
-    --secondary: #4d01a5;
-    --primary-soft: #c174f5;
-    --background: #f9f9f9;
-    --shadow-color: rgba(0, 0, 0, .2)
-}
-
-body {
-    scroll-behavior: smooth
-}
-
+/* Scrollbar styles */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 12px
+    width: 6px;
+    height: 1px;
 }
 
 ::-webkit-scrollbar-button {
     width: 0;
-    height: 0
+    height: 0;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, var(--primary), var(--primary-soft));
-    border-radius: 10px;
-    border: 2px solid #fff;
-    box-shadow: 0 4px 6px var(--shadow-color);
-    transition: background .3s ease, transform .3s ease
+    background: #333; /* Dark thumb */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, var(--secondary), var(--primary));
-    transform: scale(1.1)
+    background: #444; /* Slightly lighter thumb color on hover */
+    transform: scale(1.1);
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(45deg, var(--primary), var(--primary-soft));
-    transform: scale(.98)
+    background: #222; /* Darker thumb color on active state */
+    transform: scale(0.98);
 }
 
 ::-webkit-scrollbar-track {
-    background: #e0e0e0;
+    background: #ffffff;
     border-radius: 10px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .1)
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 ::-webkit-scrollbar-corner {
-    background: #f9f9f9
+    background: #111;
 }
 
-@media (max-width:768px) {
-    ::-webkit-scrollbar {
-        width: 10px
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, var(--primary), var(--primary-soft));
-        border-radius: 5px;
-        box-shadow: 0 2px 4px var(--shadow-color);
-        transition: background .3s ease
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, var(--secondary), var(--primary))
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #e8e8e8;
-        border-radius: 5px;
-        box-shadow: inset 0 0 3px rgba(0, 0, 0, .15)
-    }
-
-    body {
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary) var(--background)
-    }
-}

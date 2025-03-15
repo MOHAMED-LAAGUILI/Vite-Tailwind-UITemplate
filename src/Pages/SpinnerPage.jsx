@@ -40,7 +40,7 @@ function SpinnerPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-6">
+    <div className=" flex flex-col items-center justify-center ">
       <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
         Loading Spinners UI Kit
       </h1>

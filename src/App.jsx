@@ -13,6 +13,7 @@ import ToolBarPage from "./Pages/ToolBarPage";
 import AlertPage from "./Pages/AlertPage";
 import TailwindSourcesPage from "./Pages/TailwindSourcesPage";
 import BlankPage from "./Pages/BlankPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/toolbar-page" element={<ToolBarPage />} />
           <Route path="/alert-page" element={<AlertPage />} />
           <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />} />
+          <Route path="/profile-page" element={<ProfilePage />} />
           <Route path="/test" element={<BlankPage />} />
 
 

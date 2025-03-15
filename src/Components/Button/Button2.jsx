@@ -33,6 +33,48 @@ function Button2() {
       >
         Info
       </button>
+
+
+ {/* Primary Button */}
+ <button
+        type="button"
+        className="inline-block rounded-full border-2 border-blue-500 px-6 py-2 text-xs font-medium uppercase leading-normal text-blue-500 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-white dark:focus:ring-blue-400"
+      >
+        Primary
+      </button>
+
+      {/* Success Button */}
+      <button
+        type="button"
+        className="inline-block rounded-full border-2 border-green-500 px-6 py-2 text-xs font-medium uppercase leading-normal text-green-500 transition duration-300 ease-in-out hover:bg-green-500 hover:text-white focus:ring-2 focus:ring-green-500 focus:outline-none focus:ring-opacity-50 dark:border-green-400 dark:text-green-400 dark:hover:bg-green-400 dark:hover:text-white dark:focus:ring-green-400"
+      >
+        Success
+      </button>
+
+      {/* Danger Button */}
+      <button
+        type="button"
+        className="inline-block rounded-full border-2 border-red-500 px-6 py-2 text-xs font-medium uppercase leading-normal text-red-500 transition duration-300 ease-in-out hover:bg-red-500 hover:text-white focus:ring-2 focus:ring-red-500 focus:outline-none focus:ring-opacity-50 dark:border-red-400 dark:text-red-400 dark:hover:bg-red-400 dark:hover:text-white dark:focus:ring-red-400"
+      >
+        Danger
+      </button>
+
+      {/* Warning Button */}
+      <button
+        type="button"
+        className="inline-block rounded-full border-2 border-yellow-500 px-6 py-2 text-xs font-medium uppercase leading-normal text-yellow-500 transition duration-300 ease-in-out hover:bg-yellow-500 hover:text-white focus:ring-2 focus:ring-yellow-500 focus:outline-none focus:ring-opacity-50 dark:border-yellow-400 dark:text-yellow-400 dark:hover:bg-yellow-400 dark:hover:text-white dark:focus:ring-yellow-400"
+      >
+        Warning
+      </button>
+
+      {/* Info Button */}
+      <button
+        type="button"
+        className="inline-block rounded-full border-2 border-cyan-500 px-6 py-2 text-xs font-medium uppercase leading-normal text-cyan-500 transition duration-300 ease-in-out hover:bg-cyan-500 hover:text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none focus:ring-opacity-50 dark:border-cyan-400 dark:text-cyan-400 dark:hover:bg-cyan-400 dark:hover:text-white dark:focus:ring-cyan-400"
+      >
+        Info
+      </button>
+
     </>
   )
 }

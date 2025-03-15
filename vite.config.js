@@ -2,20 +2,19 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from "vite-plugin-pwa";
 
-// https://vite.dev/config/
 export default defineConfig({
 plugins: [
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "robots.txt"],
+      includeAssets: ["OneUI.png", "robots.txt"],
       manifest: {
-        name: "My Vite App",
-        short_name: "ViteApp",
+        name: "One UI",
+        short_name: "One UI",
         theme_color: "#ffffff",
         icons: [
           {
-            src: "/icon-192x192.png",
+            src: "OneUI.png",
             sizes: "192x192",
             type: "image/png",
           },
@@ -25,6 +24,18 @@ plugins: [
   ],
 
   optimizeDeps: {
-    include: ['@ag-grid-community/core'] 
+    include: [
+      '@ag-grid-community/core',
+      "ldrs/ring",
+      "ldrs/ring2",
+      "ldrs/tailspin",
+      "ldrs/squircle",
+      "ldrs/bouncy",
+      "ldrs/zoomies",
+      "ldrs/grid",
+      "ldrs/quantum",
+      "ldrs/pulsar",
+      "ldrs/pinwheel",
+    ] 
  }
 })

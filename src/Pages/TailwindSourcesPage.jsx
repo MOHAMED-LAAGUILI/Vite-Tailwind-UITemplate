@@ -29,7 +29,7 @@ function TailwindSourcesPage() {
 ];
 
   return (
-    <section className="flex flex-col items-center px-6 py-10 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <section className="flex flex-col items-center px-6 py-10  min-h-screen">
       <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">
         Tailwind CSS UI Component Libraries
       </h1>

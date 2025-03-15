@@ -3,10 +3,9 @@ import { AgGridReact } from 'ag-grid-react';
 import { ClientSideRowModelModule } from 'ag-grid-community';
 
 export default function Table1() {
-  // Set the rowData and columnDefs from the given static data
   const [rowData, setRowData] = useState([]);
 
-  // Simulate fetching data or setting default values
+  // Fetch or simulate data
   useEffect(() => {
     const rawData = [
       {
@@ -25,7 +24,7 @@ export default function Table1() {
         paymentMethod: 'Bank Transfer',
         Status: 'Active',
         contact: '123-456-7890',
-        marriedChildren: 'Yes', // Married children
+        marriedChildren: 'Yes',
       },
       {
         id: 4,
@@ -43,7 +42,7 @@ export default function Table1() {
         paymentMethod: 'Bank Transfer',
         Status: 'Active',
         contact: '987-654-3210',
-        marriedChildren: 'No', // Married children
+        marriedChildren: 'No',
       },
     ];
 
@@ -56,7 +55,7 @@ export default function Table1() {
       },
       ...manager.employees.map((emp) => ({
         ...emp,
-        employee: emp.name, // Display employee name
+        employee: emp.name,
         position: emp.position,
         managerId: manager.id, // Link back to the manager
         Department: manager.Department || 'N/A',
@@ -67,7 +66,7 @@ export default function Table1() {
         paymentMethod: manager.paymentMethod || 'N/A',
         Status: manager.Status || 'N/A',
         contact: manager.contact || 'N/A',
-        marriedChildren: manager.marriedChildren || 'N/A', // Include "Married Children" status
+        marriedChildren: manager.marriedChildren || 'N/A',
       })),
     ]);
 
@@ -80,7 +79,7 @@ export default function Table1() {
     return date.toLocaleDateString();
   };
 
-  const [colDefs, setColDefs] = useState([
+  const [colDefs] = useState([
     { headerName: "Employee Name", field: "employee", sortable: true, filter: true },
     { headerName: "Position", field: "position", sortable: true, filter: true },
     { headerName: "Department", field: "Department", sortable: true, filter: true },
@@ -91,7 +90,7 @@ export default function Table1() {
     { headerName: "Payment Method", field: "paymentMethod", sortable: true, filter: true },
     { headerName: "Status", field: "Status", sortable: true, filter: true },
     { headerName: "Contact", field: "contact", sortable: true, filter: true },
-    { headerName: "Married Children", field: "marriedChildren", sortable: true, filter: true }, // New column
+    { headerName: "Married Children", field: "marriedChildren", sortable: true, filter: true },
   ]);
 
   const autoGroupColumnDef = {
@@ -109,29 +108,28 @@ export default function Table1() {
     groupUseEntireRow: true, // Groups will span the whole row
     groupDefaultExpanded: 1, // Expand groups by default
     suppressRowClickSelection: true, // Prevent selection on group rows
-    domLayout: 'autoHeight', // Adjust grid's height dynamically based on content
     paginationPageSize: 10, // Pagination controls
     pagination: true, // Enable pagination
+    domLayout: 'autoHeight', // Adjust grid's height dynamically based on content
     suppressAggFuncInHeader: true, // Hide aggregation functions in the header
     suppressDragLeaveHidesColumns: true, // Allow column drag leaving without hiding columns
     suppressRowHoverHighlight: true, // Disable hover highlight effect
   };
 
   return (
-    <div style={{ height: '50vh', width: '100%' }}>
+    <div className="ag-theme-alpine" >
       <AgGridReact
-        defaultColDef={{ sortable: true, filter: true }}
         rowData={rowData}
         columnDefs={colDefs}
         autoGroupColumnDef={autoGroupColumnDef}
         modules={[ClientSideRowModelModule]}
         gridOptions={gridOptions}
         paginationPageSize={10}
+        pagination={true}
         domLayout="autoHeight"
         groupUseEntireRow={true}
         groupDefaultExpanded={1}
         suppressRowClickSelection={true}
-        pagination={true}
       />
     </div>
   );
