@@ -14,6 +14,9 @@ import AlertPage from "./Pages/AlertPage";
 import TailwindSourcesPage from "./Pages/TailwindSourcesPage";
 import BlankPage from "./Pages/BlankPage";
 import ProfilePage from "./Pages/ProfilePage";
+import NotFound404 from "./Pages/NotFound404";
+import HeroSectionPage from "./Pages/HeroSectionPage";
+// import HtmlEditor from "./Pages/HtmlEditor";
 
 const App = () => {
   return (
@@ -33,10 +36,15 @@ const App = () => {
           <Route path="/alert-page" element={<AlertPage />} />
           <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />} />
           <Route path="/profile-page" element={<ProfilePage />} />
+          {/*<Route path="/html-editor-page" element={<HtmlEditor />} />*/}
+          <Route path="/hero-section" element={<HeroSectionPage />} />
+
+          
+          
           <Route path="/test" element={<BlankPage />} />
 
 
-          <Route path="*" element={<DropDownPage />} />
+          <Route path="*" element={<NotFound404 />} />
 
         </Route>
       </Routes>

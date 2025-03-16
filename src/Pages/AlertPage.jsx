@@ -6,6 +6,25 @@ function AlertPage() {
     <>
 <Alert04/>
 <ToastExample/>
+  {/* Resources Section */}
+  <div className="mt-8 text-center">
+        <p className="text-sm text-gray-700 dark:text-gray-300">
+          Other Resources:
+          
+          &nbsp;|&nbsp;
+          <a
+            href="https://devsnap.me/react-notifications"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            react-notifications
+
+          </a>
+          &nbsp;|&nbsp;
+        </p>
+      </div>
+
     </>
   )
 }

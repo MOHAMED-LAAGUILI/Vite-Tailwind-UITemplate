@@ -53,10 +53,10 @@ export default function Layout() {
     // Store the new theme in localStorage
     localStorage.setItem("theme", newTheme);
   };
-
+/*
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-full absolute top[50%] left-[50%]">
+      <div className="flex justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
         <l-squircle
           size="45"
           stroke="5"
@@ -68,6 +68,7 @@ export default function Layout() {
       </div>
     );
   }
+  */
   return (
     <div className={isDarkMode ? "dark" : ""}>
       <Seo />
@@ -92,7 +93,7 @@ export default function Layout() {
           <main className="flex-1 overflow-auto dark:bg-[#26262c]">
             {isLoading ? (
               // Spinner shown while loading
-              <div className="flex justify-center items-center h-full">
+              <div className="flex justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
                 <l-squircle
                   size="37"
                   stroke="5"
@@ -103,7 +104,6 @@ export default function Layout() {
                 ></l-squircle>
               </div>
             ) : (
-              // Actual content shown after loading
               <Outlet />
             )}
           </main>

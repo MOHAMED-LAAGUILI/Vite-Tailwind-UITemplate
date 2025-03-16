@@ -4,7 +4,7 @@ import { html } from "@codemirror/lang-html";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 
 
-function BlankPage() {
+export default function HtmlEditor() {
   const [htmlCode, setHtmlCode] = useState(`
     <h1>Welcome to the HTML Editor</h1>
     <p>Edit the code and see the preview update instantly!</p>
@@ -48,5 +48,3 @@ function BlankPage() {
     
   )
 }
-
-export default BlankPage

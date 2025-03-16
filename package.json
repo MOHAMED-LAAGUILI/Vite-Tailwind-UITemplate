@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ag-grid-community/core": "^32.3.3",
+    "@codemirror/lang-html": "^6.4.9",
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
@@ -20,6 +21,8 @@
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-table": "^8.21.2",
     "@tensorflow/tfjs": "^4.22.0",
+    "@uiw/codemirror-theme-dracula": "^4.23.10",
+    "@uiw/react-codemirror": "^4.23.10",
     "ag-grid-community": "^33.1.1",
     "ag-grid-react": "^33.1.1",
     "clsx": "^2.1.1",

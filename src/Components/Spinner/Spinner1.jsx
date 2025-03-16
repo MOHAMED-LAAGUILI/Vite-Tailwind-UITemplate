@@ -14,4 +14,4 @@ function Spinner1() {
   )
 }
 
-export default Spinner1
+export default Spinner1 

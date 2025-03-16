@@ -2,7 +2,7 @@ import { Github, Linkedin, Facebook, MessageCircle } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="dark:bg-gray-800 dark:text-gray-300 py-4 text-center shadow-md border-t border-gray-200">
+    <footer className=" bg-white dark:bg-gray-800 dark:text-gray-300 py-4 text-center shadow-md border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center gap-6">
         {/* Text Section */}
         <div>
