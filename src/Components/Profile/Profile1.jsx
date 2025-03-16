@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 const Profile1 = () => {
   return (
     <>
