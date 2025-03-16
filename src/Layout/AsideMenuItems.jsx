@@ -11,7 +11,7 @@ export   const menuItems = [
       title: "Components",
       icon: <Combine className="h-4 w-5 transition-transform transform hover:scale-110" />,
       items: [
-        { name: "Backgrounds", path: "/", icon: <HomeIcon className="h-4 w-4 mr-3" /> },
+        { name: "Backgrounds", path: "/bg-page", icon: <HomeIcon className="h-4 w-4 mr-3" /> },
         { name: "Text", path: "/text-page", icon: <Text className="h-4 w-4 mr-3" /> },
         { name: "Spinners", path: "/spinner-page", icon: <SplineIcon className="h-4 w-4 mr-3" /> },
         { name: "Dashboard items", path: "/dashboard-items", icon: <BookDashed className="h-4 w-4 mr-3" /> },

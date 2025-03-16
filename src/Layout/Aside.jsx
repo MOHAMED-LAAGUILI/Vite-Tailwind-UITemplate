@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { ChevronDown, ChevronLeft } from "lucide-react";
 import { menuItems } from "./AsideMenuItems";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar({ isSidebarOpen, openDropdown, setOpenDropdown }) {
 const [asideMenuItems] = useState(menuItems)
+  const { t } = useTranslation();
 
   return (
     <aside
@@ -29,7 +31,7 @@ const [asideMenuItems] = useState(menuItems)
                 >
                    <div className="flex gap-3">
                      {section.icon}
-                   {section.title}
+                     {t(`${section.title}`)}
                    </div>
                   {openDropdown === index ? (
                       <ChevronDown
@@ -49,7 +51,7 @@ const [asideMenuItems] = useState(menuItems)
                       className="flex items-center px-3 py-2 text-xs rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#333] transition-colors duration-200 transform hover:scale-105 ease-in-out"
                     >
                       {item.icon}
-                      {item.name}
+                     {t(`${item.name}`)}
                     </Link>
                   ))}
                 </div>
@@ -62,7 +64,7 @@ const [asideMenuItems] = useState(menuItems)
                   className="flex items-center px-3 py-2 text-sm rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#333] transition-colors duration-200 transform hover:scale-105 ease-in-out"
                 >
                   {section.icon}
-                  {section.name}
+                  {t(`${section.name}`)}
                 </Link>
               </div>
             )}

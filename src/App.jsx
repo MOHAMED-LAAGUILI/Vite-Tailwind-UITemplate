@@ -16,6 +16,7 @@ import BlankPage from "./Pages/BlankPage";
 import ProfilePage from "./Pages/ProfilePage";
 import NotFound404 from "./Pages/NotFound404";
 import HeroSectionPage from "./Pages/HeroSectionPage";
+import HomePage from "./Pages/HomePage";
 // import HtmlEditor from "./Pages/HtmlEditor";
 
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<BgPage />} />
+          <Route index element={<HomePage />} />
+          <Route path="/bg-page" element={<BgPage />} />
           <Route path="/text-page" element={<TextPage />} />
           <Route path="/spinner-page" element={<SpinnerPage />} />
           <Route path="/dashboard-items" element={<DashBoardItems />} />
@@ -36,6 +38,7 @@ const App = () => {
           <Route path="/alert-page" element={<AlertPage />} />
           <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />} />
           <Route path="/profile-page" element={<ProfilePage />} />
+
           {/*<Route path="/html-editor-page" element={<HtmlEditor />} />*/}
           <Route path="/hero-section" element={<HeroSectionPage />} />
 
