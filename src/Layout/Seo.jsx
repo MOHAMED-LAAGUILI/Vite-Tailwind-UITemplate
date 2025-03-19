@@ -74,12 +74,10 @@ export const Seo = ({
   return (
     <Helmet>
       <html lang={lang} dir={dir} />
-      <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+      <link rel="icon" type="image/svg+xml" href={seoData.logo} />
+   
       <meta name="description" content={description} />
       <meta name="image" content={seoData.logo} />
-      <link rel="icon" type="image/svg+xml" href={seoData.logo} />
 
       <meta property="og:url" content={`${seoData.url}${location}/?ref=smakosh.com`} />
       <meta property="og:type" content="website" />
