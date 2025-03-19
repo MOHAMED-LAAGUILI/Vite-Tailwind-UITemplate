@@ -7,6 +7,7 @@ import en from './locales/en.json';
 import fr from './locales/fr.json';
 import es from './locales/es.json';
 import ar from './locales/ar.json';
+import de from './locales/de.json';
 
 i18n
   .use(initReactI18next) // Connects i18next with React
@@ -16,6 +17,7 @@ i18n
       fr: {translation: fr},
       es: {translation: es},
       ar: {translation: ar},
+      de: {translation: de},
 
     },
     lng: 'en',

@@ -1,12 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { ChevronDown, ChevronLeft } from "lucide-react";
-import { menuItems } from "./AsideMenuItems";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import logolight from '/OneUI-light.png';
+import logodark from '/OneUI-dark.png';
 
-export default function Sidebar({ isSidebarOpen, openDropdown, setOpenDropdown }) {
-const [asideMenuItems] = useState(menuItems)
+export default function Sidebar({ 
+  isSidebarOpen,
+   openDropdown,
+    setOpenDropdown,
+     asideMenuItems,
+     isDarkMode,
+     ChevronDown,
+     ChevronLeft
+    }) {
   const { t } = useTranslation();
 
   return (
@@ -17,7 +23,15 @@ const [asideMenuItems] = useState(menuItems)
       ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-[#333]">
-        <span className="text-xl font-bold dark:text-white tracking-wide">One UI</span>
+        <span className="text-xl font-bold dark:text-white tracking-wide">
+        {isDarkMode ? (
+          <img src={logolight} className="w-14 rounded-full" /> 
+
+        ) :(
+          <img src={logodark} className="w-20" /> 
+
+        )}
+          </span>
       </div>
 
       <nav className="p-2">

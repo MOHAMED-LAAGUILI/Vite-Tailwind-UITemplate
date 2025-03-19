@@ -4,6 +4,8 @@ import Alert04 from './../Components/Alert/FancyAlert';
 function AlertPage() {
   return (
     <>
+
+  
 <Alert04/>
 <ToastExample/>
   {/* Resources Section */}

@@ -40,5 +40,5 @@ export   const menuItems = [
     { name: "Table Filtering", path: "/tables-page", icon: <Table className="h-4 w-4 mr-3" /> },
     { name: "Calendar", path: "/calendar-page", icon: <Calendar1 className="h-4 w-4 mr-3" /> },
     { name: "Other UI Resources", path: "/tailwind-resources-page", icon: <TrendingUp className="h-4 w-4 mr-3" /> },
-    { name: "404 Page", path: "*", icon: <Eraser className="h-4 w-4 mr-3" /> },
+    { name: "404 Page", path: "404", icon: <Eraser className="h-4 w-4 mr-3" /> },
   ];

@@ -3,9 +3,10 @@ import Helmet from 'react-helmet';
 
 const seoData = {
   defaultTitle: 'One UI',
-  logo: 'https://portfolio.smakosh.com/favicon/favicon-512.png',
+  logo: '/OneUI-light.png',
   author: 'MOHAMED LAAGUILI',
   url: 'https://laaguili-dev.app.genez.io/',
+  
   legalName: 'MOHAMED LAAGUILI',
   defaultDescription: 'I’m MOHAMED LAAGUILI I’m a FullStack engineer!',
   socialLinks: {
@@ -33,6 +34,8 @@ export const Seo = ({
   title = seoData.defaultTitle,
   description = seoData.defaultDescription,
   location = '',
+  lang = "en",
+  dir = 'ltr',
 }) => {
   const structuredDataOrganization = `{
     "@context": "http://schema.org",
@@ -70,9 +73,13 @@ export const Seo = ({
 
   return (
     <Helmet>
+      <html lang={lang} dir={dir} />
+      <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       <meta name="description" content={description} />
       <meta name="image" content={seoData.logo} />
+      <link rel="icon" type="image/svg+xml" href={seoData.logo} />
 
       <meta property="og:url" content={`${seoData.url}${location}/?ref=smakosh.com`} />
       <meta property="og:type" content="website" />
@@ -86,18 +93,16 @@ export const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={seoData.logo} />
-
+ 
       <script type="application/ld+json">{structuredDataOrganization}</script>
       <link rel="publisher" href={seoData.socialLinks.google} />
       
       <meta name="theme-color" content={seoData.themeColor} />
       <meta name="background-color" content={seoData.backgroundColor} />
-      <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
 
       <title>{title}</title>
-      <html lang="en" dir="ltr" />
 
-      
+
     </Helmet>
   );
 };

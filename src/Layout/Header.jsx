@@ -1,15 +1,5 @@
+
 /* eslint-disable react/prop-types */
-import {
-  Sun,
-  Moon,
-  Menu,
-  Bell,
-  User,
-  Settings,
-  LogOut,
-  Search,
-  Languages,
-} from "lucide-react";
 
 export default function Header({
   isSidebarOpen,
@@ -23,19 +13,32 @@ export default function Header({
   isLangOpen,
   setIsLangOpen,
   handleLanguageChange,
+  language,
+  Sun,
+  Moon,
+  Menu,
+  Bell,
+  User,
+  Settings,
+  LogOut,
+  Search,
+  flags,
+  notificationsDropdownRef,
+  langDropdownRef,
+  profileDropdownRef
 }) {
+ 
   return (
     <header className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-[#1F1F23] bg-white dark:bg-[#0F0F12] relative">
       {/* Sidebar Toggle Button */}
       <button
         id="sidebar-toggle"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`lg:hidden ${
-          isSidebarOpen ? "ms-[185px] sticky" : ""
-        } p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] z-[101] transition-all duration-200`}
+        className={`lg:hidden ${isSidebarOpen ? "ms-[185px] sticky" : ""} p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] z-[101] transition-all duration-200`}
       >
         <Menu className="h-5 w-5" />
       </button>
+
       {/* Search Bar */}
       <div className="flex mx-4 absolute z-10 left-14 justify-start">
         <input
@@ -48,7 +51,7 @@ export default function Header({
       </div>
 
       {/* Right-side Icons */}
-      <div className="flex  gap-4 absolute z-50 right-5">
+      <div className="flex gap-4 absolute z-50 right-5">
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -62,45 +65,34 @@ export default function Header({
         </button>
 
         {/* Lang Dropdown */}
-        <div className="relative z-40">
+        <div className="relative z-40" ref={langDropdownRef}>
           <button
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
+            className="h-8 w-9 rounded-sm bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
           >
-            <Languages className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+            <img
+              src={flags[language]?.src || flags.en.src}
+              className="w-7"
+              alt="language"
+            />
           </button>
           {isLangOpen && (
             <div className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
-              <button
-                className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200"
-                onClick={() => handleLanguageChange("en")}
-              >
-                🇺🇸 English
-              </button>
-              <button
-                className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200"
-                onClick={() => handleLanguageChange("fr")}
-              >
-                🇫🇷 Français
-              </button>
-              <button
-                className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200"
-                onClick={() => handleLanguageChange("es")}
-              >
-                🇪🇸 Español
-              </button>
-              <button
-            className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200"
-            onClick={() => handleLanguageChange("ar")}
-          >
-            🇸🇦 العربية
-          </button>
+              {Object.entries(flags).map(([key, { src, label }]) => (
+                <button
+                  key={key}
+                  className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200"
+                  onClick={() => handleLanguageChange(key)}
+                >
+                  <img src={src} className="w-6" alt={label} /> {label}
+                </button>
+              ))}
             </div>
           )}
         </div>
 
         {/* Notifications Dropdown */}
-        <div className="relative z-40">
+        <div className="relative z-40" ref={notificationsDropdownRef}>
           <button
             onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] relative transition-colors duration-200"
@@ -132,12 +124,16 @@ export default function Header({
         </div>
 
         {/* Profile Dropdown */}
-        <div className="relative">
+        <div className="relative" ref={profileDropdownRef}>
           <button
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
+            className="h-9 w-9 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
           >
-            <User className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+            <img
+              src="https://i.pravatar.cc/300"
+              alt="User Avatar"
+              className="rounded-full"
+            />
           </button>
           {isProfileOpen && (
             <div className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
