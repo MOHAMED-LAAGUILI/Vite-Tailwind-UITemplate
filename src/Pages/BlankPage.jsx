@@ -1,7 +1,4 @@
 import { useState } from "react";
-import CodeMirror from "@uiw/react-codemirror";
-import { html } from "@codemirror/lang-html";
-import { dracula } from "@uiw/codemirror-theme-dracula";
 
 
 function BlankPage() {
@@ -23,14 +20,8 @@ function BlankPage() {
                 {/* Editor */}
                 <div className="flex-1 bg-white dark:bg-gray-800 shadow-md rounded-lg p-4 overflow-hidden h-full">
                   <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">HTML Code</h2>
-                  <CodeMirror
-                    value={htmlCode}
-                    height="100%"
-                    extensions={[html()]}
-                    theme={dracula}
-                    onChange={(value) => setHtmlCode(value)}
-                    className="border-none rounded-md"
-                  />
+                 
+                 
                 </div>
         
                 {/* Live Preview */}

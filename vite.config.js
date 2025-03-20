@@ -7,7 +7,11 @@ import pkg from './package.json';
 
 const dependencies = Object.keys(pkg.dependencies || {});
 const devDependencies = Object.keys(pkg.devDependencies || {});
-const allDependencies = [...dependencies, ...devDependencies];
+
+const allDependencies = [
+  ...dependencies,
+  ...devDependencies,
+].filter(dep => dep !== '@types/react' && dep !== '@types/react-dom');
 
 export default defineConfig({
   build: {
@@ -48,36 +52,14 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
         skipWaiting: true, // Forces the service worker to activate immediately
         clientsClaim: true, // Claims any open clients immediately
-        runtimeCaching: [
-          {
-            urlPattern: /\/api\//, // Example: Cache API requests
-            handler: 'NetworkFirst', // Use network-first caching strategy
-            options: {
-              cacheName: 'api-cache',
-              expiration: {
-                maxEntries: 50, // Maximum 50 requests stored in cache
-                maxAgeSeconds: 60 * 60 * 24, // Cache for 1 day
-              },
-            },
-          },
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/, // Cache image assets
-            handler: 'CacheFirst', // Use cache-first strategy
-            options: {
-              cacheName: 'image-cache',
-              expiration: {
-                maxEntries: 100, // Store up to 100 images in cache
-              },
-            },
-          },
-        ],
+       
       },
       injectRegister: 'auto',
       registerType: 'autoUpdate', // Auto-update the service worker
       devOptions: {
         enabled: true,
       },
-      includeAssets: ['*.svg', '*.png', 'robots.txt', 'sitemap.xml'],
+      includeAssets: ['*.svg', '*.png', '*.txt', '*.xml'],
       manifest: {
         name: "One UI",
         short_name: "One UI",

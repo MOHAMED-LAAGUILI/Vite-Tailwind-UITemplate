@@ -4,7 +4,7 @@ import "datatables.net-responsive-dt/css/responsive.dataTables.min.css";
 import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
 
 import "datatables.net";
-import "datatables.net-responsive";
+import "datatables.net-responsive-dt";
 import "datatables.net-buttons";
 import "datatables.net-buttons/js/buttons.html5.min.js";
 import "datatables.net-buttons/js/buttons.print.min.js";
