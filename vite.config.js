@@ -15,7 +15,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Chunking for node_modules to create a vendor chunk
+
           if (id.includes('node_modules')) {
             return 'vendor';
           }
@@ -26,7 +26,14 @@ export default defineConfig({
           }
          
           if (id.includes('Components')) {
-            return 'Components';
+            return 'components';
+          }
+
+          if (id.includes('locals')) {
+            return 'translations';
+          }
+          if (id.includes('Layout')) {
+            return 'layout';
           }
         },
       },
@@ -69,8 +76,6 @@ export default defineConfig({
       registerType: 'autoUpdate', // Auto-update the service worker
       devOptions: {
         enabled: true,
-        type: 'module', // Use modules for SW in dev
-
       },
       includeAssets: ['*.svg', '*.png', 'robots.txt', 'sitemap.xml'],
       manifest: {

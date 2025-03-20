@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className="space-x-4">
             <button
               onClick={handleLanguageChange}
-              className="text-blue-600 hover:text-blue-800 transition-colors duration-300 dark:text-blue-400"
+              className="flex text-blue-600 hover:text-blue-800 transition-colors duration-300 dark:text-blue-400"
             >
              <Languages/> {t('Change Language')} 
             </button>

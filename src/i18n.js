@@ -3,11 +3,11 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // Import language JSON files (e.g., English and French)
-import en from './locales/en.json';
-import fr from './locales/fr.json';
-import es from './locales/es.json';
-import ar from './locales/ar.json';
-import de from './locales/de.json';
+import en from './Locales/en.json';
+import fr from './Locales/fr.json';
+import es from './Locales/es.json';
+import ar from './Locales/ar.json';
+import de from './Locales/de.json';
 
 i18n
   .use(initReactI18next) // Connects i18next with React
