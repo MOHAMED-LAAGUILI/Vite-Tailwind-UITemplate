@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
-import { Clipboard } from 'lucide-react';
+import { Clipboard, Languages } from 'lucide-react';
 import ClipboardJS from 'clipboard';
 
 export default function HomePage() {
@@ -37,7 +37,7 @@ export default function HomePage() {
               onClick={handleLanguageChange}
               className="text-blue-600 hover:text-blue-800 transition-colors duration-300 dark:text-blue-400"
             >
-              {t('Change Language')}
+             <Languages/> {t('Change Language')} 
             </button>
           </div>
         </div>
