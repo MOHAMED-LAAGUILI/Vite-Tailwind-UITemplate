@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vite-tailwind-ui-template.vercel.app/sitemap.xml

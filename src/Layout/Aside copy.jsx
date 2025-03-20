@@ -18,7 +18,7 @@ export default function Sidebar({
   return (
     <aside
       id="sidebar"
-      className={`fixed inset-y-0 left-0 z-[100] w-64 bg-white dark:bg-[#1F1F23] transform transition-transform duration-300 ease-in-out
+      className={`fixed inset-y-0 left-0 z-[100] w-26 bg-white dark:bg-[#1F1F23] transform transition-transform duration-300 ease-in-out
       border-r border-gray-200 dark:border-[#333] lg:translate-x-0 lg:static overflow-y-auto max-h-screen
       ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
     >

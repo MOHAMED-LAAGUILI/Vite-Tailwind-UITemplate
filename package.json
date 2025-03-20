@@ -67,6 +67,7 @@
     "react-select": "^5.10.0",
     "react-table": "^7.8.0",
     "react-tooltip": "^5.28.0",
+    "rollup-plugin-visualizer": "^5.14.0",
     "sticky-sidebar": "^3.3.1",
     "styled-components": "^6.1.15"
   },

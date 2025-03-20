@@ -1,34 +1,7 @@
 /* eslint-disable react/prop-types */
 import Helmet from 'react-helmet';
+import { seoData } from './data/SeoData';
 
-const seoData = {
-  defaultTitle: 'One UI',
-  logo: '/OneUI-light.png',
-  author: 'MOHAMED LAAGUILI',
-  url: 'https://laaguili-dev.app.genez.io/',
-  
-  legalName: 'MOHAMED LAAGUILI',
-  defaultDescription: 'I’m MOHAMED LAAGUILI I’m a FullStack engineer!',
-  socialLinks: {
-    facebook: 'https://www.facebook.com/profile.php?id=100014521591779',
-    github: 'https://www.github.com/MOHAMED-LAAGUILI',
-    linkedin: 'https://www.linkedin.com/in/mohamedlaaguili2001/',
-    discord: 'https://discord.com/users/1316675038598139936',
-  },
-  themeColor: '#6b63ff',
-  backgroundColor: '#6b63ff',
-  address: {
-    city: 'City',
-    region: 'Region',
-    country: 'Country',
-    zipCode: 'ZipCode',
-  },
-  contact: {
-    email: 'email',
-    phone: 'phone number',
-  },
-  foundingDate: `2025-${new Date().getFullYear()}`,
-};
 
 export const Seo = ({
   title = seoData.defaultTitle,
@@ -37,6 +10,8 @@ export const Seo = ({
   lang = "en",
   dir = 'ltr',
 }) => {
+
+  
   const structuredDataOrganization = `{
     "@context": "http://schema.org",
     "@type": "Organization",

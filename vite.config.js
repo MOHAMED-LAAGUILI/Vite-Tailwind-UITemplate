@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from "vite-plugin-pwa";
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   build: {
@@ -17,16 +18,14 @@ export default defineConfig({
             const pageName = id.split('/').pop().replace('.jsx', ''); // Get the page name from the path
             return `page-${pageName}`;
           }
-          // You can also add more chunking conditions for other parts of the application, like libraries or utils
-          if (id.includes('utils')) {
-            return 'utils';
-          }
-          if (id.includes('components')) {
-            return 'components';
+         
+          if (id.includes('Components')) {
+            return 'Components';
           }
         },
       },
     },
+    minify: 'esbuild', // Use esbuild for faster minification (default in Vite)
   },
   plugins: [
     react(),
@@ -35,7 +34,7 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
       },
       registerType: "autoUpdate",
-      includeAssets: ["OneUI.png", "robots.txt"],
+      includeAssets: ["OneUI-dark.png", "robots.txt"],
       manifest: {
         name: "One UI",
         short_name: "One UI",
@@ -49,8 +48,14 @@ export default defineConfig({
         ],
       },
     }),
-  ],
-
+ 
+ // Bundle Analyzer to optimize the build size
+ visualizer({
+   filename: './dist/stats.html',
+   open: true, // Automatically open in the browser
+ }),
+],
+  
   optimizeDeps: {
     include: [
       '@ag-grid-community/core',
