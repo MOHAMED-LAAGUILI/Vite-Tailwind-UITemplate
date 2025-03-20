@@ -55,7 +55,7 @@ export default defineConfig({
         version: '1.2.0', // Set your PWA version here
         icons: [
           {
-            src: "OneUI-light.png",
+            src: "OneUI-dark.png",
             sizes: "192x192",
             type: "image/png",
           },
