@@ -33,6 +33,7 @@ export default defineConfig({
     },
     minify: 'esbuild', // Use esbuild for faster minification (default in Vite)
   },
+
   plugins: [
     react(),
     VitePWA({
@@ -40,19 +41,51 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
         skipWaiting: true, // Forces the service worker to activate immediately
         clientsClaim: true, // Claims any open clients immediately
+        runtimeCaching: [
+          {
+            urlPattern: /\/api\//, // Example: Cache API requests
+            handler: 'NetworkFirst', // Use network-first caching strategy
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 50, // Maximum 50 requests stored in cache
+                maxAgeSeconds: 60 * 60 * 24, // Cache for 1 day
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/, // Cache image assets
+            handler: 'CacheFirst', // Use cache-first strategy
+            options: {
+              cacheName: 'image-cache',
+              expiration: {
+                maxEntries: 100, // Store up to 100 images in cache
+              },
+            },
+          },
+        ],
       },
+      injectRegister: 'auto',
       registerType: 'autoUpdate', // Auto-update the service worker
+      devOptions: {
+        enabled: true,
+        type: 'module', // Use modules for SW in dev
+
+      },
       includeAssets: ['*.svg', '*.png', 'robots.txt', 'sitemap.xml'],
       manifest: {
         name: "One UI",
+        short_name: "One UI",
         description: `One UI is a modern, fully responsive UI framework designed 
         for simplicity and efficiency. Whether you are a developer or designer, 
         One UI provides you with all the tools you need to build beautiful and 
         functional websites.`,
-        short_name: "One UI",
+        start_url: '/', // Define the start URL for the app
+        display: 'standalone', // Open the app in standalone mode
+        orientation: 'portrait', // Force portrait orientation for the app
         theme_color: "#ffffff",
         background_color: '#ffffff', // Background color during launch
-        version: '1.2.0', // Set your PWA version here
+        version: '2.0.0', // Set your PWA version here
         icons: [
           {
             src: "OneUI-dark.png",
