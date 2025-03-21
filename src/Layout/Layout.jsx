@@ -20,20 +20,23 @@ import toast, { Toaster } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
 import { menuItems } from "./data/AsideMenuItems";
-import { headerFlags } from './data/HeaderFlags';
+import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
 import Spinner0 from "../Components/Spinner/Spinner0";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import logoLight from "/OneUI-light.png";
+import logoDark from "/OneUI-dark.png";
+import Cursor from "react-cursor-follow"; // Import the custom cursor library
 
-// Custom hook to get route and page name
 const useRouteAndPageName = () => {
   const location = useLocation();
   const pathname = location.pathname;
-  const pageName = pathname.split('/').filter(Boolean).pop() || 'Home'; // Default to 'Home' if no specific page
+  const pageName = pathname.split("/").filter(Boolean).pop() || "Home";
   return { route: pathname, pageName };
 };
 
 export default function Layout() {
-  const [asideMenuItems] = useState(menuItems);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -42,46 +45,42 @@ export default function Layout() {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [language, setLanguage] = useState("en");
-  const { pageName } = useRouteAndPageName();  // Get page name from the custom hook
+  const { pageName } = useRouteAndPageName();
+  const { i18n } = useTranslation();
 
   const langDropdownRef = useRef(null);
   const notificationsDropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
-  const { i18n } = useTranslation();
+  const searchModalRef = useRef(null);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [cursorProps, setCursorProps] = useState({
+    size: 40,
+    color: "rgba(0, 120, 255, 0.5)",
+    shape: "circle",
+  }); // Default cursor state
 
-  // Handle theme toggle and store the theme in localStorage
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? "dark" : "light";
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle("dark");
-
-    // Store the new theme in localStorage
     localStorage.setItem("theme", newTheme);
   };
 
-  // Handle language change, store language in localStorage
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
-    localStorage.setItem("language", lang); // Store language in localStorage
-    setLanguage(localStorage.getItem("language"));
-    toast.success(`${t('Language changed to')} ${lang.toUpperCase()}`);
+    localStorage.setItem("language", lang);
+    setLanguage(lang);
+    toast.success(`${t("Language changed to")} ${lang.toUpperCase()}`);
   };
 
-
-  // Fetch the stored theme and language preferences from localStorage
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false); // After 3.5 seconds, stop loading   
-    }, 3500);
-
-    // Check if a theme is stored in localStorage
+    setTimeout(() => setIsLoading(false), 3500);
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setIsDarkMode(storedTheme === "dark");
       document.documentElement.classList.toggle("dark", storedTheme === "dark");
     }
 
-    // Check if a language is stored in localStorage
     const storedLanguage = localStorage.getItem("language");
     if (storedLanguage) {
       setLanguage(storedLanguage);
@@ -90,55 +89,62 @@ export default function Layout() {
     }
 
     const handleClickOutside = (event) => {
-      const sidebar = document.getElementById("sidebar");
       if (
-        sidebar &&
-        !sidebar.contains(event.target) &&
+        !document.getElementById("sidebar")?.contains(event.target) &&
         !event.target.closest("#sidebar-toggle")
       ) {
-        setIsSidebarOpen(false);
+        setTimeout(() => setIsSidebarOpen(false), 150);
       }
-
-      if (
-        langDropdownRef.current && !langDropdownRef.current.contains(event.target) &&
-        notificationsDropdownRef.current && !notificationsDropdownRef.current.contains(event.target) &&
-        profileDropdownRef.current && !profileDropdownRef.current.contains(event.target)
-      ) {
+      if (!langDropdownRef.current?.contains(event.target))
         setIsLangOpen(false);
+      if (!notificationsDropdownRef.current?.contains(event.target))
         setIsNotificationsOpen(false);
+      if (!profileDropdownRef.current?.contains(event.target))
         setIsProfileOpen(false);
-      }
+      if (!searchModalRef.current?.contains(event.target))
+        setIsSearchModalOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [i18n]);
 
-  }, [i18n, setLanguage, setIsLangOpen, setIsDarkMode, setIsLoading, setIsSidebarOpen, setIsNotificationsOpen, setIsProfileOpen]);
-
-  // Set document title dynamically whenever the page changes
   useEffect(() => {
-    document.title = `One UI | ${pageName}`; // Update title on route change
-  }, [pageName]); // Dependency on pageName to trigger the effect when route changes
+    document.title = `One UI | ${pageName}`;
+  }, [pageName]);
+
+  // Change cursor properties dynamically on hover
+  const handleMouseEnter = (elementType) => {
+    if (elementType === "link") {
+      setCursorProps({ size: 50, color: "black", shape: "circle" });
+    } else if (elementType === "button") {
+      setCursorProps({ size: 60, color: "black", shape: "circle" });
+    } else {
+      setCursorProps({ size: 40, color: "gray", shape: "circle" });
+    }
+  };
 
   return (
     <div className={isDarkMode ? "dark" : ""}>
-
-      <Seo title={`One UI | ${pageName}`} lang={language}  dir={language === 'sa' ? 'rtl' : 'ltr'}/>
-
-      <div className="flex h-screen bg-gray-50 dark:bg-[#26262c]">
+      <Seo
+        title={`One UI | ${pageName}`}
+        lang={language}
+        dir={language === "sa" ? "rtl" : "ltr"}
+      />
+      <div className=" z-50 flex h-screen bg-gray-50 dark:bg-[#26262c]">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           openDropdown={openDropdown}
           setOpenDropdown={setOpenDropdown}
-          asideMenuItems={asideMenuItems}
+          asideMenuItems={menuItems}
           ChevronDown={ChevronDown}
           ChevronLeft={ChevronLeft}
           isDarkMode={isDarkMode}
+          motion={motion}
+          translator={t}
+          Link={Link}
+          logoDark={logoDark}
+          logoLight={logoLight}
         />
-
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
             isSidebarOpen={isSidebarOpen}
@@ -152,8 +158,8 @@ export default function Layout() {
             isLangOpen={isLangOpen}
             setIsLangOpen={setIsLangOpen}
             handleLanguageChange={handleLanguageChange}
+            motion={motion}
             language={language}
-            setLanguage={setLanguage}
             Sun={Sun}
             Moon={Moon}
             Menu={Menu}
@@ -166,21 +172,33 @@ export default function Layout() {
             notificationsDropdownRef={notificationsDropdownRef}
             langDropdownRef={langDropdownRef}
             profileDropdownRef={profileDropdownRef}
+            isSearchModalOpen={isSearchModalOpen}
+            setIsSearchModalOpen={setIsSearchModalOpen}
+            searchModalRef={searchModalRef}
           />
+          <main
+            className="flex-1 overflow-auto dark:bg-[#26262c]"
+            onMouseEnter={() => handleMouseEnter("button")}
+            onMouseLeave={() => handleMouseEnter("default")}
+          >
+            <Toaster />
 
-          <Toaster />
-
-          <main className="flex-1 overflow-auto dark:bg-[#26262c]">
             {isLoading ? (
-              // Spinner shown while loading
               <div className="flex justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
                 <Spinner0 />
               </div>
             ) : (
               <Outlet />
             )}
-          </main>
 
+            {/* Custom Cursor */}
+            <Cursor
+              color={cursorProps.color} // Dynamically change cursor color
+              cursorSize={cursorProps.size} // Dynamically change cursor size
+              animationSpeed={0.3} // Customize animation speed
+              shape={cursorProps.shape} // Dynamically change cursor shape
+            />
+          </main>
           <Footer socialLinks={socialLinks} />
         </div>
       </div>

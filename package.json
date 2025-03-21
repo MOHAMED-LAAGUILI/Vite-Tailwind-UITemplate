@@ -38,6 +38,7 @@
     "ldrs": "^1.1.2",
     "lucide-react": "^0.476.0",
     "react": "^18.3.1",
+    "react-cursor-follow": "^2.0.0",
     "react-data-table-component": "^7.7.0",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
