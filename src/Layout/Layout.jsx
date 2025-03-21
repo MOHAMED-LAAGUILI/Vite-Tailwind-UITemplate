@@ -130,7 +130,7 @@ export default function Layout() {
         lang={language}
         dir={language === "sa" ? "rtl" : "ltr"}
       />
-      <div className=" z-50 flex h-screen bg-gray-50 dark:bg-[#26262c]">
+      <div className=" overflow-hidden flex h-screen bg-gray-50 dark:bg-[#26262c]">
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           openDropdown={openDropdown}
