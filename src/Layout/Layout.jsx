@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Sun,
   Moon,
@@ -9,11 +10,11 @@ import {
   Search,
   ChevronDown,
   ChevronLeft,
+  ChevronFirst,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Seo } from "./Seo";
-import Sidebar from "./Aside";
 import Header from "./Header";
 import Footer from "./Footer";
 import toast, { Toaster } from "react-hot-toast";
@@ -23,11 +24,12 @@ import { menuItems } from "./data/AsideMenuItems";
 import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
 import Spinner0 from "../Components/Spinner/Spinner0";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import logoLight from "/OneUI-light.png";
 import logoDark from "/OneUI-dark.png";
 import Cursor from "react-cursor-follow"; // Import the custom cursor library
+import AsideMaximized from "./AsideMaximized";
+import { motion } from "framer-motion";
 
 const useRouteAndPageName = () => {
   const location = useLocation();
@@ -58,6 +60,7 @@ export default function Layout() {
     color: "rgba(0, 120, 255, 0.5)",
     shape: "circle",
   }); // Default cursor state
+  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
 
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? "dark" : "light";
@@ -123,6 +126,9 @@ export default function Layout() {
     }
   };
 
+
+
+
   return (
     <div className={isDarkMode ? "dark" : ""}>
       <Seo
@@ -131,20 +137,55 @@ export default function Layout() {
         dir={language === "sa" ? "rtl" : "ltr"}
       />
       <div className=" overflow-hidden flex h-screen bg-gray-50 dark:bg-[#26262c]">
-        <Sidebar
-          isSidebarOpen={isSidebarOpen}
-          openDropdown={openDropdown}
-          setOpenDropdown={setOpenDropdown}
-          asideMenuItems={menuItems}
-          ChevronDown={ChevronDown}
-          ChevronLeft={ChevronLeft}
-          isDarkMode={isDarkMode}
-          motion={motion}
-          translator={t}
-          Link={Link}
-          logoDark={logoDark}
-          logoLight={logoLight}
-        />
+     
+            <AsideMaximized
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              asideMenuItems={menuItems}
+              ChevronDown={ChevronDown}
+              ChevronLeft={ChevronLeft}
+              isDarkMode={isDarkMode}
+              motion={motion}
+              translator={t}
+              Link={Link}
+              logoDark={logoDark}
+              logoLight={logoLight}
+              isSidebarOpen={isSidebarOpen}
+              setIsSidebarOpen={setIsSidebarOpen}
+              ChevronFirst={ChevronFirst}
+              
+            />
+       
+
+            {/*
+             <AsideMinimized
+              isSidebarOpen={isSidebarOpen}
+              openDropdown={openDropdown}
+              setOpenDropdown={setOpenDropdown}
+              asideMenuItems={menuItems}
+              ChevronDown={ChevronDown}
+              ChevronLeft={ChevronLeft}
+              isDarkMode={isDarkMode}
+              motion={motion}
+              translator={t}
+              Link={Link}
+              logoDark={logoDark}
+              logoLight={logoLight}
+              isSidebarMinimized={isSidebarMinimized}
+              setIsSidebarMinimized={setIsSidebarMinimized}
+              AnimatePresence={AnimatePresence}
+              itemRefs={itemRefs}
+              setHoveredItem={setHoveredItem}
+              expandedSection={expandedSection}
+              toggleSection={toggleSection}
+              Tooltip={Tooltip}
+              hoveredItem={hoveredItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
+             */}
+
+      
+
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
             isSidebarOpen={isSidebarOpen}
@@ -175,6 +216,8 @@ export default function Layout() {
             isSearchModalOpen={isSearchModalOpen}
             setIsSearchModalOpen={setIsSearchModalOpen}
             searchModalRef={searchModalRef}
+            isSidebarMinimized={isSidebarMinimized}
+            setIsSidebarMinimized={setIsSidebarMinimized}
           />
           <main
             className="flex-1 overflow-auto dark:bg-[#26262c]"

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { createPortal } from "react-dom"
+import { ChevronFirst } from "lucide-react"
 
 // Tooltip component that renders in a portal to avoid z-index issues
 const Tooltip = ({ children, isVisible, targetRef }) => {
@@ -53,7 +54,12 @@ const Tooltip = ({ children, isVisible, targetRef }) => {
   )
 }
 
-export default function Sidebar({ asideMenuItems, isDarkMode, translator, Link, logoLight, logoDark }) {
+export default function AsideMinimized({ 
+  asideMenuItems, isDarkMode, translator,
+   Link, logoLight, logoDark ,setIsSidebarMinimized,
+   isSidebarMinimized
+
+  }) {
   const [hoveredItem, setHoveredItem] = useState(null)
   const [expandedSection, setExpandedSection] = useState(null)
   const itemRefs = useRef({})
@@ -201,6 +207,18 @@ export default function Sidebar({ asideMenuItems, isDarkMode, translator, Link, 
           ))}
         </div>
       </nav>
+         {/* Sidebar Toggle Button */}
+         <button
+  className="absolute bottom-4 left-8 translate-x-[-50%] p-2 bg-gray-200 dark:bg-[#333] rounded-full shadow-md 
+             hover:bg-gray-300 dark:hover:bg-[#444] transition-all"
+  onClick={() => setIsSidebarMinimized(!isSidebarMinimized)}
+>
+  <ChevronFirst
+    className={`h-6 w-6 text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
+      isSidebarMinimized ? "rotate-180" : "rotate-0"
+    }`}
+  />
+</button>
     </motion.aside>
   )
 }

@@ -28,7 +28,9 @@ export default function Header({
   profileDropdownRef,
   isSearchModalOpen,
   setIsSearchModalOpen,
-  searchModalRef
+  searchModalRef,
+  isSidebarMinimized,
+  setIsSidebarMinimized
   
 }) {
 
@@ -39,8 +41,16 @@ export default function Header({
       {/* Sidebar Toggle Button */}
       <button
         id="sidebar-toggle"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`lg:hidden border ${isSidebarOpen ? "left-[200px] sticky" : ""} p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] z-[101] transition-all duration-200`}
+        onClick={() => {
+          if (isSidebarOpen) {
+            setIsSidebarMinimized(!isSidebarMinimized);
+          } else {
+            setIsSidebarOpen(true);
+            setIsSidebarMinimized(false);
+          }
+        }}
+        className={`lg:hidden border ${isSidebarMinimized && 'left-[0]'} ${isSidebarOpen ? "left-[200px] sticky" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
+      
       >
         <Menu className="h-6 w-6" />
       </button>
