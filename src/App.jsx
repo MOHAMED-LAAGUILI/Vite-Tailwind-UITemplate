@@ -22,8 +22,7 @@ import FormsPage from "./Pages/FormsPage";
 import BlankPage from "./Pages/BlankPage";
 
 
-const App = () => {
-  
+const App = () => { 
 
   return (
     <Router>
