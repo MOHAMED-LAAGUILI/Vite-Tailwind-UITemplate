@@ -2,8 +2,9 @@ export const seoData = {
   defaultTitle: 'One UI',
   logo: '/OneUI-light.png',
   author: 'MOHAMED LAAGUILI',
-  url: 'https://laaguili-dev.app.genez.io/',
-  
+  url: 'https://vite-tailwind-ui-template.vercel.app/',
+  supportUrl:"https://www.buymeacoffee.com/saidlergilF",
+  generator:'https://vercel.com/',
   legalName: 'MOHAMED LAAGUILI',
   defaultDescription: 'I’m MOHAMED LAAGUILI I’m a FullStack engineer!',
   socialLinks: {
@@ -22,7 +23,7 @@ export const seoData = {
   },
   contact: {
     email: 'mohamed.dev.2001@gmail.com',
-    phone: '+212 6 89 77 08 09',
+    phone: '+212689770809',
   },
-  foundingDate: `2025-${new Date().getFullYear()}`,
+  foundingDate: `02/2025  |   ${ new Date().getDate()}/${ new Date().getFullYear()}`,
 };

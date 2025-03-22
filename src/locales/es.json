@@ -9,8 +9,9 @@
     "Dashboard items": "Elementos del tablero",
     "Accordion items": "Elementos del acordeón",
     "Buttons": "Botones",
-    "ToolBar": "Barra de herramientas",
-    "Alert": "Alerta",
+    "ToolBars": "Barras de herramientas",
+    "Alerts": "Alertas",
+    "Banners": "Banners",
     "Sections": "Secciones",
     "Hero": "Héroe",
     "Pages": "Páginas",
@@ -20,7 +21,8 @@
     "Calendar": "Calendario",
     "Other UI Resources": "Otros recursos de UI",
     "404 Page": "Página 404",
-  
+    "Forms":"Formularios",
+
     "_comment_homePage": "Página de inicio (Home Page.jsx)",
     "Welcome to Our Platform": "Bienvenido a nuestra plataforma",
     "Change Language": "Cambiar idioma",

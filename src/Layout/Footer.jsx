@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
 
-function Footer({
-  socialLinks
-}) {
-
-
+function Footer({ socialLinks, formattedTime }) {
   return (
     <footer className="bg-white dark:bg-gray-800 dark:text-gray-300 py-4 text-center shadow-md border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center gap-6">
@@ -22,6 +18,10 @@ function Footer({
               MOHA
             </a>{" "}
             with ❤️‍🔥
+          </p>
+          <p className="text-sm text-gray-500 mt-1">
+            02/2025 - {new Date().getDate()}/0{new Date().getUTCMonth() + 1}/
+            {new Date().getFullYear()} {formattedTime}
           </p>
         </div>
 

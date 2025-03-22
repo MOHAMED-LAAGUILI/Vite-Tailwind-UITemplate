@@ -1,31 +1,43 @@
-import { Star } from "lucide-react";
 import FancyText from "../Components/Text/FancyText";
 import HandWrittenTitle from "../Components/Text/HandWriting";
 import SectionTitle from "../Components/Text/SectionTitle";
-import MatrixText from './../Components/Text/MatrixText';
-
+import MatrixText from "./../Components/Text/MatrixText";
+import AnimatedText from "../Components/Text/AnimatedText";
+import { Star } from "lucide-react";
 
 function TextPage() {
+
+
   return (
-    <>
-      <FancyText text={"Text  1"} center size={"3xl"}/>
+    <div className=" mt-10">
+      <AnimatedText text={"Hello World"} />
 
-<HandWrittenTitle />
+      <FancyText text={"Text  1"} center size={"3xl"} />
 
-    <MatrixText/>
-
-
-    <SectionTitle
+      <SectionTitle
         icon={<Star />}
         title="Hero 1"
         subtitle=""
         description=""
         classes=""
-
       />
 
-    </>
+      <HandWrittenTitle />
 
+      <MatrixText />
+
+
+
+
+  
+  
+
+ 
+
+
+   
+
+    </div>
   );
 }
 

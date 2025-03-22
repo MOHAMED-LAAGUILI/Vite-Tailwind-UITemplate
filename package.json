@@ -17,6 +17,10 @@
     "@fullcalendar/list": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.16",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-table": "^8.21.2",
     "@types/react": "^18.3.19",
@@ -38,7 +42,6 @@
     "ldrs": "^1.1.2",
     "lucide-react": "^0.476.0",
     "react": "^18.3.1",
-    "react-cursor-follow": "^2.0.0",
     "react-data-table-component": "^7.7.0",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
@@ -47,7 +50,10 @@
     "react-router-dom": "^7.2.0",
     "react-table": "^7.8.0",
     "rollup-plugin-visualizer": "^5.14.0",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "tailwind-scrollbar": "^4.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-fluid-type": "^2.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

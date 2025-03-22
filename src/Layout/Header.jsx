@@ -16,7 +16,6 @@ export default function Header({
   motion,
   Sun,
   Moon,
-  Menu,
   Bell,
   User,
   Settings,
@@ -29,9 +28,7 @@ export default function Header({
   isSearchModalOpen,
   setIsSearchModalOpen,
   searchModalRef,
-  isSidebarMinimized,
-  setIsSidebarMinimized
-  
+  PanelLeftIcon
 }) {
 
 
@@ -42,17 +39,12 @@ export default function Header({
       <button
         id="sidebar-toggle"
         onClick={() => {
-          if (isSidebarOpen) {
-            setIsSidebarMinimized(!isSidebarMinimized);
-          } else {
-            setIsSidebarOpen(true);
-            setIsSidebarMinimized(false);
-          }
+            setIsSidebarOpen(!isSidebarOpen);       
         }}
-        className={`lg:hidden border ${isSidebarMinimized && 'left-[0]'} ${isSidebarOpen ? "left-[200px] sticky" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
+        className={`lg:hidden border ${isSidebarOpen ? "left-[200px] sticky z-[100]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
       
       >
-        <Menu className="h-6 w-6" />
+        <PanelLeftIcon className="h-6 w-6" />
       </button>
 
       {/* Right-side Icons */}

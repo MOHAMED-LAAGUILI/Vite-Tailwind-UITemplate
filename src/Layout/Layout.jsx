@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
 import {
   Sun,
   Moon,
-  Menu,
   Bell,
   User,
   Settings,
@@ -11,25 +9,32 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronFirst,
+  PanelLeftIcon,
+  MessageCircle,
+  PhoneCall,
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import coffeeLogo from "/coffee-logo.svg";
+import logoLight from "/OneUI-light.png";
+import logoDark from "/OneUI-dark.png";
 import { Seo } from "./Seo";
 import Header from "./Header";
 import Footer from "./Footer";
-import toast, { Toaster } from "react-hot-toast";
-import { useTranslation } from "react-i18next";
-import { t } from "i18next";
+import AsideMaximized from "./AsideMaximized";
+import Spinner0 from "../Components/Spinner/Spinner0";
+import SupportMe from "./SupportMe";
+import ContactMe from "./ContactMe";
+import { seoData } from "./data/SeoData";
 import { menuItems } from "./data/AsideMenuItems";
 import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
-import Spinner0 from "../Components/Spinner/Spinner0";
+import { useState, useEffect, useRef } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 import { Link } from "react-router-dom";
-import logoLight from "/OneUI-light.png";
-import logoDark from "/OneUI-dark.png";
-import Cursor from "react-cursor-follow"; // Import the custom cursor library
-import AsideMaximized from "./AsideMaximized";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const useRouteAndPageName = () => {
   const location = useLocation();
@@ -49,18 +54,13 @@ export default function Layout() {
   const [language, setLanguage] = useState("en");
   const { pageName } = useRouteAndPageName();
   const { i18n } = useTranslation();
-
   const langDropdownRef = useRef(null);
   const notificationsDropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
   const searchModalRef = useRef(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [cursorProps, setCursorProps] = useState({
-    size: 40,
-    color: "rgba(0, 120, 255, 0.5)",
-    shape: "circle",
-  }); // Default cursor state
-  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const formattedTime = currentTime.toLocaleTimeString();
 
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? "dark" : "light";
@@ -115,76 +115,39 @@ export default function Layout() {
     document.title = `One UI | ${pageName}`;
   }, [pageName]);
 
-  // Change cursor properties dynamically on hover
-  const handleMouseEnter = (elementType) => {
-    if (elementType === "link") {
-      setCursorProps({ size: 50, color: "black", shape: "circle" });
-    } else if (elementType === "button") {
-      setCursorProps({ size: 60, color: "black", shape: "circle" });
-    } else {
-      setCursorProps({ size: 40, color: "gray", shape: "circle" });
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
 
-
-
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={isDarkMode ? "dark" : ""}>
       <Seo
+        Helmet={Helmet}
         title={`One UI | ${pageName}`}
         lang={language}
-        dir={language === "sa" ? "rtl" : "ltr"}
+        seoData={seoData}
       />
-      <div className=" overflow-hidden flex h-screen bg-gray-50 dark:bg-[#26262c]">
-     
-            <AsideMaximized
-              openDropdown={openDropdown}
-              setOpenDropdown={setOpenDropdown}
-              asideMenuItems={menuItems}
-              ChevronDown={ChevronDown}
-              ChevronLeft={ChevronLeft}
-              isDarkMode={isDarkMode}
-              motion={motion}
-              translator={t}
-              Link={Link}
-              logoDark={logoDark}
-              logoLight={logoLight}
-              isSidebarOpen={isSidebarOpen}
-              setIsSidebarOpen={setIsSidebarOpen}
-              ChevronFirst={ChevronFirst}
-              
-            />
-       
-
-            {/*
-             <AsideMinimized
-              isSidebarOpen={isSidebarOpen}
-              openDropdown={openDropdown}
-              setOpenDropdown={setOpenDropdown}
-              asideMenuItems={menuItems}
-              ChevronDown={ChevronDown}
-              ChevronLeft={ChevronLeft}
-              isDarkMode={isDarkMode}
-              motion={motion}
-              translator={t}
-              Link={Link}
-              logoDark={logoDark}
-              logoLight={logoLight}
-              isSidebarMinimized={isSidebarMinimized}
-              setIsSidebarMinimized={setIsSidebarMinimized}
-              AnimatePresence={AnimatePresence}
-              itemRefs={itemRefs}
-              setHoveredItem={setHoveredItem}
-              expandedSection={expandedSection}
-              toggleSection={toggleSection}
-              Tooltip={Tooltip}
-              hoveredItem={hoveredItem}
-              setIsSidebarOpen={setIsSidebarOpen}
-            />
-             */}
-
-      
+      <div className=" overflow-hidden flex h-screen dark:bg-[#0f0f12]">
+        <AsideMaximized
+          openDropdown={openDropdown}
+          setOpenDropdown={setOpenDropdown}
+          asideMenuItems={menuItems}
+          ChevronDown={ChevronDown}
+          ChevronLeft={ChevronLeft}
+          isDarkMode={isDarkMode}
+          motion={motion}
+          translator={t}
+          Link={Link}
+          logoDark={logoDark}
+          logoLight={logoLight}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          ChevronFirst={ChevronFirst}
+        />
 
         <div className="flex-1 flex flex-col overflow-hidden">
           <Header
@@ -203,7 +166,6 @@ export default function Layout() {
             language={language}
             Sun={Sun}
             Moon={Moon}
-            Menu={Menu}
             Bell={Bell}
             User={User}
             Settings={Settings}
@@ -216,14 +178,10 @@ export default function Layout() {
             isSearchModalOpen={isSearchModalOpen}
             setIsSearchModalOpen={setIsSearchModalOpen}
             searchModalRef={searchModalRef}
-            isSidebarMinimized={isSidebarMinimized}
-            setIsSidebarMinimized={setIsSidebarMinimized}
+            PanelLeftIcon={PanelLeftIcon}
           />
-          <main
-            className="flex-1 overflow-auto dark:bg-[#26262c]"
-            onMouseEnter={() => handleMouseEnter("button")}
-            onMouseLeave={() => handleMouseEnter("default")}
-          >
+
+          <main className="flex-1 overflow-auto ">
             <Toaster />
 
             {isLoading ? (
@@ -233,18 +191,18 @@ export default function Layout() {
             ) : (
               <Outlet />
             )}
-
-            {/* Custom Cursor */}
-            <Cursor
-              color={cursorProps.color} // Dynamically change cursor color
-              cursorSize={cursorProps.size} // Dynamically change cursor size
-              animationSpeed={0.3} // Customize animation speed
-              shape={cursorProps.shape} // Dynamically change cursor shape
-            />
           </main>
-          <Footer socialLinks={socialLinks} />
+          <Footer socialLinks={socialLinks} formattedTime={formattedTime} />
         </div>
       </div>
+
+      <SupportMe coffeeLogo={coffeeLogo} supportUrl={seoData.supportUrl} />
+
+      <ContactMe
+        MessageCircle={MessageCircle}
+        PhoneCall={PhoneCall}
+        phoneNumber={seoData.contact.phone}
+      />
     </div>
   );
 }

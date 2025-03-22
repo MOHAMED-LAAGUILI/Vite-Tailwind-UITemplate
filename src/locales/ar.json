@@ -8,8 +8,9 @@
   "Dashboard items": "عناصر لوحة القيادة",
   "Accordion items": "عناصر التوسيع",
   "Buttons": "الأزرار",
-  "ToolBar": "شريط الأدوات",
-  "Alert": "تنبيه",
+  "ToolBars": "أشرطة الأدوات",
+  "Alerts": "التنبيهات",
+  "Banners": "اللافتات",
   "Sections": "الأقسام",
   "Hero": "البطل",
   "Pages": "الصفحات",
@@ -19,6 +20,7 @@
   "Calendar": "التقويم",
   "Other UI Resources": "موارد واجهة المستخدم الأخرى",
   "404 Page": "صفحة 404",
+  "Forms":"النماذج",
 
 
   "_comment_homePage": "Home Page.jsx",

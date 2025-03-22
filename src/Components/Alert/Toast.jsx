@@ -1,11 +1,11 @@
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { PartyPopper } from "lucide-react";
 
 export default function ToastExample() {
     return (
         <div className="flex flex-col items-center gap-3 p-6">
 
-<Toaster />
+
 
 
             {/* Success Toast */}
