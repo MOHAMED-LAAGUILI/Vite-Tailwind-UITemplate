@@ -4,7 +4,7 @@ export default function SupportMe({coffeeLogo, supportUrl}) {
     <a
     href={supportUrl}
     target="_blank"
-    className="md:absolute bottom-20 right-0 p-4 float-right group relative z-50"
+    className="absolute bottom-20 right-0 p-4 float-right group z-50"
   >
     <img
       src={coffeeLogo}
