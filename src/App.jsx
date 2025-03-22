@@ -18,14 +18,12 @@ import NotFound404 from "./Pages/NotFound404";
 import HeroSectionPage from "./Pages/HeroSectionPage";
 import HomePage from "./Pages/HomePage";
 import BannersPage from "./Pages/BannersPage";
-import BlankPage1 from "./Pages/test/BlankPage1";
 import FormsPage from "./Pages/FormsPage";
 import BlankPage from "./Pages/BlankPage";
 
 
 const App = () => {
-  // Check if the app is in production mode (Vercel sets NODE_ENV automatically)
-  const isProduction = import.meta.env.NODE_ENV === "production";
+  
 
   return (
     <Router>
@@ -50,16 +48,11 @@ const App = () => {
           <Route path="/banner-page" element={<BannersPage />} />
           <Route path="/blank-page" element={<BlankPage />} />
 
+
+
           {/* Always render 404 route for unmatched paths */}
           <Route path={"404"} element={<NotFound404 />} />
           <Route path={"*"} element={<NotFound404 />} />
-
-          {/* Conditionally render these routes only in development */}
-          {!isProduction && (
-            <>
-              <Route path="/blank1" element={<BlankPage1 />} />
-            </>
-          )}
         </Route>
       </Routes>
     </Router>

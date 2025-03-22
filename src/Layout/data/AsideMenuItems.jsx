@@ -2,11 +2,10 @@ import {
   BookDashed, Calendar1, Component, HomeIcon, PenToolIcon,
    SplineIcon, Table, Text, TrendingUp, User2, House, UserCircle,
     Combine, Eraser,PartyPopper,LayoutDashboard, TestTubesIcon,
-    Paperclip, PodcastIcon, TestTubeDiagonalIcon,
+    Paperclip, PodcastIcon,
     FormInputIcon,
    } from "lucide-react";
 
-   const isProduction = import.meta.env.NODE_ENV === "production";
 
 export   const menuItems = [
     { name: "Home", path: "/", icon: <House className="h-4 w-4 mr-3" /> },
@@ -41,7 +40,6 @@ export   const menuItems = [
       icon: <Paperclip className="h-4 w-5 transition-transform transform hover:scale-110" />,
       items: [
         { name: "Profile", path: "/profile-page", icon: <UserCircle className="h-4 w-4 mr-3" /> },
-        { name: "blank", path: "/blank-page", icon: <TestTubesIcon className="h-4 w-4 mr-3" /> },
       ],
     },
     {name: "Auth", path: "/auth", icon: <User2 className="h-4 w-4 mr-3" /> },
@@ -49,9 +47,7 @@ export   const menuItems = [
     { name: "Calendar", path: "/calendar-page", icon: <Calendar1 className="h-4 w-4 mr-3" /> },
     { name: "Other UI Resources", path: "/tailwind-resources-page", icon: <TrendingUp className="h-4 w-4 mr-3" /> },
     { name: "404 Page", path: "404", icon: <Eraser className="h-4 w-4 mr-3" /> },
- // Conditionally add items only in development mode
- ...(!isProduction ? [
-  { name: "blank 1", path: "/blank1", icon: <TestTubeDiagonalIcon className="h-4 w-4 mr-3" /> },
-] : []),
+ { name: "blank", path: "/blank-page", icon: <TestTubesIcon className="h-4 w-4 mr-3" /> },
+
 
   ];
