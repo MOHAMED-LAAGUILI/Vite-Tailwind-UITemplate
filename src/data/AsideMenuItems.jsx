@@ -7,7 +7,7 @@ import {
    } from "lucide-react";
 
 
-export   const menuItems = [
+export  const menuItems = [
     { name: "Home", path: "/", icon: <House className="h-4 w-4 mr-3" /> },
     {
       title: "Components",

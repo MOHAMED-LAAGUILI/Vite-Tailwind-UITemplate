@@ -36,6 +36,7 @@
     "datatables.net-react": "^1.0.0",
     "datatables.net-responsive": "^3.0.4",
     "datatables.net-responsive-dt": "^3.0.4",
+    "emailjs-com": "^3.2.0",
     "flowbite": "^3.1.2",
     "framer-motion": "^12.4.7",
     "i18next": "^24.2.3",
