@@ -1,60 +1,31 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
-import emailjs  from 'emailjs-com';
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact({
-  t, motion, toast , Mail, MapPin, Phone,Github,
-   Linkedin, Address, phoneNumber,
-githubLink, LinkedinLink, email,DiscordLink, FacebookLink,Facebook, MessageCircle
-   }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
+  t, motion, toast, Mail, MapPin, Phone, Github,
+  Linkedin, Address, phoneNumber, githubLink,
+  LinkedinLink, email, DiscordLink, FacebookLink, Facebook,
+   MessageCircle, Spinner4, useState, useEffect
+}) {
+  const [state, handleSubmit] = useForm("xaneoarl");
+  const [toastShown, setToastShown] = useState(false);
 
-  const [isSending, setIsSending] = useState(false)
+  // Avoid showing toast before submission is complete
+  useEffect(() => {
+    if (state.succeeded && !toastShown) {
+      toast.success(t(`Your message has been sent successfully!`));
+      setToastShown(true);
+    } else if (state.errors && !toastShown) {
+      toast.error(t("There was an error sending your message."));
+      setToastShown(true);
+    }
+  }, [state.succeeded, state.errors, toast, t, toastShown]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSending(true)
-
-    // Call the EmailJS API to send the email
-    emailjs
-      .sendForm(
-        "service_u5v084a", // Replace with your service ID
-        "template_dgshtbj", // Replace with your template ID
-        e.target, // Form element
-        "pBMA78sj3B0-cWnBo", // Replace with your User ID from EmailJS
-      )
-      .then(
-        () => {
-          setIsSending(false)
-          toast.success(t("Your message has been sent successfully!"))
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          })
-        },
-        (error) => {
-          setIsSending(false)
-          console.error("Email error:", error)
-          toast.error(t("There was an error sending your message."))
-        },
-      )
-  }
-
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+    setToastShown(false); // Reset toast state before new submission
+    handleSubmit(event);
+  };
 
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
@@ -140,7 +111,6 @@ githubLink, LinkedinLink, email,DiscordLink, FacebookLink,Facebook, MessageCircl
                   <div className="mt-12">
                     <p className="text-indigo-100 font-medium mb-4">{t("Follow Us")}</p>
                     <div className="flex space-x-4">
-                     
                       <a
                         href={LinkedinLink}
                         className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -153,19 +123,21 @@ githubLink, LinkedinLink, email,DiscordLink, FacebookLink,Facebook, MessageCircl
                       <a
                         href={FacebookLink}
                         className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                        aria-label="LinkedIn"
+                        aria-label="Facebook"
                         target="_blank"
                       >
                         <Facebook className="w-5 h-5" />
                       </a>
+
                       <a
                         href={DiscordLink}
                         className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                        aria-label="LinkedIn"
+                        aria-label="Discord"
                         target="_blank"
                       >
                         <MessageCircle className="w-5 h-5" />
                       </a>
+
                       <a
                         href={githubLink}
                         className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -180,136 +152,111 @@ githubLink, LinkedinLink, email,DiscordLink, FacebookLink,Facebook, MessageCircl
               </div>
 
               <div className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <form onSubmit={handleSubmitForm} className="space-y-6">
+                  <div className="grid grid-cols-1 gap-6 sm:grid-col">
+                    {/* Full Name Field */}
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         {t("Full Name")}
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                        id="fullName"
+                        name="fullName"
                         required
+                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                       />
                     </div>
+
+                    {/* Email Field */}
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                      >
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         {t("Email Address")}
                       </label>
                       <input
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         required
+                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                      />
+                      <ValidationError
+                        prefix="Email"
+                        field="email"
+                        errors={state.errors}
                       />
                     </div>
-                  </div>
+                    
 
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                    >
-                      {t("Subject")}
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                      required
-                    />
-                  </div>
+                    {/* Phone Number Field */}
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("Phone Number")}
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                      />
+                    </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                    >
-                      {t("Message")}
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows="5"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                      required
-                    ></textarea>
-                  </div>
+                    {/* Message Field */}
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {t("Message")}
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required
+                        className="block w-full px-4 py-3 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                      ></textarea>
+                      <ValidationError
+                        prefix="Message"
+                        field="message"
+                        errors={state.errors}
+                      />
 
-
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={isSending}
-                      className={`w-full px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors ${
-                        isSending ? "opacity-70 cursor-not-allowed" : ""
-                      }`}
-                    >
-                      {isSending ? (
-                        <span className="flex items-center justify-center">
-                          <svg
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          {t("Sending...")}
-                        </span>
-                      ) : (
-                        t("Send Message")
-                      )}
-                    </button>
+                    </div>
+                    <div>
+                      <button
+                        type="submit"
+                        disabled={state.submitting}
+                        className={`w-full px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors ${state.submitting ? "opacity-70 cursor-not-allowed" : ""}`}
+                      >
+                        {state.submitting ? (
+                          <span className="flex items-center justify-center">
+                            
+                            <div className="">
+                            <Spinner4 />
+                            </div>
+                            {t("Sending...")}
+                          </span>
+                        ) : (
+                          t("Send Message")
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
             </div>
           </motion.div>
 
-          {/* Map or additional contact info could go here */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-16 text-center"
+            className="text-center mt-12"
           >
-            <p className="text-gray-600 dark:text-gray-400">
-              {t("Need immediate assistance? Call our support team at")}{" "}
-              <span className="font-medium text-gray-900 dark:text-white">+1 (555) 123-4567</span>
-            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-400">{t("We look forward to hearing from you.")}</p>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-

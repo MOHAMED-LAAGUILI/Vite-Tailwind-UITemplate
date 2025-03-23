@@ -1,6 +1,6 @@
-import Form0 from "../Components/Form/Form0";
-import Form1 from "../Components/Form/Form1";
-import Form3 from "../Components/Form/Form3";
+import Form0 from "../Components/FormSection/Form0";
+import Form1 from "../Components/FormSection/Form1";
+import Form3 from "../Components/FormSection/Form3";
 
 export default function FormsPage() {
   return (

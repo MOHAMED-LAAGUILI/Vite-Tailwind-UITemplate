@@ -1,6 +1,8 @@
 import Spinner0 from "../Components/Spinner/Spinner0";
 import Spinner1 from "../Components/Spinner/Spinner1";
 import Spinner2 from "../Components/Spinner/Spinner2";
+import Spinner3 from "../Components/Spinner/Spinner3";
+import Spinner4 from "../Components/Spinner/Spinner4";
 
 function SpinnerPage() {
   return (
@@ -34,6 +36,21 @@ function SpinnerPage() {
           </p>
         </div>
 
+{/* Spinner 2 */}
+<div className="flex flex-col items-center">
+          <Spinner3 />
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+            Spinner 3
+          </p>
+        </div>
+
+        {/* Spinner 2 */}
+        <div className="flex flex-col items-center">
+          <Spinner4 />
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+            Spinner 4
+          </p>
+        </div>
          
       </div>
 

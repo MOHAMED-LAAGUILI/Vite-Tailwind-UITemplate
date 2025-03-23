@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ag-grid-community/core": "^32.3.3",
+    "@formspree/react": "^3.0.0",
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
@@ -36,7 +37,6 @@
     "datatables.net-react": "^1.0.0",
     "datatables.net-responsive": "^3.0.4",
     "datatables.net-responsive-dt": "^3.0.4",
-    "emailjs-com": "^3.2.0",
     "flowbite": "^3.1.2",
     "framer-motion": "^12.4.7",
     "i18next": "^24.2.3",

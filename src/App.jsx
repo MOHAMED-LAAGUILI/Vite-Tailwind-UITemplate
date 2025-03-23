@@ -20,38 +20,50 @@ import HomePage from "./Pages/HomePage";
 import BannersPage from "./Pages/BannersPage";
 import FormsPage from "./Pages/FormsPage";
 import BlankPage from "./Pages/BlankPage";
+import TestimonialsPage from "./Pages/TestimonialsPage";
 
-
-const App = () => { 
-
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* Home */}
           <Route index element={<HomePage />} />
+
+          {/* Components */}
           <Route path="/bg-page" element={<BgPage />} />
           <Route path="/text-page" element={<TextPage />} />
           <Route path="/spinner-page" element={<SpinnerPage />} />
           <Route path="/dashboard-items" element={<DashBoardItems />} />
           <Route path="/accordion-items" element={<DropDownPage />} />
-          <Route path="/auth" element={<AuthPage />} />
           <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
           <Route path="/calendar-page" element={<CalendarPage />} />
           <Route path="/toolbar-page" element={<ToolBarPage />} />
           <Route path="/alert-page" element={<AlertPage />} />
-          <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />} />
+          <Route path="/banner-page" element={<BannersPage />} />
+
+          {/* Pages */}
           <Route path="/profile-page" element={<ProfilePage />} />
+
+          {/* Sections */}
           <Route path="/hero-section" element={<HeroSectionPage />} />
           <Route path="/form-section" element={<FormsPage />} />
-          <Route path="/banner-page" element={<BannersPage />} />
+          <Route path="/testimonial-section" element={<TestimonialsPage />} />
+
+          {/* Other Pages */}
+          <Route path="/auth" element={<AuthPage />} />
+          <Route
+            path="/tailwind-resources-page"
+            element={<TailwindSourcesPage />}
+          />
+
+          {/* Test Pages */}
           <Route path="/blank-page" element={<BlankPage />} />
 
-
-
-          {/* Always render 404 route for unmatched paths */}
-          <Route path={"404"} element={<NotFound404 />} />
+          {/* 404 route  redirection */}
           <Route path={"*"} element={<NotFound404 />} />
+          <Route path={"404"} element={<NotFound404 />} />
         </Route>
       </Routes>
     </Router>

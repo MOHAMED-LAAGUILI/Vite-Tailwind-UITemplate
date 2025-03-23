@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import ClipboardJS from "clipboard";
 import Installation from "../Components/Home/Installation";
-import Testimonials from "../Components/Home/Testimonials";
 import About from "../Components/Home/About";
 import Features from "../Components/Home/Features";
 import Hero from "../Components/Home/Hero";
@@ -29,6 +28,7 @@ import Header from "../Components/Home/Header";
 import Contact from "../Components/Home/Contact";
 import toast from "react-hot-toast";
 import { seoData } from "../data/SeoData";
+import Spinner4 from "../Components/Spinner/Spinner4";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -73,8 +73,6 @@ export default function HomePage() {
       />
       {/* About Section - More Visual Interest */}
       <About motion={motion} t={t} ArrowRight={ArrowRight} />
-      {/* Testimonials Section - New */}
-      <Testimonials motion={motion} t={t} Star={Star} />
       {/* Installation Section - Improved */}
       <Installation
        motion={motion} 
@@ -101,6 +99,9 @@ export default function HomePage() {
         email={seoData.contact.email}
         Facebook={Facebook}
          MessageCircle={MessageCircle}
+         Spinner4={Spinner4}
+         useState={useState}
+         useEffect={useEffect}
       />
     </div>
   );

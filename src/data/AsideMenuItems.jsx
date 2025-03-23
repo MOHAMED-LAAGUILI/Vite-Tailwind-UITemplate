@@ -3,6 +3,7 @@ import {
    SplineIcon, Table, Text, User2, House, UserCircle,
     Combine, Eraser,PartyPopper,LayoutDashboard,
     Paperclip, PodcastIcon,FormInputIcon,
+    FileInput,
     //TestTubesIcon, TrendingUp
    } from "lucide-react";
 
@@ -32,6 +33,7 @@ export  const menuItems = [
       items: [
         { name: "Hero", path: "/hero-section", icon: <PartyPopper className="h-4 w-4 mr-3" /> },
         { name: "Forms", path: "/form-section", icon: <FormInputIcon className="h-4 w-4 mr-3" /> },
+        { name: "Testimonials", path: "/testimonial-section", icon: <FileInput className="h-4 w-4 mr-3" /> },
 
       ],
     },

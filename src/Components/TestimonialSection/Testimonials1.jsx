@@ -31,33 +31,31 @@ const TestimonialCard = ({ motion, Star,  name, role, initials, message, rating 
   );
 };
 
-export default function Testimonials({ t, motion, Star }) {
+export default function Testimonials1({ motion, Star }) {
   const testimonials = [
     {
       name: "John Doe",
       role: "Senior Developer",
       initials: "JD",
-      message: t(
-        "One UI has completely transformed how I build interfaces. The components are well-designed, accessible, and incredibly easy to customize."
-      ),
+      message: 
+        "One UI has completely transformed how I build interfaces. The components are well-designed, accessible, and incredibly easy to customize.",
       rating: 5,
     },
     {
       name: "Jane Smith",
       role: "UX Designer",
       initials: "JS",
-      message: t(
-        "As a designer, I appreciate the attention to detail in One UI. The components are visually consistent and follow modern design principles."
-      ),
+      message: 
+        "As a designer, I appreciate the attention to detail in One UI. The components are visually consistent and follow modern design principles.",
+      
       rating: 5,
     },
     {
       name: "Robert Johnson",
       role: "Frontend Lead",
       initials: "RJ",
-      message: t(
-        "The internationalization support in One UI is exceptional. It made localizing our application to multiple languages incredibly straightforward."
-      ),
+      message:
+        "The internationalization support in One UI is exceptional. It made localizing our application to multiple languages incredibly straightforward.",
       rating: 5,
     },
   ];
@@ -73,7 +71,7 @@ export default function Testimonials({ t, motion, Star }) {
             transition={{ duration: 0.5 }}
             className="inline-block px-3 py-1 mb-4 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium"
           >
-            {t("Testimonials")}
+            {("Testimonials")}
           </motion.div>
 
           <motion.h2
@@ -83,7 +81,7 @@ export default function Testimonials({ t, motion, Star }) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900 dark:text-white"
           >
-            {t("What Our Users Say")}
+            {("What Our Users Say")}
           </motion.h2>
 
           <motion.p
@@ -93,7 +91,7 @@ export default function Testimonials({ t, motion, Star }) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400"
           >
-            {t(
+            {(
               "Discover why developers and designers around the world choose One UI for their projects."
             )}
           </motion.p>
