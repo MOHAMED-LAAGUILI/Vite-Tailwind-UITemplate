@@ -77,11 +77,11 @@ export default function Header({
         <div className="relative z-40" ref={langDropdownRef}>
           <button
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="h-[30px] w-[40px] mt-1 rounded-sm bg-gray-200 dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
+            className="h-[35px] w-[45px]  rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
           >
             <img
               src={flags[language]?.src || flags.en.src}
-              className="w-8"
+              className="w-10"
               alt="language"
             />
           </button>

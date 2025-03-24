@@ -42,13 +42,7 @@ export default function Header({
             >
               {t("Installation")}
             </a>
-            <a
-              href="#testimonials"
-              className="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-all"
-            >
-              {t("Testimonials")}
-            </a>
-
+           
             <a
               href="#contact"
               className="px-5 py-2 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 ease-in-out"
@@ -97,13 +91,7 @@ export default function Header({
             >
               {t("About")}
             </a>
-            <a
-              href="#installation"
-              className="block px-3 py-2 rounded-md text-lg font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-                {t("Installation")}
-            </a>
+            
             <a
               href="#testimonials"
               className="block px-3 py-2 rounded-md text-lg font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-indigo-400 dark:hover:bg-gray-800"
