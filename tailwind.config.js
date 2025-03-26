@@ -4,25 +4,15 @@ export default {
   darkMode: "class", // Enables dark mode (toggle class "dark")
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./Pages/**/*.{ts,tsx,js,jsx}",
+    "./Components/**/*.{ts,tsx,js,jsx}",
+    "./src/**/*.{ts,tsx,js,jsx}",
+    "*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      colors: {
-      
-       'brand-yellow': '#F1C40F',
-      },
-    
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-        display: ['Roboto', 'sans-serif'], // Additional font family
-        body: ['Lora', 'serif'],
-      },
-      screens: {
-        '3xl': '1920px',
-      },
-    
+  
+
     },
   },
   plugins: [
@@ -33,9 +23,7 @@ export default {
   },
   variants: {
     extend: {
-      opacity: ['disabled'],
-      cursor: ['disabled'],
-      backgroundColor: ['active'],
+     
     },
   },
 }

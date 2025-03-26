@@ -41,7 +41,7 @@ export default function Header({
         onClick={() => {
             setIsSidebarOpen(!isSidebarOpen);       
         }}
-        className={`lg:hidden border ${isSidebarOpen ? "left-[200px] sticky z-[100]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
+        className={`lg:hidden border ${isSidebarOpen ? "left-[230px] sticky z-[100]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
       
       >
         <PanelLeftIcon className="h-6 w-6" />

@@ -12,6 +12,7 @@ import {
   PanelLeftIcon,
   MessageCircle,
   PhoneCall,
+  ChevronRight
 } from "lucide-react";
 import coffeeLogo from "/coffee-logo.svg";
 import logoLight from "/OneUI-light.png";
@@ -35,6 +36,7 @@ import { t } from "i18next";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { twMerge } from "tailwind-merge";
 
 const useRouteAndPageName = () => {
   const location = useLocation();
@@ -147,6 +149,8 @@ export default function Layout() {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
           ChevronFirst={ChevronFirst}
+          twMerge={twMerge}
+           ChevronRight={ChevronRight}
         />
 
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -192,16 +196,29 @@ export default function Layout() {
               <Outlet />
             )}
           </main>
-          <Footer socialLinks={socialLinks} formattedTime={formattedTime} />
+
+          <Footer 
+          socialLinks={socialLinks} 
+          formattedTime={formattedTime} 
+          devSite={seoData.devSite}
+          DevName={seoData.author}
+          />
+          
         </div>
       </div>
 
-      <SupportMe coffeeLogo={coffeeLogo} supportUrl={seoData.supportUrl} />
+      <SupportMe 
+      coffeeLogo={coffeeLogo}
+       supportUrl={seoData.supportUrl}
+       message={"Support My Work"}
+        />
 
       <ContactMe
         MessageCircle={MessageCircle}
         PhoneCall={PhoneCall}
         phoneNumber={seoData.contact.phone}
+        WhatsappMessage={"Lets Chat"}
+        PhoneMessage={"Call Me"}
       />
     </div>
   );

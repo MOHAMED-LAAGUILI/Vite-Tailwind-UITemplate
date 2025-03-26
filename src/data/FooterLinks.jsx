@@ -1,26 +1,27 @@
 import { Facebook, Github, Linkedin, MessageCircleMore } from "lucide-react";
+import { seoData } from "./SeoData";
 
 export   const socialLinks = [
     {
-      href: "https://www.linkedin.com/in/mohamedlaaguili2001/",
+      href: seoData.socialLinks.linkedin,
       label: "LinkedIn",
       icon: <Linkedin size={20} />,
       hoverClass: "hover:text-blue-500",
     },
     {
-      href: "https://www.github.com/MOHAMED-LAAGUILI",
+      href: seoData.socialLinks.github,
       label: "GitHub",
       icon: <Github size={20} />,
       hoverClass: "hover:text-gray-300",
     },
     {
-      href: "https://discordapp.com/users/1316675038598139936",
+      href: seoData.socialLinks.discord,
       label: "Discord",
       icon: <MessageCircleMore size={20} />,
       hoverClass: "hover:text-blue-400",
     },
     {
-      href: "https://www.facebook.com/profile.php?id=100014521591779",
+      href: seoData.socialLinks.facebook,
       label: "Facebook",
       icon: <Facebook size={20} />,
       hoverClass: "hover:text-blue-600",

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-function Footer({ socialLinks, formattedTime }) {
+function Footer({ socialLinks, formattedTime, devSite, DevName }) {
   return (
     <footer className="bg-white dark:bg-gray-800 dark:text-gray-300 py-4 text-center shadow-md border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center gap-6">
@@ -9,13 +9,13 @@ function Footer({ socialLinks, formattedTime }) {
           <p className="text-sm text-gray-400">
             Developed by{" "}
             <a
-              href="https://laaguili-dev.app.genez.io/"
+              href={devSite}
               className="text-blue-400 hover:text-blue-500 transition-colors"
               aria-label="Visit MOHA's website"
               target="_blank"
               rel="noopener noreferrer"
             >
-              MOHA
+              {DevName}
             </a>{" "}
             with ❤️‍🔥
           </p>

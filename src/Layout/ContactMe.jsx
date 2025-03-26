@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-export default function ContactMe({ MessageCircle, PhoneCall, phoneNumber }) {
+export default function ContactMe({ MessageCircle, PhoneCall, phoneNumber,WhatsappMessage, PhoneMessage }) {
     return (
       <>
         <div className="absolute bottom-[160px] right-4 z-50 space-y-2">
@@ -17,7 +17,7 @@ export default function ContactMe({ MessageCircle, PhoneCall, phoneNumber }) {
             </a>
             {/* Tooltip for WhatsApp */}
             <span className="absolute -left-4 bottom-4 transform -translate-x-full bg-black text-white dark:bg-white dark:text-black text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-2">
-            Whatsapp
+            {WhatsappMessage}
             </span>
           </div>
   
@@ -32,7 +32,7 @@ export default function ContactMe({ MessageCircle, PhoneCall, phoneNumber }) {
             </a>
             {/* Tooltip for Phone Call */}
             <span className="absolute -left-4 bottom-4 transform -translate-x-full bg-black text-white dark:bg-white dark:text-black text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ml-2">
-            Call Me
+            {PhoneMessage}
             </span>
           </div>
         </div>
