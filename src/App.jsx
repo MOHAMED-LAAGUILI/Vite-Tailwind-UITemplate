@@ -21,6 +21,7 @@ import BannersPage from "./Pages/BannersPage";
 import FormsPage from "./Pages/FormsPage";
 import BlankPage from "./Pages/BlankPage";
 import TestimonialsPage from "./Pages/TestimonialsPage";
+import Calendar2Page from "./Pages/CalendarPage2";
 
 const App = () => {
   return (
@@ -39,12 +40,16 @@ const App = () => {
           <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
           <Route path="/calendar-page" element={<CalendarPage />} />
+          <Route path="/calendar2-page" element={<Calendar2Page />} />
+
           <Route path="/toolbar-page" element={<ToolBarPage />} />
           <Route path="/alert-page" element={<AlertPage />} />
           <Route path="/banner-page" element={<BannersPage />} />
 
           {/* Pages */}
           <Route path="/profile-page" element={<ProfilePage />} />
+          
+
 
           {/* Sections */}
           <Route path="/hero-section" element={<HeroSectionPage />} />

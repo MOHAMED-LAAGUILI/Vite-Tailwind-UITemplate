@@ -11,7 +11,10 @@ const devDependencies = Object.keys(pkg.devDependencies || {});
 const allDependencies = [
   ...dependencies,
   ...devDependencies,
-].filter(dep => dep !== '@types/react' && dep !== '@types/react-dom');
+].filter(dep => 
+  dep !== '@types/react' &&
+   dep !== '@types/react-dom' &&
+   dep !== '@types/leaflet');
 
 export default defineConfig({
   build: {

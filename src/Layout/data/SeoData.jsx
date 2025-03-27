@@ -26,5 +26,6 @@ export const seoData = {
     email: 'mohamed.dev.2001@gmail.com',
     phone: '+212689770809',
   },
-  foundingDate: `02/2025  |   ${ new Date().getDate()}/${ new Date().getFullYear()}`,
+  foundingDate: ` 02/2025 - ${new Date().getDate()}/0${new Date().getUTCMonth() + 1}/${new Date().getFullYear()}`,
+  
 };

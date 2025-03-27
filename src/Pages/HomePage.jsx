@@ -27,7 +27,7 @@ import Hero from "../Components/Home/Hero";
 import Header from "../Components/Home/Header";
 import Contact from "../Components/Home/Contact";
 import toast from "react-hot-toast";
-import { seoData } from "../data/SeoData";
+import { seoData } from "../Layout/data/SeoData";
 import Spinner4 from "../Components/Spinner/Spinner4";
 
 export default function HomePage() {
