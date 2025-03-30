@@ -1,5 +1,5 @@
 {
-  "_comment_sidebar": "SideBar Links",
+"_comment_sidebar": "SideBar Links",
   "Home": "Home",
   "Components": "Components",
   "Backgrounds": "Backgrounds",
@@ -13,15 +13,27 @@
   "Banners": "Banners",
   "Sections": "Sections",
   "Hero": "Hero",
+  "Forms": "Forms",
+  "Testimonials": "Testimonials",
   "Pages": "Pages",
   "Profile": "Profile",
+  "Map": "Map",
+  "TOS": "Terms of Service",
   "Auth": "Authentication",
   "Table Filtering": "Table Filtering",
   "Calendar": "Calendar",
-  "Other UI Resources": "Other UI Resources",
+  "Calendar2": "Alternate Calendar",
   "404 Page": "404 Page",
-  "Forms":"Forms",
+  "Development": "Development Mode",
+  "Dev Test 1": "Development Test 1",
+  "Dev Test 2": "Development Test 2",
+  "Dev Resources": "Developer Resources",
 
+  "_comment_header": "Header",
+  "Search...": "Search...",
+  
+
+  
   "_comment_homePage": "Home Page.jsx",
   "Welcome to Our Platform": "Welcome to Our Platform",
   "Change Language": "Change Language",

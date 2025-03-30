@@ -17,9 +17,7 @@ export default function Header({
   Sun,
   Moon,
   Bell,
-  User,
-  Settings,
-  LogOut,
+  HeaderLinks,
   Search,
   flags,
   notificationsDropdownRef,
@@ -27,33 +25,41 @@ export default function Header({
   profileDropdownRef,
   isSearchModalOpen,
   setIsSearchModalOpen,
-  searchModalRef,
-  PanelLeftIcon
+  PanelLeftIcon,
+  translator,
+  Link,
+  SearchModal
 }) {
-
-
-
   return (
     <header className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-[#1F1F23] bg-white dark:bg-[#0F0F12] relative">
       {/* Sidebar Toggle Button */}
       <button
         id="sidebar-toggle"
         onClick={() => {
-            setIsSidebarOpen(!isSidebarOpen);       
+          setIsSidebarOpen(!isSidebarOpen);
         }}
-        className={`lg:hidden border ${isSidebarOpen ? "left-[230px] sticky z-[500]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
-      
+        className={`lg:hidden border ${isSidebarOpen ? 'left-[230px] sticky z-[500]' : ''} p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
       >
         <PanelLeftIcon className="h-6 w-6" />
       </button>
 
       {/* Right-side Icons */}
-      <div className="flex gap-5 absolute z-[450] right-5">
-       
-         {/* Theme Toggle */}
-         <button
+      <div className="flex gap-5 items-center absolute z-[450] right-5">
+        {/* Search Bar */}
+        <div className="relative z-[450]" ref={notificationsDropdownRef}>
+          <button
+            onClick={() => setIsSearchModalOpen(true)}
+            className="border lg:w-96 md:w-72 sm:w-52 xs:hidden text-gray-700 flex items-center justify-start p-2 rounded-md hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-[#1F1F23] transition-all duration-200"
+          >
+            <Search className="mr-2 h-5 w-5" />
+            <span>{translator('Search...')}</span>
+          </button>
+        </div>
+
+        {/* Theme Toggle */}
+        <button
           onClick={toggleTheme}
-          className="px-[9px] rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
+          className="px-[11px] rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
         >
           {isDarkMode ? (
             <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -62,35 +68,21 @@ export default function Header({
           )}
         </button>
 
- {/* Search Bar */}
-        <div className="relative z-[450]" ref={notificationsDropdownRef}>
-          <button
-                      onClick={() => setIsSearchModalOpen(true)}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] relative transition-colors duration-200 border"
-          >
-            <Search className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-          </button>
-        </div>
-
-      
         {/* Lang Dropdown */}
         <div className="relative z-[500]" ref={langDropdownRef}>
           <button
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="h-[35px] w-[45px]  rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
+            className="h-[35px] w-[45px] rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
           >
-            <img
-              src={flags[language]?.src || flags.en.src}
-              className="w-10"
-              alt="language"
-            />
+            <img src={flags[language]?.src || flags.en.src} className="w-10" alt="language" />
           </button>
           {isLangOpen && (
-            <motion.div 
-            initial={{ opacity: 0, y: -10 }} 
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-             className="absolute z-[500] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute z-[500] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2"
+            >
               {Object.entries(flags).map(([key, { src, label }]) => (
                 <button
                   key={key}
@@ -116,19 +108,15 @@ export default function Header({
             </span>
           </button>
           {isNotificationsOpen && (
-             <motion.div 
-             initial={{ opacity: 0, y: -10 }} 
-             animate={{ opacity: 1, y: 0 }}
-             exit={{ opacity: 0, y: -10 }} className="absolute z-[5000] right-0 border mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
-                New comment on your post
-              </div>
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
-                Server maintenance at 2 AM
-              </div>
-              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
-                Your password was changed
-              </div>
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute z-[5000] right-0 border mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2"
+            >
+              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">New comment on your post</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">Server maintenance at 2 AM</div>
+              <div className="text-sm text-gray-700 dark:text-gray-300 p-2">Your password was changed</div>
               <button
                 onClick={() => setIsNotificationsOpen(false)}
                 className="w-full text-center py-1 text-sm text-blue-600 dark:text-blue-400 hover:underline"
@@ -152,44 +140,32 @@ export default function Header({
             />
           </button>
           {isProfileOpen && (
-            < motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }}
-             className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
-              <button className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200">
-                <User className="h-5 w-5" /> Profile
-              </button>
-              <button className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200">
-                <Settings className="h-5 w-5" /> Settings
-              </button>
-              <button className="flex items-center gap-2 px-3 py-2 text-red-500 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-[#1F1F23] w-full text-left transition-colors duration-200">
-                <LogOut className="h-5 w-5" /> Logout
-              </button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2"
+            >
+              {HeaderLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.link}
+                  className={`flex items-center gap-2 px-3 py-2 ${item.className}`}
+                >
+                  {item.icon}
+                  <span className={item.colorClass}>{item.name}</span>
+                </Link>
+              ))}
             </motion.div>
           )}
         </div>
       </div>
 
-      {isSearchModalOpen && (
-        <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        exit={{ opacity: 0 }}
-         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[500]">
-          <motion.div 
-            initial={{ y: -20 }}
-            animate={{ y: 0 }}
-            exit={{ y: -20 }}
-             ref={searchModalRef} className="bg-white dark:bg-[#1F1F23] p-6 rounded-lg shadow-lg w-96">
-            <input
-              type="text"
-              placeholder="Type to search..."
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-            />
-          </motion.div>
-        </motion.div>
-      )}
+      <SearchModal
+        setIsSearchModalOpen={setIsSearchModalOpen}
+        isOpen={isSearchModalOpen}
+        translator={translator}
+      />
     </header>
   );
 }

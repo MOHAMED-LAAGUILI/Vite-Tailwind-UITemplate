@@ -1,4 +1,4 @@
-import { Facebook, Github, Linkedin, MessageCircleMore } from "lucide-react";
+import {Github, Linkedin, MessageCircleMore } from "lucide-react";
 import { seoData } from "./SeoData";
 
 export   const socialLinks = [
@@ -20,10 +20,5 @@ export   const socialLinks = [
       icon: <MessageCircleMore size={20} />,
       hoverClass: "hover:text-blue-400",
     },
-    {
-      href: seoData.socialLinks.facebook,
-      label: "Facebook",
-      icon: <Facebook size={20} />,
-      hoverClass: "hover:text-blue-600",
-    },
+
   ];

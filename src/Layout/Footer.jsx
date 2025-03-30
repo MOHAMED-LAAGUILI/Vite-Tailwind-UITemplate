@@ -2,7 +2,7 @@
 
 function Footer({ socialLinks, formattedTime, devSite, DevName }) {
   return (
-    <footer className="bg-white dark:bg-gray-800 dark:text-gray-300 py-1 text-center shadow-md border-t border-gray-200">
+    <footer className="px-10 bg-white dark:bg-gray-800 dark:text-gray-300 py-1 text-center shadow-md border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4= flex justify-between items-center gap-6">
         {/* Text Section */}
         <div>

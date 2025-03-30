@@ -23,6 +23,9 @@ import BlankPage from "./Pages/BlankPage";
 import TestimonialsPage from "./Pages/TestimonialsPage";
 import Calendar2Page from "./Pages/CalendarPage2";
 import MapPage from "./Pages/MapPage";
+import BlankPage2 from "./Pages/BlankPage2";
+import TermsOfService from "./Pages/TosPage";
+import { SettingsPage } from "./Pages/SettingPage";
 
 const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT;
 
@@ -42,41 +45,40 @@ const App = () => {
           <Route path="/spinner-page" element={<SpinnerPage />} />
           <Route path="/dashboard-items" element={<DashBoardItems />} />
           <Route path="/accordion-items" element={<DropDownPage />} />
-          <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
-          <Route path="/map-page" element={<MapPage />} />
-          <Route path="/calendar-page" element={<CalendarPage />} />
-          <Route path="/calendar2-page" element={<Calendar2Page />} />
-
           <Route path="/toolbar-page" element={<ToolBarPage />} />
           <Route path="/alert-page" element={<AlertPage />} />
           <Route path="/banner-page" element={<BannersPage />} />
-
-          {/* Pages */}
-          <Route path="/profile-page" element={<ProfilePage />} />
-          
-
 
           {/* Sections */}
           <Route path="/hero-section" element={<HeroSectionPage />} />
           <Route path="/form-section" element={<FormsPage />} />
           <Route path="/testimonial-section" element={<TestimonialsPage />} />
 
-          {/* Other Pages */}
+          {/* Pages */}
+          <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path="/tos-page" element={<TermsOfService />} />
+          <Route path="/setting-page" element={<SettingsPage />} />
+          <Route path="/map-page" element={<MapPage />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/calendar-page" element={<CalendarPage />} />
+          <Route path="/calendar2-page" element={<Calendar2Page />} />
+          <Route path="/tables-page" element={<TablesPage />} />
 
-          {/* Private Pages */}
+
+          {/* Private Development Pages */}
           {ENVIRONMENT === "development" && (
          <>
            <Route path="/blank-page" element={<BlankPage />} />
+           <Route path="/blank-page2" element={<BlankPage2/>} />
           <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />}/>
-         
          </>
           )}
 
           {/* 404 route  redirection */}
           <Route path={"*"} element={<NotFound404 />} />
           <Route path={"404"} element={<NotFound404 />} />
+          
         </Route>
       </Routes>
     </Router>

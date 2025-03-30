@@ -66,7 +66,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      includeAssets: ['*.svg', '*.png', '*.txt', '*.xml'],
+      includeAssets: ['*.svg', '*.png'],
       manifest: {
         name: "One UI",
         short_name: "One UI",

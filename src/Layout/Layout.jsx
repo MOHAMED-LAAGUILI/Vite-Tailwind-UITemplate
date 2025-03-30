@@ -13,6 +13,9 @@ import {
   MessageCircle,
   PhoneCall,
   ChevronRight,
+  Linkedin,
+  Github,
+  MessageCircleDashed,
 } from "lucide-react";
 import coffeeLogo from "/coffee-logo.svg";
 import logoLight from "/OneUI-light.png";
@@ -22,11 +25,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 import AsideMaximized from "./AsideMaximized";
 import Spinner0 from "../Components/Spinner/Spinner0";
+import { SearchModal } from "./SearchModal";
 
 import { seoData } from "./data/SeoData";
 import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
 import { menuItems } from "./data/AsideMenuItems";
+import { HeaderLinks } from "./data/HeaderLinks";
 import { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
@@ -59,7 +64,6 @@ export default function Layout() {
   const langDropdownRef = useRef(null);
   const notificationsDropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
-  const searchModalRef = useRef(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const formattedTime = currentTime.toLocaleTimeString();
@@ -114,8 +118,7 @@ export default function Layout() {
         setIsNotificationsOpen(false);
       if (!profileDropdownRef.current?.contains(event.target))
         setIsProfileOpen(false);
-      if (!searchModalRef.current?.contains(event.target))
-        setIsSearchModalOpen(false);
+     
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -189,8 +192,11 @@ export default function Layout() {
             profileDropdownRef={profileDropdownRef}
             isSearchModalOpen={isSearchModalOpen}
             setIsSearchModalOpen={setIsSearchModalOpen}
-            searchModalRef={searchModalRef}
             PanelLeftIcon={PanelLeftIcon}
+            translator={t}
+            HeaderLinks={HeaderLinks}
+            Link={Link}
+            SearchModal={SearchModal}
           />
 
           <main className="flex-1 overflow-auto ">
@@ -213,24 +219,33 @@ export default function Layout() {
           />
         </div>
         <PinnedIcons
-          phoneNumber={seoData.contact.phone}
-          whatsappMessage="Chat with us on WhatsApp"
-          phoneMessage="Call us now"
-          supportUrl={seoData.supportUrl}
-          supportMessage="Buy me a coffee"
-          coffeeLogo={coffeeLogo}
-          position="bottom-right" // Example position
-          showSupport={true}
-          showWhatsApp={true}
-          showPhone={true}
-          className=""
-          MessageCircle={MessageCircle}
-          PhoneCall={PhoneCall}
-          twMerge={twMerge}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-          isHovering={isHovering}
-        />
+  phoneNumber={seoData.contact.phone}
+  whatsappMessage="Chat with us on WhatsApp"
+  phoneMessage="Call us now"
+  supportUrl={seoData.supportUrl}
+  supportMessage="Buy me a coffee"
+  coffeeLogo={coffeeLogo}
+  position="bottom-right" // Example position
+  showSupport={true}
+  showWhatsApp={true}
+  showPhone={true}
+  showLinkedIn={true}
+  showGitHub={true}
+  showDiscord={true}
+  className=""
+  MessageCircle={MessageCircle}
+  PhoneCall={PhoneCall}
+  Linkedin={Linkedin}
+  Github={Github}
+  Discord={MessageCircleDashed}
+  twMerge={twMerge}
+  handleMouseEnter={handleMouseEnter}
+  handleMouseLeave={handleMouseLeave}
+  isHovering={isHovering}
+  socialLinks={seoData.socialLinks}
+
+/>
+
       </div>
     </div>
   );
