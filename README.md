@@ -40,6 +40,9 @@ git clone https://github.com/MOHAMED-LAAGUILI/Vite-Tailwind-UITemplate
 # Navigate to the project directory
 cd Vite-Tailwind-UITemplate
 
+# Create .env file and set environment
+echo "VITE_ENVIRONMENT=development" > .env
+
 # Install dependencies
 npm install
 # or
