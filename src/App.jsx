@@ -67,7 +67,7 @@ const App = () => {
 
 
           {/* Private Development Pages */}
-          {ENVIRONMENT === "development" && (
+          {ENVIRONMENT !== "production" && (
          <>
            <Route path="/blank-page" element={<BlankPage />} />
            <Route path="/blank-page2" element={<BlankPage2/>} />

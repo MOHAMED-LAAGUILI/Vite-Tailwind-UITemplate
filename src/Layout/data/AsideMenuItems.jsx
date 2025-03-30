@@ -54,7 +54,7 @@ export const menuItems = [
   { name: "404 Page", path: "404", icon: <Eraser className="h-4 w-4 mr-3" /> },
   { name: "Settings", path: "/setting-page", icon: <Settings className="h-4 w-4 mr-3" /> },
 
-  ...(ENVIRONMENT === "development" ? [
+  ...(ENVIRONMENT !== "production" ? [
     {
       title: `${ENVIRONMENT}`,
       icon: <ShieldBan className="h-4 w-5 transition-transform transform hover:scale-110" />,
