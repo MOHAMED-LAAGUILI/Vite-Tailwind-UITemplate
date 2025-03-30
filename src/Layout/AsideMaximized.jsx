@@ -24,7 +24,7 @@ export default function Sidebar({
     <>
       {/* Backdrop overlay for mobile */}
       <div 
-        className={`fixed z-[100] inset-0 bg-black transition-opacity duration-300 
+        className={`fixed z-[500] inset-0 bg-black transition-opacity duration-300 
         ${isSidebarOpen ? "opacity-40 visible" : "opacity-0 invisible"}`}
       ></div>
 
@@ -32,7 +32,7 @@ export default function Sidebar({
       <aside
         id="sidebar"
         className={twMerge(
-          "fixed inset-y-0 left-0 z-[100] w-72 bg-white dark:bg-gray-900 transform transition-transform duration-300 ease-in-out",
+          "fixed inset-y-0 left-0 z-[500] w-72 bg-white dark:bg-gray-900 transform transition-transform duration-300 ease-in-out",
           "border-r border-gray-200 dark:border-gray-800 lg:translate-x-0 lg:static",
           "overflow-y-auto max-h-screen flex flex-col",
           "shadow-lg lg:shadow-none",

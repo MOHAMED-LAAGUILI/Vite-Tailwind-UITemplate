@@ -22,8 +22,13 @@ import FormsPage from "./Pages/FormsPage";
 import BlankPage from "./Pages/BlankPage";
 import TestimonialsPage from "./Pages/TestimonialsPage";
 import Calendar2Page from "./Pages/CalendarPage2";
+import MapPage from "./Pages/MapPage";
+
+const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT;
 
 const App = () => {
+
+  
   return (
     <Router>
       <Routes>
@@ -39,6 +44,7 @@ const App = () => {
           <Route path="/accordion-items" element={<DropDownPage />} />
           <Route path="/tables-page" element={<TablesPage />} />
           <Route path="/button-page" element={<ButtonsPage />} />
+          <Route path="/map-page" element={<MapPage />} />
           <Route path="/calendar-page" element={<CalendarPage />} />
           <Route path="/calendar2-page" element={<Calendar2Page />} />
 
@@ -58,13 +64,15 @@ const App = () => {
 
           {/* Other Pages */}
           <Route path="/auth" element={<AuthPage />} />
-          <Route
-            path="/tailwind-resources-page"
-            element={<TailwindSourcesPage />}
-          />
 
-          {/* Test Pages */}
-          <Route path="/blank-page" element={<BlankPage />} />
+          {/* Private Pages */}
+          {ENVIRONMENT === "development" && (
+         <>
+           <Route path="/blank-page" element={<BlankPage />} />
+          <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />}/>
+         
+         </>
+          )}
 
           {/* 404 route  redirection */}
           <Route path={"*"} element={<NotFound404 />} />

@@ -12,6 +12,19 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
+/* Optional: Add this to your CSS to customize NProgress */
+#nprogress .bar {
+    background: #4b5563 !important;
+  }
+  
+  #nprogress .spinner-icon {
+    border-top-color: #4b5563 !important;
+    border-left-color: #4b5563 !important;
+  }
+  
+
+  
 /* Scrollbar styles */
 ::-webkit-scrollbar {
     width: 6px;

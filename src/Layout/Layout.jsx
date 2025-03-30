@@ -12,7 +12,7 @@ import {
   PanelLeftIcon,
   MessageCircle,
   PhoneCall,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 import coffeeLogo from "/coffee-logo.svg";
 import logoLight from "/OneUI-light.png";
@@ -22,8 +22,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import AsideMaximized from "./AsideMaximized";
 import Spinner0 from "../Components/Spinner/Spinner0";
-import SupportMe from "./SupportMe";
-import ContactMe from "./ContactMe";
+
 import { seoData } from "./data/SeoData";
 import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
@@ -37,6 +36,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { twMerge } from "tailwind-merge";
+import PinnedIcons from "./PinnedIcons";
 
 const useRouteAndPageName = () => {
   const location = useLocation();
@@ -63,7 +63,15 @@ export default function Layout() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const formattedTime = currentTime.toLocaleTimeString();
+  const [isHovering, setIsHovering] = useState(null);
 
+  const handleMouseEnter = (id) => {
+    setIsHovering(id);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(null);
+  };
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? "dark" : "light";
     setIsDarkMode(!isDarkMode);
@@ -150,7 +158,7 @@ export default function Layout() {
           setIsSidebarOpen={setIsSidebarOpen}
           ChevronFirst={ChevronFirst}
           twMerge={twMerge}
-           ChevronRight={ChevronRight}
+          ChevronRight={ChevronRight}
         />
 
         <div className="flex-1 flex flex-col overflow-hidden">
@@ -197,30 +205,33 @@ export default function Layout() {
             )}
           </main>
 
-          <Footer 
-          socialLinks={socialLinks} 
-          formattedTime={formattedTime} 
-          devSite={seoData.devSite}
-          DevName={seoData.author}
+          <Footer
+            socialLinks={socialLinks}
+            formattedTime={formattedTime}
+            devSite={seoData.devSite}
+            DevName={seoData.author}
           />
-          
-          
         </div>
-      </div>
-
-      <SupportMe 
-      coffeeLogo={coffeeLogo}
-       supportUrl={seoData.supportUrl}
-       message={"Support My Work"}
+        <PinnedIcons
+          phoneNumber={seoData.contact.phone}
+          whatsappMessage="Chat with us on WhatsApp"
+          phoneMessage="Call us now"
+          supportUrl={seoData.supportUrl}
+          supportMessage="Buy me a coffee"
+          coffeeLogo={coffeeLogo}
+          position="bottom-right" // Example position
+          showSupport={true}
+          showWhatsApp={true}
+          showPhone={true}
+          className=""
+          MessageCircle={MessageCircle}
+          PhoneCall={PhoneCall}
+          twMerge={twMerge}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+          isHovering={isHovering}
         />
-
-      <ContactMe
-        MessageCircle={MessageCircle}
-        PhoneCall={PhoneCall}
-        phoneNumber={seoData.contact.phone}
-        WhatsappMessage={"Lets Chat"}
-        PhoneMessage={"Call Me"}
-      />
+      </div>
     </div>
   );
 }

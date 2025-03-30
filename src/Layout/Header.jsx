@@ -41,14 +41,14 @@ export default function Header({
         onClick={() => {
             setIsSidebarOpen(!isSidebarOpen);       
         }}
-        className={`lg:hidden border ${isSidebarOpen ? "left-[230px] sticky z-[100]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
+        className={`lg:hidden border ${isSidebarOpen ? "left-[230px] sticky z-[500]" : ""}  p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-all duration-200`}
       
       >
         <PanelLeftIcon className="h-6 w-6" />
       </button>
 
       {/* Right-side Icons */}
-      <div className="flex gap-5 absolute z-50 right-5">
+      <div className="flex gap-5 absolute z-[450] right-5">
        
          {/* Theme Toggle */}
          <button
@@ -63,7 +63,7 @@ export default function Header({
         </button>
 
  {/* Search Bar */}
-        <div className="relative z-40" ref={notificationsDropdownRef}>
+        <div className="relative z-[450]" ref={notificationsDropdownRef}>
           <button
                       onClick={() => setIsSearchModalOpen(true)}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] relative transition-colors duration-200 border"
@@ -74,7 +74,7 @@ export default function Header({
 
       
         {/* Lang Dropdown */}
-        <div className="relative z-40" ref={langDropdownRef}>
+        <div className="relative z-[500]" ref={langDropdownRef}>
           <button
             onClick={() => setIsLangOpen(!isLangOpen)}
             className="h-[35px] w-[45px]  rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
@@ -90,7 +90,7 @@ export default function Header({
             initial={{ opacity: 0, y: -10 }} 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-             className="absolute z-[100] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
+             className="absolute z-[500] border right-0 mt-2 w-48 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
               {Object.entries(flags).map(([key, { src, label }]) => (
                 <button
                   key={key}
@@ -105,7 +105,7 @@ export default function Header({
         </div>
 
         {/* Notifications Dropdown */}
-        <div className="relative z-40" ref={notificationsDropdownRef}>
+        <div className="relative z-[500]" ref={notificationsDropdownRef}>
           <button
             onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#1F1F23] relative transition-colors duration-200 border"
@@ -119,7 +119,7 @@ export default function Header({
              <motion.div 
              initial={{ opacity: 0, y: -10 }} 
              animate={{ opacity: 1, y: 0 }}
-             exit={{ opacity: 0, y: -10 }} className="absolute z-[40] right-0 border mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
+             exit={{ opacity: 0, y: -10 }} className="absolute z-[5000] right-0 border mt-2 w-64 bg-white dark:bg-[#1F1F23] shadow-md rounded-lg p-2">
               <div className="text-sm text-gray-700 dark:text-gray-300 p-2">
                 New comment on your post
               </div>
@@ -176,7 +176,7 @@ export default function Header({
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }} 
         exit={{ opacity: 0 }}
-         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[102]">
+         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[500]">
           <motion.div 
             initial={{ y: -20 }}
             animate={{ y: 0 }}

@@ -11,14 +11,11 @@ const devDependencies = Object.keys(pkg.devDependencies || {});
 const allDependencies = [
   ...dependencies,
   ...devDependencies,
-].filter(dep => 
-  dep !== '@types/react' &&
-   dep !== '@types/react-dom' &&
-   dep !== '@types/leaflet');
+].filter(dep => !dep.startsWith('@types/'));
 
 export default defineConfig({
   build: {
-    chunkSizeWarningLimit: 5000, // Set to a larger value (in KB)
+    chunkSizeWarningLimit: 10000, // Set to a larger value (in KB)
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -32,15 +29,22 @@ export default defineConfig({
             return `page-${pageName}`;
           }
          
-          if (id.includes('Components')) {
-            return 'components';
+          if (id.includes('Components/')) {
+            // Handling subfolders in Components
+            const pathParts = id.split('/');
+            const folderName = pathParts[pathParts.length - 2]; // Extract the folder name
+            return `components/${folderName}`; // Chunk by folder
           }
+
 
           if (id.includes('locals')) {
             return 'translations';
           }
+
           if (id.includes('Layout')) {
-            return 'layout';
+            const layoutPath = id.split('Layout/').pop();
+            const layoutName = layoutPath.replace('.jsx', '').replace(/\//g, '-'); // Handle nested layouts
+            return `layout-${layoutName}`;
           }
         },
       },
@@ -52,7 +56,7 @@ export default defineConfig({
     react(),
     VitePWA({
       workbox: {
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB
         skipWaiting: true, // Forces the service worker to activate immediately
         clientsClaim: true, // Claims any open clients immediately
        
