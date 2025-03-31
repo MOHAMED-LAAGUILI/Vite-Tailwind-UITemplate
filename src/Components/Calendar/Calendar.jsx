@@ -6,7 +6,7 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import "./Calendar.css";
 
-function Calendar() {
+function HolidayCalendar() {
   const currentYear = new Date().getFullYear();
   const [holidays, setHolidays] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -152,4 +152,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default HolidayCalendar;

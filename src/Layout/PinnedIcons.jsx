@@ -39,11 +39,11 @@ export default function PinnedIcons({
       show: showWhatsApp,
       href: `https://wa.me/${phoneNumber}`,
       label: "Chat with us on WhatsApp",
-      bgClass: "bg-gradient-to-r from-green-500 to-green-700",
+      bgClass: "bg-gradient-to-r from-green-500 to-green-700 ",
       icon: <MessageCircle size={25} color="white" />, 
       hoverKey: "whatsapp",
       message: whatsappMessage,
-      tooltipOffset: "-left-[90px]"
+      tooltipOffset: "-left-[85px]"
     },
     {
       show: showPhone,
@@ -112,18 +112,27 @@ export default function PinnedIcons({
           <div 
             key={index} 
             className="relative group" 
-            onMouseEnter={() => handleMouseEnter(hoverKey)}
-            onMouseLeave={handleMouseLeave}
+           
           >
-            <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="block">
-              <div className={`${bgClass} p-4 flex items-center justify-center rounded-full w-14 h-14 hover:shadow-lg ring-4 ring-white dark:ring-gray-800 transition-all duration-300 hover:scale-105`}> 
-                {icon}
-              </div>
-            </a>
+          <a 
+  href={href} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  aria-label={label} 
+  className="block"
+  onMouseEnter={() => handleMouseEnter(hoverKey)}
+  onMouseLeave={handleMouseLeave}
+>
+  <div  onMouseEnter={() => handleMouseEnter(hoverKey)}
+            onMouseLeave={handleMouseLeave} className={`${bgClass} p-2 flex items-center justify-center rounded-full w-10 h-10 hover:shadow-lg ring-4 ring-white dark:ring-gray-800 transition-all duration-300 hover:scale-105`}> 
+    {icon}
+  </div>
+</a>
+
             <span 
               className={twMerge(
-                `absolute ${tooltipOffset} transform -translate-x-1/2 -bottom-2 -translate-y-full bg-black text-white text-xs rounded py-1 px-2 transition-opacity duration-300 whitespace-nowrap`,
-                isHovering === hoverKey ? "opacity-100" : "opacity-0"
+                `absolute ${tooltipOffset} transform -translate-x-1/2 -bottom-3 -translate-y-full bg-black text-white text-xs rounded py-1 px-2 transition-opacity duration-300 whitespace-nowrap`,
+                isHovering === hoverKey ? "opacity-100" : "hidden"
               )}
             >
               {message}

@@ -1,8 +1,4 @@
 /* eslint-disable react/prop-types */
-import * as React from "react"
-import { Search, X } from "lucide-react"
-import { Link } from "react-router-dom"
-import { menuItems } from "./data/AsideMenuItems"
 
 function flattenMenuItems(items) {
   return items.reduce((acc, item) => {
@@ -35,7 +31,10 @@ function HighlightMatch({ text, query }) {
   )
 }
 
-export function SearchModal({isOpen, setIsSearchModalOpen}) {
+export function SearchModal({
+  isOpen, setIsSearchModalOpen,
+  Search, X, Link, menuItems, motion, React
+}) {
   const [search, setSearch] = React.useState("")
   const [selectedIndex, setSelectedIndex] = React.useState(0)
   const searchInputRef = React.useRef(null)
@@ -119,7 +118,12 @@ export function SearchModal({isOpen, setIsSearchModalOpen}) {
           className="fixed inset-0 z-[500] flex items-start justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-8 md:p-12"
           onClick={() => setIsSearchModalOpen(false)}
         >
-          <div
+          
+          <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.2 }}
             className="bg-white dark:bg-[#1F1F23] rounded-xl shadow-2xl w-full sm:max-w-[600px] max-h-[85vh] overflow-hidden transition-all duration-200 ease-out transform translate-y-0 opacity-100"
             onClick={(e) => e.stopPropagation()}
             onKeyDown={handleKeyDown}
@@ -207,7 +211,7 @@ export function SearchModal({isOpen, setIsSearchModalOpen}) {
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>

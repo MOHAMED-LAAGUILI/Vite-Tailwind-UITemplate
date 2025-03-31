@@ -56,26 +56,33 @@ yarn dev
 
 ## 🖥️ Usage
 
-After starting the development server, your site will be available at `http://localhost:5173`.
+After starting the development server, your site will be available at `http://localhost`.
 
 ### Project Structure
 
 ```plaintext
 Vite-Tailwind-UITemplate/
 ├── public/
-│   └──  ...
+│   ├── *.svg
+│   ├── *.txt
+│   ├── *.xml
+│   └── *.png
 ├── src/
 │   ├── components/
-│   │   └──  ...
+│   │   └── *.jsx
 │   ├── locales/
-│   │    └──  ...
+│   │    └── *.json
 │   ├── pages/
-│   │    └──  ...
+│   │    ├── data/
+│   │    └── *.jsx
+│   ├── mock/
+│   │    └── *.jsx
 │   ├── App.jsx
 │   ├── main.jsx
 │   ├── index.css
 │   └── i18n.js
 ├── .gitignore
+├── .env
 ├── index.html
 ├── package.json
 ├── package-lock.json
@@ -104,30 +111,135 @@ One UI is built with the following technologies:
 
 ### Tailwind Configuration
 
-You can customize the default theme by modifying the `tailwind.config.js` file:
+# Vite Configuration Documentation
+
+This document provides an overview of the `vite.config.js` file, detailing its purpose and the optimizations applied.
+
+## Customizing the Default Theme
+
+You can modify the default theme by editing the `tailwind.config.js` file.
+
+## Integration and Dependency Optimization
+
+The configuration is structured to optimize dependencies and improve build performance.
+
+### Import Dependencies
 
 ```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        // Customize your color palette here
-        // Add more custom colors as needed
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        // Add more custom fonts as needed
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from "vite-plugin-pwa";
+import { visualizer } from 'rollup-plugin-visualizer';
+import vitePluginCompression from 'vite-plugin-compression';
+import pkg from './package.json';
+```
+
+### Dependency Handling
+
+- Extracts dependencies and dev dependencies from `package.json`.
+- Excludes TypeScript type definitions from optimization.
+
+```javascript
+const dependencies = Object.keys(pkg.dependencies || {});
+const devDependencies = Object.keys(pkg.devDependencies || {});
+
+const allDependencies = [
+  ...dependencies,
+  ...devDependencies,
+].filter(dep => !dep.startsWith('@types/'));
+```
+
+### Build Configuration
+
+- **Chunk Splitting**: Organizes the build output into separate chunks.
+- **Minification**: Uses `esbuild` for faster minification.
+
+```javascript
+export default defineConfig({
+  build: {
+    chunkSizeWarningLimit: 10000, // Increase limit for chunk size warnings
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) return 'vendor';
+          if (id.includes('Pages/')) return `page-${id.split('/').pop().replace('.jsx', '')}`;
+          if (id.includes('Components/')) return `components/${id.split('/').slice(-2, -1)[0]}`;
+          if (id.includes('locals')) return 'translations';
+          if (id.includes('Layout')) return `layout-${id.split('Layout/').pop().replace('.jsx', '').replace(/\//g, '-')}`;
+        },
       },
     },
+    minify: 'esbuild',
   },
-  plugins: [],
-}
+```
+
+### Plugins
+
+#### PWA (Progressive Web App) Configuration
+
+- Enables service workers with auto-update.
+- Configures caching and asset inclusion.
+
+```javascript
+  plugins: [
+    react(),
+    VitePWA({
+      workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB limit
+        skipWaiting: true, // Activate service worker immediately
+        clientsClaim: true, // Claim open clients immediately
+      },
+      injectRegister: 'auto',
+      registerType: 'autoUpdate',
+      devOptions: { enabled: true },
+      includeAssets: ['*.svg', '*.png'],
+      manifest: {
+        name: "One UI",
+        short_name: "One UI",
+        description: "A modern, responsive UI framework for developers and designers.",
+        start_url: '/',
+        display: 'standalone',
+        orientation: 'portrait',
+        theme_color: "#ffffff",
+        background_color: '#ffffff',
+        version: '2.0.0',
+        icons: [{ src: "OneUI-dark.png", sizes: "192x192", type: "image/png" }],
+      },
+    }),
+```
+
+#### Compression Plugin
+
+- Uses `gzip` compression for performance optimization.
+
+```javascript
+    vitePluginCompression({
+      algorithm: 'gzip',
+      threshold: 10240, // Only compress files > 10 KB
+    }),
+```
+
+#### Bundle Visualizer
+
+- Generates a visual report of the build output.
+
+```javascript
+    visualizer({
+      filename: './dist/stats.html',
+      open: true, // Auto-opens in the browser
+    }),
+  ],
+```
+
+### Dependency Optimization
+
+- Includes all dependencies for better performance.
+
+```javascript
+  optimizeDeps: {
+    include: allDependencies,
+  }
+})
 ```
 
 ### Dark Mode

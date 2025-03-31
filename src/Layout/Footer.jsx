@@ -20,7 +20,7 @@ function Footer({ socialLinks, formattedTime, devSite, DevName }) {
             with ❤️‍🔥
           </p>
           <p className="text-sm text-gray-500 mt-1">
-            02/2025 - {new Date().getDate()}/0{new Date().getUTCMonth() + 1}/
+            Started from 02/2025 to {new Date().getDate()}/0{new Date().getUTCMonth() + 1}/
             {new Date().getFullYear()} {formattedTime}
           </p>
         </div>

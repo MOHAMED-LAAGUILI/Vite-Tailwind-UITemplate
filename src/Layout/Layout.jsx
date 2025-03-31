@@ -16,6 +16,7 @@ import {
   Linkedin,
   Github,
   MessageCircleDashed,
+  X,
 } from "lucide-react";
 import coffeeLogo from "/coffee-logo.svg";
 import logoLight from "/OneUI-light.png";
@@ -24,15 +25,15 @@ import { Seo } from "./Seo";
 import Header from "./Header";
 import Footer from "./Footer";
 import AsideMaximized from "./AsideMaximized";
+import PinnedIcons from "./PinnedIcons";
 import Spinner0 from "../Components/Spinner/Spinner0";
 import { SearchModal } from "./SearchModal";
-
 import { seoData } from "./data/SeoData";
 import { headerFlags } from "./data/HeaderFlags";
 import { socialLinks } from "./data/FooterLinks";
 import { menuItems } from "./data/AsideMenuItems";
 import { HeaderLinks } from "./data/HeaderLinks";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
@@ -41,7 +42,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { twMerge } from "tailwind-merge";
-import PinnedIcons from "./PinnedIcons";
 
 const useRouteAndPageName = () => {
   const location = useLocation();
@@ -136,115 +136,124 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className={isDarkMode ? "dark" : ""}>
-      <Seo
-        Helmet={Helmet}
-        title={`One UI | ${pageName}`}
-        lang={language}
-        seoData={seoData}
-      />
-      
-      <div className=" overflow-hidden flex h-screen ">
-        <AsideMaximized
-          openDropdown={openDropdown}
-          setOpenDropdown={setOpenDropdown}
-          asideMenuItems={menuItems}
-          ChevronDown={ChevronDown}
-          ChevronLeft={ChevronLeft}
-          isDarkMode={isDarkMode}
-          motion={motion}
-          translator={t}
-          Link={Link}
-          logoDark={logoDark}
-          logoLight={logoLight}
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-          ChevronFirst={ChevronFirst}
-          twMerge={twMerge}
-          ChevronRight={ChevronRight}
+    <>
+      <div className={isDarkMode ? "dark" : ""}>
+        <Seo
+          Helmet={Helmet}
+          title={`One UI | ${pageName}`}
+          lang={language}
+          seoData={seoData}
         />
 
-        <div className="flex-1 flex flex-col overflow-hidden  dark:bg-[#151E27] dark:text-white">
-          <Header
+
+        <div className=" overflow-hidden flex h-screen ">
+          <AsideMaximized
+            openDropdown={openDropdown}
+            setOpenDropdown={setOpenDropdown}
+            asideMenuItems={menuItems}
+            ChevronDown={ChevronDown}
+            ChevronLeft={ChevronLeft}
+            isDarkMode={isDarkMode}
+            motion={motion}
+            translator={t}
+            Link={Link}
+            logoDark={logoDark}
+            logoLight={logoLight}
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
-            isDarkMode={isDarkMode}
-            toggleTheme={toggleTheme}
-            isNotificationsOpen={isNotificationsOpen}
-            setIsNotificationsOpen={setIsNotificationsOpen}
-            isProfileOpen={isProfileOpen}
-            setIsProfileOpen={setIsProfileOpen}
-            isLangOpen={isLangOpen}
-            setIsLangOpen={setIsLangOpen}
-            handleLanguageChange={handleLanguageChange}
-            motion={motion}
-            language={language}
-            Sun={Sun}
-            Moon={Moon}
-            Bell={Bell}
-            User={User}
-            Settings={Settings}
-            LogOut={LogOut}
-            Search={Search}
-            flags={headerFlags}
-            notificationsDropdownRef={notificationsDropdownRef}
-            langDropdownRef={langDropdownRef}
-            profileDropdownRef={profileDropdownRef}
-            isSearchModalOpen={isSearchModalOpen}
-            setIsSearchModalOpen={setIsSearchModalOpen}
-            PanelLeftIcon={PanelLeftIcon}
-            translator={t}
-            HeaderLinks={HeaderLinks}
-            Link={Link}
-            SearchModal={SearchModal}
+            ChevronFirst={ChevronFirst}
+            twMerge={twMerge}
+            ChevronRight={ChevronRight}
           />
 
-          <main className="flex-1 overflow-auto ">
-            <Toaster />
+          <div className="flex-1 flex flex-col overflow-hidden  dark:bg-[#151E27] ">
+            <Header
+              isSidebarOpen={isSidebarOpen}
+              setIsSidebarOpen={setIsSidebarOpen}
+              isDarkMode={isDarkMode}
+              toggleTheme={toggleTheme}
+              isNotificationsOpen={isNotificationsOpen}
+              setIsNotificationsOpen={setIsNotificationsOpen}
+              isProfileOpen={isProfileOpen}
+              setIsProfileOpen={setIsProfileOpen}
+              isLangOpen={isLangOpen}
+              setIsLangOpen={setIsLangOpen}
+              handleLanguageChange={handleLanguageChange}
+              motion={motion}
+              language={language}
+              Sun={Sun}
+              Moon={Moon}
+              Bell={Bell}
+              User={User}
+              Settings={Settings}
+              LogOut={LogOut}
+              Search={Search}
+              flags={headerFlags}
+              notificationsDropdownRef={notificationsDropdownRef}
+              langDropdownRef={langDropdownRef}
+              profileDropdownRef={profileDropdownRef}
+              isSearchModalOpen={isSearchModalOpen}
+              setIsSearchModalOpen={setIsSearchModalOpen}
+              PanelLeftIcon={PanelLeftIcon}
+              translator={t}
+              HeaderLinks={HeaderLinks}
+              Link={Link}
+              SearchModal={SearchModal}
+              X={X}
+              React={React}
+              menuItems={menuItems}
+            />
 
-            {isLoading ? (
-              <div className="flex justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-                <Spinner0 />
-              </div>
-            ) : (
-              <Outlet />
-            )}
-          </main>
+            <main className="flex-1 overflow-auto ">
+              <Toaster />
 
-          <Footer
-            socialLinks={socialLinks}
-            formattedTime={formattedTime}
-            devSite={seoData.devSite}
-            DevName={seoData.author}
+              {isLoading ? (
+                <div className="flex justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+                  <Spinner0 />
+                </div>
+              ) : (
+                <>
+                  <Outlet />
+                </>
+              )}
+            </main>
+
+            <Footer
+              socialLinks={socialLinks}
+              formattedTime={formattedTime}
+              devSite={seoData.devSite}
+              DevName={seoData.author}
+            />
+          </div>
+
+          <PinnedIcons
+            phoneNumber={seoData.contact.phone}
+            whatsappMessage="Chat with us on WhatsApp"
+            phoneMessage="Call us now"
+            supportUrl={seoData.supportUrl}
+            supportMessage="Buy me a coffee"
+            coffeeLogo={coffeeLogo}
+            position="bottom-right" // Example position
+            showSupport={true}
+            showWhatsApp={true}
+            showPhone={true}
+            showLinkedIn={true}
+            showGitHub={true}
+            showDiscord={true}
+            className=""
+            MessageCircle={MessageCircle}
+            PhoneCall={PhoneCall}
+            Linkedin={Linkedin}
+            Github={Github}
+            Discord={MessageCircleDashed}
+            twMerge={twMerge}
+            handleMouseEnter={handleMouseEnter}
+            handleMouseLeave={handleMouseLeave}
+            isHovering={isHovering}
+            socialLinks={seoData.socialLinks}
           />
         </div>
-        <PinnedIcons
-          phoneNumber={seoData.contact.phone}
-          whatsappMessage="Chat with us on WhatsApp"
-          phoneMessage="Call us now"
-          supportUrl={seoData.supportUrl}
-          supportMessage="Buy me a coffee"
-          coffeeLogo={coffeeLogo}
-          position="bottom-right" // Example position
-          showSupport={true}
-          showWhatsApp={true}
-          showPhone={true}
-          showLinkedIn={true}
-          showGitHub={true}
-          showDiscord={true}
-          className=""
-          MessageCircle={MessageCircle}
-          PhoneCall={PhoneCall}
-          Linkedin={Linkedin}
-          Github={Github}
-          Discord={MessageCircleDashed}
-          twMerge={twMerge}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-          isHovering={isHovering}
-          socialLinks={seoData.socialLinks}
-        />
       </div>
-    </div>
+    </>
   );
 }

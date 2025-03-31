@@ -3,6 +3,8 @@ import Table1 from "../Components/Tables/Table1";
 import DataTable2 from "../Components/Tables/Table2";
 import DataTable3 from "../Components/Tables/Table3";
 import DataTableComponent from "../Components/Tables/Table4";
+import AdvancedTable4 from "../Components/Tables/Table4.5";
+import AdvancedTable5 from "../Components/Tables/Table5";
 
 function TablesPage() {
   const data = Array(20).fill({
@@ -41,6 +43,15 @@ function TablesPage() {
       <section>
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">DataTable3</h2>
         <DataTableComponent />
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Advanced table 4</h2>
+        <AdvancedTable4 />
+      </section>  
+       <section>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Advanced table 5</h2>
+        <AdvancedTable5 />
       </section>
     </div>
   );

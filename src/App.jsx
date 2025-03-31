@@ -33,9 +33,15 @@ const App = () => {
 
   
   return (
+    <> 
+
+
     <Router>
+      
       <Routes>
+        
         <Route path="/" element={<Layout />}>
+        
           {/* Home */}
           <Route index element={<HomePage />} />
 
@@ -65,7 +71,6 @@ const App = () => {
           <Route path="/calendar2-page" element={<Calendar2Page />} />
           <Route path="/tables-page" element={<TablesPage />} />
 
-
           {/* Private Development Pages */}
           {ENVIRONMENT !== "production" && (
          <>
@@ -78,10 +83,11 @@ const App = () => {
           {/* 404 route  redirection */}
           <Route path={"*"} element={<NotFound404 />} />
           <Route path={"404"} element={<NotFound404 />} />
-          
+
         </Route>
       </Routes>
     </Router>
+    </>
   );
 };
 

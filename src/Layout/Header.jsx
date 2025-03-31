@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+
 export default function Header({
   isSidebarOpen,
   setIsSidebarOpen,
@@ -28,7 +29,10 @@ export default function Header({
   PanelLeftIcon,
   translator,
   Link,
-  SearchModal
+  SearchModal, 
+  X,
+   React,
+    menuItems
 }) {
   return (
     <header className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-[#1F1F23] bg-white dark:bg-[#0F0F12] relative">
@@ -44,26 +48,26 @@ export default function Header({
       </button>
 
       {/* Right-side Icons */}
-      <div className="flex gap-5 items-center absolute z-[450] right-5">
+      <div className="flex gap-4 items-center absolute z-[450] right-5">
         {/* Search Bar */}
         <div className="relative z-[450]" ref={notificationsDropdownRef}>
           <button
             onClick={() => setIsSearchModalOpen(true)}
-            className="px-[11px] rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
+            className=" rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
             >
-            <Search className=" h-5 w-5 text-gray-600 dark:text-gray-500" />
+            <Search className=" h-4 w-4 text-gray-600 dark:text-gray-500" />
           </button>
         </div>
 
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="px-[11px] rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
+          className=" rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
         >
           {isDarkMode ? (
-            <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+            <Moon className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           ) : (
-            <Sun className="h-5 w-5 text-gray-600" />
+            <Sun className="h-4 w-4 text-gray-600" />
           )}
         </button>
 
@@ -71,7 +75,7 @@ export default function Header({
         <div className="relative z-[500]" ref={langDropdownRef}>
           <button
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="h-[35px] w-[45px] rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
+            className="h-[30px] w-[40px] rounded-md border dark:bg-gray-700 flex items-center justify-center transition-colors duration-200"
           >
             <img src={flags[language]?.src || flags.en.src} className="w-10" alt="language" />
           </button>
@@ -164,6 +168,12 @@ export default function Header({
         setIsSearchModalOpen={setIsSearchModalOpen}
         isOpen={isSearchModalOpen}
         translator={translator}
+        Search={Search}
+         X={X}
+         Link={Link}
+         menuItems={menuItems}
+         motion={motion}
+         React={React}
       />
     </header>
   );

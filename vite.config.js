@@ -19,33 +19,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-          // Add specific pages or components to separate chunks
-          if (id.includes('Pages/')) {
-            const pageName = id.split('/').pop().replace('.jsx', ''); // Get the page name from the path
-            return `page-${pageName}`;
-          }
-         
-          if (id.includes('Components/')) {
-            // Handling subfolders in Components
-            const pathParts = id.split('/');
-            const folderName = pathParts[pathParts.length - 2]; // Extract the folder name
-            return `components/${folderName}`; // Chunk by folder
-          }
-
-
-          if (id.includes('locals')) {
-            return 'translations';
-          }
-
-          if (id.includes('Layout')) {
-            const layoutPath = id.split('Layout/').pop();
-            const layoutName = layoutPath.replace('.jsx', '').replace(/\//g, '-'); // Handle nested layouts
-            return `layout-${layoutName}`;
-          }
+          if (id.includes('node_modules')) return 'vendor';
+          if (id.includes('Pages/')) return `page-${id.split('/').pop().replace('.jsx', '')}`;
+          if (id.includes('Components/')) return `components/${id.split('/').slice(-2, -1)[0]}`;
+          if (id.includes('locals')) return 'translations';
+          if (id.includes('Layout')) return `layout-${id.split('Layout/').pop().replace('.jsx', '').replace(/\//g, '-')}`;
         },
       },
     },

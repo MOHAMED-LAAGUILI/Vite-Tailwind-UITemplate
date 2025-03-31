@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion"; 
-import { clsx } from "clsx"; // Make sure to install clsx via npm if not already installed.
+import { twMerge } from "tailwind-merge";
 
 function createNoise() {
     const permutation = [
@@ -195,7 +195,7 @@ export default function ParticlesBackground3({
     }, [particleCount, particleSize]);
 
     return (
-        <div className={clsx("relative w-full h-full overflow-hidden", className)}>
+        <div className={twMerge("relative w-full h-full overflow-hidden", className)}>
             <canvas ref={canvasRef} className="absolute top-0 left-0 z-0" />
             <div className="absolute top-0 left-0 z-10 flex flex-col items-center justify-center w-full h-full text-center text-white">
                 <motion.h1
