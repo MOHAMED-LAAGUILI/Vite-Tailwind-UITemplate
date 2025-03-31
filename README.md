@@ -1,7 +1,4 @@
-Thought for 2 seconds### One UI - Modern UI Framework
-
-
-
+### One UI - Modern UI Framework
 
 
 One UI is a modern, fully responsive UI framework designed for simplicity and efficiency. Whether you are a developer or designer, One UI provides you with all the tools you need to build beautiful and functional websites.
