@@ -118,7 +118,6 @@ export default function Layout() {
         setIsNotificationsOpen(false);
       if (!profileDropdownRef.current?.contains(event.target))
         setIsProfileOpen(false);
-     
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -144,7 +143,8 @@ export default function Layout() {
         lang={language}
         seoData={seoData}
       />
-      <div className=" overflow-hidden flex h-screen dark:bg-[#0f0f12]">
+      
+      <div className=" overflow-hidden flex h-screen ">
         <AsideMaximized
           openDropdown={openDropdown}
           setOpenDropdown={setOpenDropdown}
@@ -164,7 +164,7 @@ export default function Layout() {
           ChevronRight={ChevronRight}
         />
 
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden  dark:bg-[#151E27] dark:text-white">
           <Header
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
@@ -219,33 +219,31 @@ export default function Layout() {
           />
         </div>
         <PinnedIcons
-  phoneNumber={seoData.contact.phone}
-  whatsappMessage="Chat with us on WhatsApp"
-  phoneMessage="Call us now"
-  supportUrl={seoData.supportUrl}
-  supportMessage="Buy me a coffee"
-  coffeeLogo={coffeeLogo}
-  position="bottom-right" // Example position
-  showSupport={true}
-  showWhatsApp={true}
-  showPhone={true}
-  showLinkedIn={true}
-  showGitHub={true}
-  showDiscord={true}
-  className=""
-  MessageCircle={MessageCircle}
-  PhoneCall={PhoneCall}
-  Linkedin={Linkedin}
-  Github={Github}
-  Discord={MessageCircleDashed}
-  twMerge={twMerge}
-  handleMouseEnter={handleMouseEnter}
-  handleMouseLeave={handleMouseLeave}
-  isHovering={isHovering}
-  socialLinks={seoData.socialLinks}
-
-/>
-
+          phoneNumber={seoData.contact.phone}
+          whatsappMessage="Chat with us on WhatsApp"
+          phoneMessage="Call us now"
+          supportUrl={seoData.supportUrl}
+          supportMessage="Buy me a coffee"
+          coffeeLogo={coffeeLogo}
+          position="bottom-right" // Example position
+          showSupport={true}
+          showWhatsApp={true}
+          showPhone={true}
+          showLinkedIn={true}
+          showGitHub={true}
+          showDiscord={true}
+          className=""
+          MessageCircle={MessageCircle}
+          PhoneCall={PhoneCall}
+          Linkedin={Linkedin}
+          Github={Github}
+          Discord={MessageCircleDashed}
+          twMerge={twMerge}
+          handleMouseEnter={handleMouseEnter}
+          handleMouseLeave={handleMouseLeave}
+          isHovering={isHovering}
+          socialLinks={seoData.socialLinks}
+        />
       </div>
     </div>
   );

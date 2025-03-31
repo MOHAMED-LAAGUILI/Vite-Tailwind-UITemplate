@@ -49,10 +49,9 @@ export default function Header({
         <div className="relative z-[450]" ref={notificationsDropdownRef}>
           <button
             onClick={() => setIsSearchModalOpen(true)}
-            className="border lg:w-96 md:w-72 sm:w-52 xs:hidden text-gray-700 flex items-center justify-start p-2 rounded-md hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-[#1F1F23] transition-all duration-200"
-          >
-            <Search className="mr-2 h-5 w-5" />
-            <span>{translator('Search...')}</span>
+            className="px-[11px] rounded-full p-[10px] hover:bg-gray-100 dark:hover:bg-[#1F1F23] transition-colors duration-200 border"
+            >
+            <Search className=" h-5 w-5 text-gray-600 dark:text-gray-500" />
           </button>
         </div>
 
