@@ -85,7 +85,7 @@ Vite-Tailwind-UITemplate/
 ├── .env
 ├── index.html
 ├── package.json
-├── LICENSE.md
+├── LICENSE
 ├── package-lock.json
 ├── eslint.config.js
 ├── README.md
