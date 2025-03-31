@@ -11,19 +11,23 @@ export default {
   ],
   theme: {
     extend: {
-  
-
+      colors: {
+     
+      },
     },
   },
   plugins: [
-
-  ],
+    
+   ],
   corePlugins: {
-    container: false, // Disables default container styles
+  
   },
   variants: {
     extend: {
      
     },
   },
-}
+  safelist: [
+
+  ],
+};

@@ -339,8 +339,8 @@ export function Toolbar({ className, activeColor = "text-primary" }) {
 <br/>
 <div className=" grid w-full h-24 grid-cols-1 px-8 bg-white border-t border-gray-200 md:grid-cols-3 dark:bg-gray-700 dark:border-gray-600">
   <div className="items-center justify-center hidden me-auto md:flex">
-    <img className="h-8 me-3 rounded-sm" src="/docs/images/misc/flowbite-yt-screenshot.png" alt="Video preview" />
-    <span className="text-sm text-gray-500 dark:text-gray-400">Flowbite Crash Course</span>
+    <img className="h-8 me-3 rounded-sm" src="https://i.pravatar.cc/300" alt="Video preview" />
+    <span className="text-sm text-gray-500 dark:text-gray-400">Crash Course</span>
   </div>
   <div className="flex items-center w-full">
     <div className="w-full">

@@ -1,16 +1,18 @@
-
-import { useEffect } from 'react';
-import { initFlowbite } from 'flowbite';
+import { useEffect } from "react";
+import { initFlowbite } from "flowbite";
+import SharpCard from "../Components/BodyCard";
+import { TestTube } from "lucide-react";
 
 export default function BlankPage2() {
   useEffect(() => {
-    initFlowbite();    
+    initFlowbite();
   }, []);
 
-  return(
-  <>
-<h1 className='text-2xl flex justify-center '>test 2</h1>
+  return (
 
-  </>
+        <SharpCard title="Settings" Icon={TestTube}>
+  test 2
+        </SharpCard>
+   
   );
 }

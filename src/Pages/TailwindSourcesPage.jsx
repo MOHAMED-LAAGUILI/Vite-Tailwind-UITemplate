@@ -1,5 +1,7 @@
+import SharpCard from "../Components/BodyCard";
 
-function TailwindSourcesPage() {
+
+export default  function TailwindSourcesPage() {
   const uiResources = [
     { name: "Tailwind CSS", url: "https://tailwindcss.com/", imgUrl: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.bbb5bdb6.svg" },
     { name: "Flowbite", url: "https://flowbite.com/", imgUrl: "https://flowbite.com/docs/images/logo.svg" },
@@ -29,10 +31,11 @@ function TailwindSourcesPage() {
 ];
 
   return (
+    
+    <SharpCard title={"Tailwind CSS UI Component Libraries"} Icon={""}>
+  
     <section className="flex flex-col items-center px-6 py-10  min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">
-        Tailwind CSS UI Component Libraries
-      </h1>
+      
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl">
         {uiResources.map((resource, index) => (
@@ -55,7 +58,7 @@ function TailwindSourcesPage() {
         ))}
       </div>
     </section>
+        </SharpCard>
   );
 }
 
-export default TailwindSourcesPage;

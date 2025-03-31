@@ -3,13 +3,17 @@ import Spinner1 from "../Components/Spinner/Spinner1";
 import Spinner2 from "../Components/Spinner/Spinner2";
 import Spinner3 from "../Components/Spinner/Spinner3";
 import Spinner4 from "../Components/Spinner/Spinner4";
+import SharpCard from "../Components/BodyCard";
+import QuantumSpinner from "../Components/Spinner/QuantumSpinner";
 
 function SpinnerPage() {
   return (
+
+    
+    <SharpCard title={"Loading Spinners UI Kit"} Icon={""}>
+
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-        Loading Spinners UI Kit
-      </h1>
+     
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
          {/* Spinner 0 */}
@@ -49,6 +53,13 @@ function SpinnerPage() {
           <Spinner4 />
           <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
             Spinner 4
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <QuantumSpinner />
+          <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+            Spinner 5
           </p>
         </div>
          
@@ -116,6 +127,7 @@ function SpinnerPage() {
         </p>
       </div>
     </div>
+    </SharpCard>
   );
 }
 

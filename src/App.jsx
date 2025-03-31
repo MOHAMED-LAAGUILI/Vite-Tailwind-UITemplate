@@ -34,14 +34,9 @@ const App = () => {
   
   return (
     <> 
-
-
     <Router>
-      
       <Routes>
-        
         <Route path="/" element={<Layout />}>
-        
           {/* Home */}
           <Route index element={<HomePage />} />
 
@@ -76,7 +71,7 @@ const App = () => {
          <>
            <Route path="/blank-page" element={<BlankPage />} />
            <Route path="/blank-page2" element={<BlankPage2/>} />
-          <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />}/>
+           <Route path="/tailwind-resources-page" element={<TailwindSourcesPage />}/>
          </>
           )}
 

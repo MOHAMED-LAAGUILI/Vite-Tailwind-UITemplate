@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 export default function SharpCard({ title, Icon, actionButton, children, classes }) {
   return (
     <div className={twMerge(
-    "mx-10 my-7  bg-white dark:bg-gray-800 shadow-lg border",
+    "mx-5 my-5  bg-white dark:bg-gray-800 shadow-lg border",
      "border-gray-200 dark:border-gray-700 rounded-sm transition-all",
      classes)}>
       {/* Header: Icon, Title & Action Button */}

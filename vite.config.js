@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from "vite-plugin-pwa";
 import { visualizer } from 'rollup-plugin-visualizer';
 import vitePluginCompression from 'vite-plugin-compression';
 import pkg from './package.json';
+import viteImagemin from "vite-plugin-imagemin";
+import path from "path";
 
 const dependencies = Object.keys(pkg.dependencies || {});
 const devDependencies = Object.keys(pkg.devDependencies || {});
@@ -21,13 +24,16 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules')) return 'vendor';
           if (id.includes('Pages/')) return `page-${id.split('/').pop().replace('.jsx', '')}`;
-          if (id.includes('Components/')) return `components/${id.split('/').slice(-2, -1)[0]}`;
+          if (id.includes('Components/')) return `component/${id.split('/').slice(-2, -1)[0]}`;
           if (id.includes('locals')) return 'translations';
-          if (id.includes('Layout')) return `layout-${id.split('Layout/').pop().replace('.jsx', '').replace(/\//g, '-')}`;
+          if (id.includes('Layout')) return `layout-${id.split('layout/').pop().replace('.jsx', '').replace(/\//g, '-')}`;
+          if (id.includes('mock')) return `mock-${id.split('mock/').pop().replace('.jsx', '').replace(/\//g, '-')}`;
         },
       },
     },
     minify: 'esbuild', // Use esbuild for faster minification (default in Vite)
+    target: "esnext", // Modern browsers
+
   },
 
   plugins: [
@@ -69,16 +75,38 @@ export default defineConfig({
     }),
  
     vitePluginCompression({
-      algorithm: 'gzip', // Use 'brotli' or 'gzip'
-      threshold: 10240,  // Compress files larger than 10 KB
+      algorithm: 'brotliCompress', // Use 'brotli' or 'gzip'
+      ext: '.br', // Brotli file extension
+      threshold: 1024, // Compress files larger than 1KB
+      deleteOriginFile: false, // Keep the original file (set to true if you want to remove the uncompressed file)
+    }),
+    vitePluginCompression({
+      algorithm: "gzip", // Fallback Gzip compression
+      ext: ".gz",
+      threshold: 1024,
     }),
     
     visualizer({
    filename: './dist/stats.html',
    open: true, // Automatically open in the browser
+   gzipSize: true,
+   brotliSize: true,
  }),
+
+ viteImagemin({
+  gifsicle: { optimizationLevel: 3 },
+  optipng: { optimizationLevel: 7 },
+  mozjpeg: { quality: 85 },
+  svgo: { plugins: [{ name: "removeViewBox" }, { name: "removeEmptyAttrs" }] },
+}),
 ],
-  
+mode: "jit", // Enables Just-In-Time mode (faster builds)
+
+resolve: {
+  alias: {
+    "@": path.resolve(__dirname, "src"), // Simplifies imports
+  },
+},
   optimizeDeps: {
     include: allDependencies, // Includes all dependencies for optimization
   }
