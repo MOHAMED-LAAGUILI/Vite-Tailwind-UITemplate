@@ -17,6 +17,7 @@ import {
   Github,
   MessageCircleDashed,
   X,
+  ShoppingBag,
 } from "lucide-react";
 import coffeeLogo from "/coffee-logo.svg";
 import logoLight from "/OneUI-light.png";
@@ -202,6 +203,8 @@ export default function Layout() {
               X={X}
               React={React}
               menuItems={menuItems}
+             
+              ShoppingBasket={ShoppingBag}
             />
 
             <main className="flex-1 overflow-auto ">

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TextPage from "./Pages/TextPage";
 import SpinnerPage from "./Pages/SpinnerPage";
 import Layout from "./Layout/Layout";
-import DashBoardItems from "./Pages/DashBoardItemsPage";
+import DashBoardItems from "./Pages/DashBoardPage";
 import DropDownPage from "./Pages/DropDownPage";
 import AuthPage from "./Pages/AuthPage";
 import TablesPage from "./Pages/TablesPage";
@@ -26,6 +26,7 @@ import MapPage from "./Pages/MapPage";
 import BlankPage2 from "./Pages/BlankPage2";
 import TermsOfService from "./Pages/TosPage";
 import { SettingsPage } from "./Pages/SettingPage";
+import { ShoppingCartPage } from "./Pages/ShoppingCartPage";
 
 const ENVIRONMENT = import.meta.env.VITE_ENVIRONMENT;
 
@@ -65,6 +66,8 @@ const App = () => {
           <Route path="/calendar-page" element={<CalendarPage />} />
           <Route path="/calendar2-page" element={<Calendar2Page />} />
           <Route path="/tables-page" element={<TablesPage />} />
+          <Route path="/cart-page" element={<ShoppingCartPage />} />
+
 
           {/* Private Development Pages */}
           {ENVIRONMENT !== "production" && (

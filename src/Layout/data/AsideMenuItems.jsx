@@ -1,5 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
-import { House, Combine, Eraser, LayoutDashboard, Paperclip, TrendingUp, TestTubeDiagonal, TestTubes, ShieldBan, Settings } from "lucide-react";
+import { 
+  House, Combine, Eraser, LayoutDashboard, Paperclip,
+   TrendingUp, TestTubeDiagonal, TestTubes, ShieldBan,
+    Settings, 
+   } from "lucide-react";
 
 const SubItemIcon = () => {
   return (
@@ -45,10 +49,12 @@ export const menuItems = [
       { name: "Profile", path: "/profile-page", icon: <SubItemIcon className="h-4 w-4 mr-3" /> },
       { name: "Map", path: "/map-page", icon: <SubItemIcon className="h-4 w-4 mr-3" /> },
       { name: "TOS", path: "/tos-page", icon: <SubItemIcon className="h-4 w-4 mr-3" /> },
-      { name: "Auth", path: "/auth", icon: "" },
-      { name: "Table Filtering", path: "/tables-page", icon: "" },
-      { name: "Calendar", path: "/calendar-page", icon: "" },
-      { name: "Calendar2", path: "/calendar2-page", icon: "" },
+      { name: "Auth", path: "/auth", icon: <SubItemIcon/> },
+      { name: "Table Filtering", path: "/tables-page", icon: <SubItemIcon/> },
+      { name: "Calendar", path: "/calendar-page", icon: <SubItemIcon/> },
+      { name: "Calendar2", path: "/calendar2-page", icon: <SubItemIcon/> },
+      
+      { name: "Shopping Cart", path: "/cart-page", icon:  <SubItemIcon/> },
     ],
   },
   { name: "404 Page", path: "404", icon: <Eraser className="h-4 w-4 mr-3" /> },
